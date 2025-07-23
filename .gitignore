@@ -1,4 +1,7 @@
 .vscode
 .cursor/*
 .covarage
+node_modules
+ping-pong-dapp/.DS_Store
+.DS_Store
 
