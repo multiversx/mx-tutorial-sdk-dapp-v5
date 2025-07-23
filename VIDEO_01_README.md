@@ -10,7 +10,7 @@ Creating a new React project with Vite
 ### Step 1: Create a new Vite React project (TypeScript template).
 
 ```bash
-npx create-vite@latest ping-pong-dapp --template react-ts --yes --force
+npx create-vite@latest ping-pong-dapp --template react-ts --yes
 ```
 
 ### Step 2: Install dependencies:
@@ -23,7 +23,6 @@ cd ping-pong-dapp && yarn
 
 ```bash
 yarn add -D tailwindcss postcss autoprefixer @tailwindcss/postcss
-npx tailwindcss init -p
 ```
 
 Add tailwind config:
@@ -57,6 +56,21 @@ yarn add -D @eslint/js eslint prettier eslint-config-prettier eslint-import-reso
 ```
 
 Configure .eslintrc and .prettierrc.
+
+Use the following .prettierrc file:
+
+```json
+{
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "semi": true,
+  "tabWidth": 2,
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "arrowParens": "always",
+  "trailingComma": "none"
+}
+```
 
 Use the following eslint.config.js file:
 
@@ -205,25 +219,10 @@ export default tseslint.config([
 ]);
 ```
 
-Use the following .prettierrc file:
-
-```json
-{
-  "singleQuote": true,
-  "jsxSingleQuote": true,
-  "semi": true,
-  "tabWidth": 2,
-  "bracketSpacing": true,
-  "jsxBracketSameLine": false,
-  "arrowParens": "always",
-  "trailingComma": "none"
-}
-```
-
 ### Step 5: Configure vite
 
 ```bash
-yarn add -D @vitejs/plugin-basic-ssl @vitejs/plugin-node-polyfills vite-plugin-svgr vite-tsconfig-paths
+yarn add -D @vitejs/plugin-basic-ssl vite-plugin-node-polyfills vite-plugin-svgr vite-tsconfig-paths
 ```
 
 Configure vite.config.ts file:
