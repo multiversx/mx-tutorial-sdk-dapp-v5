@@ -1,0 +1,11 @@
+file: package.json
+line: 15
+col: 26
+---
+,
+    "@multiversx/sdk-dapp": "^5.x",
+    "@multiversx/sdk-dapp-ui": "^0.x",
+    "@multiversx/sdk-dapp-utils": "^2.x",
+    "@multiversx/sdk-core": "^14.x",
+    "bignumber.js": "^9.x",
+    "axios": "^1.10.0"
