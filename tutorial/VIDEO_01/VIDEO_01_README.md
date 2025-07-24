@@ -9,19 +9,30 @@ Creating a new React project with Vite
 
 ### Step 1: Create a new Vite React project (TypeScript template).
 
+The project will be created directly in the current directory.
+
 ```bash
-npx create-vite@latest ping-pong-dapp --template react-ts --yes
+# Navigate to root directory
+cd ../../
+
+# Create temporary project and move files to current directory
+npx create-vite@latest temp-project --template react-ts --yes
+mv temp-project/* .
+mv temp-project/.* . 2>/dev/null || true
+rm -rf temp-project
 ```
 
 ### Step 2: Install dependencies:
 
 ```bash
-cd ping-pong-dapp && yarn
+# Already in root directory
+yarn
 ```
 
 ### Step 3: Install Tailwind CSS and its dependencies:
 
 ```bash
+# Continue working in root directory
 yarn add -D tailwindcss postcss autoprefixer @tailwindcss/postcss
 ```
 
@@ -30,11 +41,11 @@ Add tailwind config:
 ```ts
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {}
   },
-  plugins: [],
+  plugins: []
 };
 ```
 
@@ -44,14 +55,15 @@ Add postcss config:
 export default {
   plugins: {
     '@tailwindcss/postcss': {},
-    autoprefixer: {},
-  },
+    autoprefixer: {}
+  }
 };
 ```
 
 ### Step 4: Configure eslint and prettier:
 
 ```bash
+# Continue working in root directory
 yarn add -D @eslint/js eslint prettier eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-sort-exports
 ```
 
@@ -222,6 +234,7 @@ export default tseslint.config([
 ### Step 5: Configure vite
 
 ```bash
+# Continue working in root directory
 yarn add -D @types/node @vitejs/plugin-basic-ssl vite-plugin-node-polyfills vite-plugin-svgr vite-tsconfig-paths
 ```
 
@@ -268,7 +281,7 @@ export default defineConfig({
 });
 ```
 
-### Step 5: Configure tsconfig.json
+### Step 6: Configure tsconfig.json
 
 Keep only one tsconfig.json file in the root of the project (remove the tsconfig.app.json file and the tsconfig.node.json file).
 
@@ -299,7 +312,7 @@ Keep only one tsconfig.json file in the root of the project (remove the tsconfig
 }
 ```
 
-### Step 6: Add formatting scripts and run them
+### Step 7: Add formatting scripts and run them
 
 ```json
 "lint": "eslint --ext js,ts,tsx src --fix",
@@ -311,10 +324,8 @@ Keep only one tsconfig.json file in the root of the project (remove the tsconfig
 yarn lint
 ```
 
-### Step 7: Check if the project is running using BrowserMCP
+### Step 8: Check if the project is running
 
 ```bash
 yarn dev
 ```
-
-

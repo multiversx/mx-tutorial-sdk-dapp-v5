@@ -2,8 +2,8 @@
 
 echo "=== Step 7: Adding lint command to package.json and running it ==="
 
-# Change to project directory
-cd ping-pong-dapp
+# Change to root directory
+cd ../../
 
 # Add lint command to package.json
 # Use node to modify the package.json file
@@ -23,4 +23,4 @@ yarn lint
 yarn format
 
 echo "✅ Lint completed successfully!"
-echo "Next: Run '../step_08_start_dev_server.sh'" 
+echo "Next: Run './step_08_start_dev_server.sh'" 

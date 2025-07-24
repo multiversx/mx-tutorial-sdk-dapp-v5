@@ -2,8 +2,8 @@
 
 echo "=== Step 4: Configuring eslint and prettier ==="
 
-# Change to project directory
-cd ping-pong-dapp
+# Change to root directory
+cd ../../
 
 # Install eslint and prettier dependencies
 yarn add -D @eslint/js eslint prettier eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-sort-exports
@@ -171,4 +171,4 @@ EOF
 echo "✅ ESLint and Prettier configured successfully!"
 echo "✅ .prettierrc created"
 echo "✅ eslint.config.js created"
-echo "Next: Run '../step_05_configure_vite.sh'" 
+echo "Next: Run './step_05_configure_vite.sh'" 

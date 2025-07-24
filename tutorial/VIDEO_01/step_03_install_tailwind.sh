@@ -2,8 +2,8 @@
 
 echo "=== Step 3: Installing Tailwind CSS and creating config files ==="
 
-# Change to project directory
-cd ping-pong-dapp
+# Change to root directory
+cd ../../
 
 # Install Tailwind CSS and dependencies
 yarn add -D tailwindcss postcss autoprefixer @tailwindcss/postcss
@@ -33,4 +33,4 @@ EOF
 echo "✅ Tailwind CSS installed and configured successfully!"
 echo "✅ tailwind.config.js created"
 echo "✅ postcss.config.js created"
-echo "Next: Run '../step_04_configure_eslint_prettier.sh'" 
+echo "Next: Run './step_04_configure_eslint_prettier.sh'" 

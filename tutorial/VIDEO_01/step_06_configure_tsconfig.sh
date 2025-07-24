@@ -2,8 +2,8 @@
 
 echo "=== Step 6: Configuring tsconfig.json ==="
 
-# Change to project directory
-cd ping-pong-dapp
+# Change to root directory
+cd ../../
 
 # Remove additional tsconfig files if they exist
 rm -f tsconfig.app.json tsconfig.node.json
@@ -37,4 +37,4 @@ cat > tsconfig.json << 'EOF'
 EOF
 
 echo "✅ tsconfig.json configured successfully!"
-echo "Next: Run '../step_07_add_lint_command.sh'" 
+echo "Next: Run './step_07_add_lint_command.sh'" 

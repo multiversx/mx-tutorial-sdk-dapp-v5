@@ -2,8 +2,8 @@
 
 echo "=== Step 5: Configuring Vite ==="
 
-# Change to project directory
-cd ping-pong-dapp
+# Change to root directory
+cd ../../
 
 # Install Vite plugins
 yarn add -D @types/node @vitejs/plugin-basic-ssl vite-plugin-node-polyfills vite-plugin-svgr vite-tsconfig-paths
@@ -52,4 +52,4 @@ EOF
 
 echo "✅ Vite plugins installed and configured successfully!"
 echo "✅ vite.config.ts created"
-echo "Next: Run '../step_06_configure_tsconfig.sh'" 
+echo "Next: Run './step_06_configure_tsconfig.sh'" 

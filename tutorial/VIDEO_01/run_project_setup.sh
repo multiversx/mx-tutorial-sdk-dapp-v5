@@ -3,7 +3,7 @@
 echo "🚀 React + Tailwind + MultiversX dApp Setup Script"
 echo "=================================================="
 echo ""
-echo "This script will run all 8 steps to set up your ping-pong-dapp project."
+echo "This script will run all 8 steps to set up your project in the root directory."
 echo "Running all steps automatically..."
 echo ""
 

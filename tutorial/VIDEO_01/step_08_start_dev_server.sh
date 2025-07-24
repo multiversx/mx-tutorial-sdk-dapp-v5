@@ -2,8 +2,8 @@
 
 echo "=== Step 8: Starting development server ==="
 
-# Change to project directory
-cd ping-pong-dapp
+# Change to root directory
+cd ../../
 
 echo "Starting development server..."
 echo "The server will run on https://localhost:3000"
