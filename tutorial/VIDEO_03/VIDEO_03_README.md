@@ -37,7 +37,7 @@ It will have the following content:
 export { initApp } from '@multiversx/sdk-dapp/out/methods/initApp/initApp';
 ```
 
-Now we have to create the index files and re-export the dependencies.   
+Now we have to create the index files and re-export the dependencies.
 
 ```bash
 touch lib/sdk-dapp/index.ts
