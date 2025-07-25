@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 9: Running lint ==="
+echo "=== Step 11: Running lint ==="
 
 # Navigate to root directory
 cd ../../

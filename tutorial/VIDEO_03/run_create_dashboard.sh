@@ -88,13 +88,33 @@ echo "✅ Step 8 completed"
 echo ""
 
 # Step 9
-echo "Running Step 9: Running lint"
-./step_09_run_lint.sh
+echo "Running Step 9: Exporting the Dashboard page"
+./step_09_export_dashboard.sh
 if [ $? -ne 0 ]; then
     echo "❌ Step 9 failed. Stopping."
     exit 1
 fi
 echo "✅ Step 9 completed"
+echo ""
+
+# Step 10
+echo "Running Step 10: Updating routes"
+./step_10_update_routes.sh
+if [ $? -ne 0 ]; then
+    echo "❌ Step 10 failed. Stopping."
+    exit 1
+fi
+echo "✅ Step 10 completed"
+echo ""
+
+# Step 11
+echo "Running Step 11: Running lint"
+./step_11_run_lint.sh
+if [ $? -ne 0 ]; then
+    echo "❌ Step 11 failed. Stopping."
+    exit 1
+fi
+echo "✅ Step 11 completed"
 echo ""
 
 echo "🎉 Dashboard creation completed successfully!"

@@ -6,12 +6,12 @@ echo "=== Step 2: Creating the dashboard folder ==="
 cd ../../
 
 echo "Creating dashboard directory structure..."
-mkdir -p src/pages/dashboard
-mkdir -p src/pages/dashboard/components
-mkdir -p src/pages/dashboard/widgets
+mkdir -p src/pages/Dashboard
+mkdir -p src/pages/Dashboard/components
+mkdir -p src/pages/Dashboard/widgets
 
 echo "Creating Widget.tsx component..."
-cat > src/pages/dashboard/components/Widget.tsx << 'EOF'
+cat > src/pages/Dashboard/components/Widget.tsx << 'EOF'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -29,9 +29,7 @@ export const Widget = ({
   widget: MxWidget
 }: WidgetType) => {
   return (
-    <div
-      className='flex flex-col flex-1 rounded-xl bg-white p-6 justify-center'
-    >
+    <div className='flex flex-col flex-1 rounded-xl bg-white p-6 justify-center'>
       <h2 className='flex text-xl font-medium group'>
         {title}
         <a
@@ -52,9 +50,9 @@ EOF
 echo "✅ Dashboard folder structure created successfully!"
 echo ""
 echo "Created:"
-echo "  - src/pages/dashboard/ directory"
-echo "  - src/pages/dashboard/components/ directory"
-echo "  - src/pages/dashboard/widgets/ directory"
-echo "  - src/pages/dashboard/components/Widget.tsx: Widget wrapper component"
+echo "  - src/pages/Dashboard/ directory"
+echo "  - src/pages/Dashboard/components/ directory"
+echo "  - src/pages/Dashboard/widgets/ directory"
+echo "  - src/pages/Dashboard/components/Widget.tsx: Widget wrapper component"
 echo ""
 echo "Next: Continue with VIDEO_03 step 3" 

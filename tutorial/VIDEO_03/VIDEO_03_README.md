@@ -50,15 +50,15 @@ export * from './sdk-dapp.types';
 The Dashboad page will consist of a list of widgets. We will go on to create the widgets one by one, and then we will add them to the Dashboard page.
 
 ```bash
-mkdir -p src/pages/dashboard
-mkdir -p src/pages/dashboard/components
-mkdir -p src/pages/dashboard/widgets
+mkdir -p src/pages/Dashboard
+mkdir -p src/pages/Dashboard/components
+mkdir -p src/pages/Dashboard/widgets
 ```
 
-In the `src/pages/dashboard/components` folder, create a new file called `Widget.tsx`:
+In the `src/pages/Dashboard/components` folder, create a new file called `Widget.tsx`:
 
 ```bash
-touch src/pages/dashboard/components/Widget.tsx
+touch src/pages/Dashboard/components/Widget.tsx
 ```
 
 Add the following content to Widget.tsx:
@@ -196,7 +196,7 @@ export * from './Button';
 Step 4: Create the Account widget
 
 ```bash
-touch src/pages/dashboard/widgets/Account.tsx
+touch src/pages/Dashboard/widgets/Account.tsx
 ```
 
 Add the following content to Account.tsx with placeholder values for the account address, shard and balance:
@@ -266,10 +266,10 @@ export const PingPongAbi = () => {
 Step 6: Create a widgets index file
 
 ```bash
-touch src/pages/dashboard/widgets/index.ts
+touch src/pages/Dashboard/widgets/index.ts
 ```
 
-Export both Account and PingPongAbi widgets by appending the following content to the `src/pages/dashboard/widgets/index.ts` file:
+Export both Account and PingPongAbi widgets by appending the following content to the `src/pages/Dashboard/widgets/index.ts` file:
 
 ```ts
 export * from './Account';
@@ -279,7 +279,7 @@ export * from './PingPongAbi';
 Step 7: Create the Dashboard page
 
 ```bash
-touch src/pages/dashboard/Dashboard.tsx
+touch src/pages/Dashboard/Dashboard.tsx
 ```
 
 Add the following content to Dashboard.tsx
@@ -316,7 +316,67 @@ export const Dashboard = () => {
 };
 ```
 
-Step 8: Lint the code
+Step 8: Export the Dashboard page
+
+```bash
+touch src/pages/Dashboard/index.ts
+```
+
+Add the following content to index.ts:
+
+```ts
+export * from './Dashboard';
+```
+
+Add Dashboard to the main index.ts file by appending the following content to the `src/pages/index.ts` file:
+
+```ts
+export * from './Dashboard';
+```
+
+Step 9: Update the routes.ts file
+
+Replace the `src/routes/routes.ts` file with the following content:
+
+```ts
+import { Home, Dashboard } from 'pages';
+import { RouteType } from 'types';
+
+export enum RouteNamesEnum {
+  home = '/',
+  dashboard = '/dashboard'
+}
+
+interface BasicRouteType {
+  path: string;
+  title: string;
+  component: () => React.ReactNode;
+  authenticatedRoute?: boolean;
+}
+
+interface RouteType extends BasicRouteType {
+  children?: BasicRouteType[];
+}
+
+export const routes: RouteType[] = [
+  {
+    path: RouteNamesEnum.home,
+    title: 'Home',
+    component: Home,
+    children: [
+      // Unlock page
+    ]
+  },
+  {
+    path: RouteNamesEnum.dashboard,
+    title: 'Dashboard',
+    component: Dashboard,
+    authenticatedRoute: true
+  }
+];
+```
+
+Step 10: Lint the code
 
 ```bash
 yarn lint --fix

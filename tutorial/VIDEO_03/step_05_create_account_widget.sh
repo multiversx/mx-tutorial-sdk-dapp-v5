@@ -6,7 +6,7 @@ echo "=== Step 5: Creating the Account widget ==="
 cd ../../
 
 echo "Creating Account.tsx widget..."
-cat > src/pages/dashboard/widgets/Account.tsx << 'EOF'
+cat > src/pages/Dashboard/widgets/Account.tsx << 'EOF'
 import { Label, OutputContainer } from 'components';
 
 export const Account = () => {
@@ -24,7 +24,6 @@ export const Account = () => {
 
         <p>
           <Label>Balance: </Label>
-
           ACCOUNT.BALANCE
         </p>
       </div>
@@ -36,6 +35,6 @@ EOF
 echo "✅ Account widget created successfully!"
 echo ""
 echo "Created files:"
-echo "  - src/pages/dashboard/widgets/Account.tsx: Account information widget"
+echo "  - src/pages/Dashboard/widgets/Account.tsx: Account information widget"
 echo ""
 echo "Next: Continue with VIDEO_03 step 6" 

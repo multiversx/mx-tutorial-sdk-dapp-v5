@@ -1,17 +1,14 @@
 #!/bin/bash
 
-echo "=== Step 8: Creating the Dashboard page ==="
+echo "=== Step 7: Creating the Dashboard page ==="
 
 # Navigate to root directory
 cd ../../
 
 echo "Creating Dashboard.tsx page..."
-cat > src/pages/dashboard/Dashboard.tsx << 'EOF'
+cat > src/pages/Dashboard/Dashboard.tsx << 'EOF'
 import { Widget, WidgetType } from './components';
-import {
-  Account,
-  PingPongAbi,
-} from './widgets';
+import { Account, PingPongAbi } from './widgets';
 
 const WIDGETS: WidgetType[] = [
   {
@@ -44,6 +41,6 @@ EOF
 echo "✅ Dashboard page created successfully!"
 echo ""
 echo "Created files:"
-echo "  - src/pages/dashboard/Dashboard.tsx: Main dashboard page with widgets"
+echo "  - src/pages/Dashboard/Dashboard.tsx: Main dashboard page with widgets"
 echo ""
-echo "Next: Continue with VIDEO_03 step 9" 
+echo "Next: Continue with VIDEO_03 step 8" 

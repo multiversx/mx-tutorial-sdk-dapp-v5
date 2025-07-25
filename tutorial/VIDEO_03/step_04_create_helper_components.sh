@@ -22,7 +22,7 @@ import { PropsWithChildren } from 'react';
 export const OutputContainer = ({
   children,
   isLoading = false,
-  className = 'p-4',
+  className = 'p-4'
 }: PropsWithChildren) => (
   <div
     className={classNames(
