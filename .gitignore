@@ -22,3 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Project files
+src
+.prettierrc
+.eslint.config.js
+.index.html
+package.json
+postcss.config.js
+README.md
+tailwind.config.js
+tsconfig.json
+vite.config.ts
+yarn.lock
