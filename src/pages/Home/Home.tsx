@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { Login } from './Login';
 
 export const Home = () => {
   return (
@@ -17,7 +18,7 @@ export const Home = () => {
                 >
                   sdk-dapp v.5
                 </a>{' '}
-                example project <br className='hidden xl:block' />
+                example project <br />
                 built on the{' '}
                 <a
                   href='https://multiversx.com/'
@@ -29,6 +30,7 @@ export const Home = () => {
                 blockchain.
               </p>
             </div>
+            <Login />
           </div>
         </div>
         <div className='h-4/6 bg-mvx-white bg-contain bg-no-repeat w-1/2 bg-center' />
