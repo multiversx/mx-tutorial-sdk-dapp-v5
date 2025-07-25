@@ -9,7 +9,7 @@ This is the scenario description for the instructive video series on how to buil
 1. Create a new Vite React project (TypeScript template)
 2. Install dependencies
 3. Install Tailwind CSS and its dependencies
-4. Configure eslint and prettier 
+4. Configure eslint and prettier
 5. Configure vite (globals and https)
 6. Configure tsconfig.json (absolute imports)
 7. Add formatting scripts and run them
@@ -29,4 +29,3 @@ This is the scenario description for the instructive video series on how to buil
 
 1. Install sdk-dapp & its dependencies
 2. Create the lib folder from where we will re-export dependencies
-

@@ -84,7 +84,6 @@ touch src/pages/index.ts
 
 Add the following content to index.ts
 
-
 ```ts
 export * from './Home';
 ```
@@ -109,7 +108,7 @@ import { Home } from 'pages';
 import { RouteType } from 'types';
 
 export enum RouteNamesEnum {
-  home = '/',
+  home = '/'
 }
 
 interface BasicRouteType {
@@ -123,18 +122,16 @@ interface RouteType extends BasicRouteType {
   children?: BasicRouteType[];
 }
 
-
 export const routes: RouteType[] = [
   {
     path: RouteNamesEnum.home,
     title: 'Home',
     component: Home,
     children: [
-        // Unlock page
+      // Unlock page
     ]
   }
 ];
-
 ```
 
 Step 5: Create a Layout component
@@ -167,7 +164,6 @@ touch src/components/index.ts
 ```
 
 Add the following content to index.ts
-
 
 ```ts
 export * from './Layout';

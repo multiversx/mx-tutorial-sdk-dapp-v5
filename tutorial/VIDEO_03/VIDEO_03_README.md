@@ -27,7 +27,7 @@ export const environment = EnvironmentsEnum.devnet;
 
 We will add the following scripts to package.json:
 
-```json 
+```json
     "start-devnet": "yarn run copy-devnet-config & vite dev",
     "copy-devnet-config": "cp ./src/config/config.devnet.ts ./src/config/index.ts",
 ```
@@ -44,7 +44,6 @@ Update the `src/lib/sdk-dapp/index.ts` file with the following content:
 export * from './sdk-dapp.helpers';
 export * from './sdk-dapp.types';
 ```
-
 
 ### Step 2: Create the dashboard folder
 
@@ -82,9 +81,7 @@ export const Widget = ({
   widget: MxWidget
 }: WidgetType) => {
   return (
-    <div
-      className='flex flex-col flex-1 rounded-xl bg-white p-6 justify-center'
-    >
+    <div className='flex flex-col flex-1 rounded-xl bg-white p-6 justify-center'>
       <h2 className='flex text-xl font-medium group'>
         {title}
         <a
@@ -138,7 +135,7 @@ import { PropsWithChildren } from 'react';
 export const OutputContainer = ({
   children,
   isLoading = false,
-  className = 'p-4',
+  className = 'p-4'
 }: PropsWithChildren) => (
   <div
     className={classNames(
@@ -186,7 +183,6 @@ export const Button = ({
     </button>
   );
 };
-
 ```
 
 Re-export the Label, OutputContainer and Button by appending the following content to the `src/components/index.ts` file:
@@ -204,7 +200,6 @@ touch src/pages/dashboard/widgets/Account.tsx
 ```
 
 Add the following content to Account.tsx with placeholder values for the account address, shard and balance:
-
 
 ```tsx
 import { Label, OutputContainer } from 'components';
@@ -224,7 +219,6 @@ export const Account = () => {
 
         <p>
           <Label>Balance: </Label>
-
           ACCOUNT.BALANCE
         </p>
       </div>
@@ -244,39 +238,29 @@ Add the following content to PingPongAbi.tsx:
 ```tsx
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  Button,
-  OutputContainer,
-} from 'components';
+import { Button, OutputContainer } from 'components';
 
 export const PingPongAbi = () => {
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex flex-col gap-2'>
         <div className='flex justify-start gap-2'>
-          <Button
-            className='inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0 disabled:bg-gray-200 disabled:text-black disabled:cursor-not-allowed'
-          >
+          <Button className='inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0 disabled:bg-gray-200 disabled:text-black disabled:cursor-not-allowed'>
             <FontAwesomeIcon icon={faArrowUp} className='mr-1' />
             Ping
           </Button>
 
-          <Button
-            className='inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0 disabled:bg-gray-200 disabled:text-black disabled:cursor-not-allowed'
-          >
+          <Button className='inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0 disabled:bg-gray-200 disabled:text-black disabled:cursor-not-allowed'>
             <FontAwesomeIcon icon={faArrowDown} className='mr-1' />
             Pong
           </Button>
         </div>
       </div>
 
-      <OutputContainer>
-        PING-PONG ABI OUTPUT
-      </OutputContainer>
+      <OutputContainer>PING-PONG ABI OUTPUT</OutputContainer>
     </div>
   );
 };
-
 ```
 
 Step 6: Create a widgets index file
@@ -292,22 +276,17 @@ export * from './Account';
 export * from './PingPongAbi';
 ```
 
-
 Step 7: Create the Dashboard page
 
 ```bash
 touch src/pages/dashboard/Dashboard.tsx
 ```
 
-
 Add the following content to Dashboard.tsx
 
 ```tsx
 import { Widget, WidgetType } from './components';
-import {
-  Account,
-  PingPongAbi,
-} from './widgets';
+import { Account, PingPongAbi } from './widgets';
 
 const WIDGETS: WidgetType[] = [
   {
@@ -335,7 +314,6 @@ export const Dashboard = () => {
     </div>
   );
 };
-
 ```
 
 Step 8: Lint the code
