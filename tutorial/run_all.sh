@@ -141,6 +141,27 @@ else
 fi
 echo ""
 
+# Navigate back to root for next video
+cd ../../
+
+# VIDEO 4: Components Setup
+echo "===================="
+echo "🎬 VIDEO 4: Components Setup"
+echo "===================="
+cd tutorial/VIDEO_04
+if [[ -f "run_components_setup.sh" ]]; then
+    echo "Running VIDEO_04 setup..."
+    ./run_components_setup.sh
+    if [ $? -ne 0 ]; then
+        echo "❌ VIDEO_04 setup failed. Stopping."
+        exit 1
+    fi
+    echo "✅ VIDEO_04 completed successfully!"
+else
+    echo "⚠️  VIDEO_04 run script not found, skipping..."
+fi
+echo ""
+
 # Navigate back to root
 cd ../../
 
