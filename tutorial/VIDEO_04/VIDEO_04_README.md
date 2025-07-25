@@ -2,96 +2,361 @@
 
 ## Overview
 
-This is the scenario description for adding final components to the dApp.
+This is the scenario description for creating the dashboard page with account, ping-pong and transaction history widgets.
 
 Video 4:
-Adding Unlock page, link, header and footer components, and a transactions widget
+Creating the dashboard page.
 
-### Step 1: Create a generic link component
-
-Create the `src/components/MxLink.tsx` file.
+### Step 1: Creating configs for our dApp
 
 ```bash
-touch src/components/MxLink.tsx
+mkdir -p src/config
+touch src/config/config.devnet.ts
+touch src/config/index.ts
 ```
 
-Add the following content to the `src/components/MxLink.tsx` file:
+Add the following content to config.devnet.ts
+
+```ts
+import { EnvironmentsEnum } from 'lib';
+
+export const contractAddress =
+  'erd1qqqqqqqqqqqqqpgqm6ad6xrsjvxlcdcffqe8w58trpec09ug9l5qde96pq';
+export const environment = EnvironmentsEnum.devnet;
+```
+
+We will add the following scripts to package.json:
+
+```json
+    "start-devnet": "yarn run copy-devnet-config & vite dev",
+    "copy-devnet-config": "cp ./src/config/config.devnet.ts ./src/config/index.ts",
+```
+
+Create a new src/lib/sdk-dapp/sdk-dapp.types.ts file with the following content:
+
+```ts
+export { EnvironmentsEnum } from '@multiversx/sdk-dapp/out/types/enums.types';
+```
+
+Update the `src/lib/sdk-dapp/index.ts` file with the following content:
+
+```ts
+export * from './sdk-dapp.helpers';
+export * from './sdk-dapp.types';
+```
+
+### Step 2: Create the dashboard folder
+
+The Dashboad page will consist of a list of widgets. We will go on to create the widgets one by one, and then we will add them to the Dashboard page.
+
+```bash
+mkdir -p src/pages/Dashboard
+mkdir -p src/pages/Dashboard/components
+mkdir -p src/pages/Dashboard/widgets
+```
+
+In the `src/pages/Dashboard/components` folder, create a new file called `Widget.tsx`:
+
+```bash
+touch src/pages/Dashboard/components/Widget.tsx
+```
+
+Add the following content to Widget.tsx:
 
 ```tsx
-import { PropsWithChildren } from 'react';
-import { Link } from 'react-router-dom';
+import { ReactElement } from 'react';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-interface MxLinkPropsType extends PropsWithChildren {
-  to: string;
-  className?: string;
-}
+export type WidgetType = {
+  description?: string;
+  reference: string;
+  title: string;
+  widget: () => ReactElement;
+};
 
-export const MxLink = ({
-  to,
-  children,
-  className = 'inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 ml-2 mr-0'
-}: MxLinkPropsType) => {
+export const Widget = ({
+  title,
+  description,
+  reference,
+  widget: MxWidget
+}: WidgetType) => {
   return (
-    <Link to={to} className={className}>
-      {children}
-    </Link>
+    <div className='flex flex-col flex-1 rounded-xl bg-white p-6 justify-center'>
+      <h2 className='flex text-xl font-medium group'>
+        {title}
+        <a
+          href={reference}
+          target='_blank'
+          className='hidden group-hover:block ml-2 text-blue-600'
+        >
+          <FontAwesomeIcon icon={faInfoCircle} size='sm' />
+        </a>
+      </h2>
+      {description && <p className='text-gray-400 mb-6'>{description}</p>}
+      <MxWidget />
+    </div>
   );
 };
 ```
 
-Re-export the MxLink component in the `src/components/index.ts` file by appending the following content to the file:
-
-```ts
-export * from './MxLink';
-```
-
-### Step 2: Create the Unlock page
-
-Create the `src/pages/Unlock.tsx` file.
+Create the widgets index.ts file:
 
 ```bash
-touch src/pages/Unlock.tsx
+touch src/pages/Dashboard/components/index.ts
 ```
 
-Add the following content to the `src/pages/Unlock.tsx` file:
+Add the following content to index.ts:
+
+```ts
+export * from './Widget';
+```
+
+Step 3: Install FontAwesome and classnames
+
+```bash
+yarn add @fortawesome/fontawesome-svg-core
+yarn add @fortawesome/free-solid-svg-icons
+yarn add @fortawesome/react-fontawesome
+yarn add classnames
+```
+
+Step 4: Add Button, Label and OutputContainer helper components
+
+```bash
+touch src/components/Label.tsx
+touch src/components/OutputContainer.tsx
+touch src/components/Button.tsx
+```
+
+Add the following content to Label.tsx:
 
 ```tsx
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { RouteNamesEnum } from 'routes';
+import { PropsWithChildren } from 'react';
 
-export const Unlock = () => {
-  const navigate = useNavigate();
-  const isLoggedIn = false; // TODO: Replace with the actual login state
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate(RouteNamesEnum.dashboard);
-      return;
-    }
-    // open unlock panel here
-  }, [isLoggedIn]);
-
-  return null;
+export const Label = ({ children }: PropsWithChildren) => {
+  return <label className='text-gray-500'>{children}</label>;
 };
 ```
 
-Re-export the Unlock page in the `src/pages/index.ts` file by appending the following content to the file:
+Add the following content to OutputContainer.tsx:
 
-```ts
-export * from './Unlock';
+```tsx
+import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
+
+export const OutputContainer = ({
+  children,
+  className = 'p-4'
+}: PropsWithChildren) => (
+  <div
+    className={classNames(
+      'text-sm border border-gray-200 rounded overflow-auto',
+      className
+    )}
+  >
+    {children}
+  </div>
+);
 ```
 
-Add the Unlock page to the routes.ts file by replacing the content of the file with the following:
+Add the following content to Button.tsx:
+
+```tsx
+import { MouseEvent, PropsWithChildren } from 'react';
+
+interface ButtonType extends PropsWithChildren {
+  onClick?: (e: MouseEvent) => void;
+  className?: string;
+  disabled?: boolean;
+  id?: string;
+  type?: 'button' | 'submit' | 'reset';
+}
+
+export const Button = ({
+  children,
+  onClick,
+  disabled = false,
+  type = 'button',
+  id,
+  className = 'inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0 disabled:bg-gray-200 disabled:text-black disabled:cursor-not-allowed',
+  ...otherProps
+}: ButtonType) => {
+  return (
+    <button
+      id={id}
+      {...otherProps}
+      disabled={disabled}
+      onClick={onClick}
+      className={className}
+      type={type}
+    >
+      {children}
+    </button>
+  );
+};
+```
+
+Re-export the Label, OutputContainer and Button by appending the following content to the `src/components/index.ts` file:
 
 ```ts
-import { Home, Dashboard, Unlock } from 'pages';
+export * from './Label';
+export * from './OutputContainer';
+export * from './Button';
+```
+
+Step 5: Create the Account widget
+
+```bash
+touch src/pages/Dashboard/widgets/Account.tsx
+```
+
+Add the following content to Account.tsx with placeholder values for the account address, shard and balance:
+
+```tsx
+import { Label, OutputContainer } from 'components';
+
+export const Account = () => {
+  return (
+    <OutputContainer>
+      <div className='flex flex-col text-black' data-testid='topInfo'>
+        <p className='truncate'>
+          <Label>Address:</Label>
+          <span data-testid='accountAddress'> ACCOUNT.ADDRESS</span>
+        </p>
+
+        <p>
+          <Label>Shard: </Label> ACCOUNT.SHARD
+        </p>
+
+        <p>
+          <Label>Balance: </Label>
+          ACCOUNT.BALANCE
+        </p>
+      </div>
+    </OutputContainer>
+  );
+};
+```
+
+Step 6: Create the PingPongAbi widget
+
+```bash
+touch src/pages/dashboard/widgets/PingPongAbi.tsx
+```
+
+Add the following content to PingPongAbi.tsx:
+
+```tsx
+import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button, OutputContainer } from 'components';
+
+export const PingPongAbi = () => {
+  return (
+    <div className='flex flex-col gap-6'>
+      <div className='flex flex-col gap-2'>
+        <div className='flex justify-start gap-2'>
+          <Button className='inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0 disabled:bg-gray-200 disabled:text-black disabled:cursor-not-allowed'>
+            <FontAwesomeIcon icon={faArrowUp} className='mr-1' />
+            Ping
+          </Button>
+
+          <Button className='inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0 disabled:bg-gray-200 disabled:text-black disabled:cursor-not-allowed'>
+            <FontAwesomeIcon icon={faArrowDown} className='mr-1' />
+            Pong
+          </Button>
+        </div>
+      </div>
+
+      <OutputContainer>PING-PONG ABI OUTPUT</OutputContainer>
+    </div>
+  );
+};
+```
+
+Step 7: Create a widgets index file
+
+```bash
+touch src/pages/Dashboard/widgets/index.ts
+```
+
+Export both Account and PingPongAbi widgets by appending the following content to the `src/pages/Dashboard/widgets/index.ts` file:
+
+```ts
+export * from './Account';
+export * from './PingPongAbi';
+```
+
+Step 8: Create the Dashboard page
+
+```bash
+touch src/pages/Dashboard/Dashboard.tsx
+```
+
+Add the following content to Dashboard.tsx
+
+```tsx
+import { Widget, WidgetType } from './components';
+import { Account, PingPongAbi } from './widgets';
+
+const WIDGETS: WidgetType[] = [
+  {
+    title: 'Account',
+    widget: Account,
+    description: 'Connected account details',
+    reference: 'https://docs.multiversx.com/sdk-and-tools/sdk-dapp/#account'
+  },
+  {
+    title: 'Ping & Pong (ABI)',
+    widget: PingPongAbi,
+    description:
+      'Smart Contract interactions using the ABI generated transactions',
+    reference:
+      'https://docs.multiversx.com/sdk-and-tools/sdk-js/sdk-js-cookbook/#using-interaction-when-the-abi-is-available'
+  }
+];
+
+export const Dashboard = () => {
+  return (
+    <div className='flex flex-col gap-6 max-w-3xl w-full'>
+      {WIDGETS.map((element) => (
+        <Widget key={element.title} {...element} />
+      ))}
+    </div>
+  );
+};
+```
+
+Step 9: Export the Dashboard page
+
+```bash
+touch src/pages/Dashboard/index.ts
+```
+
+Add the following content to index.ts:
+
+```ts
+export * from './Dashboard';
+```
+
+Add Dashboard to the main index.ts file by appending the following content to the `src/pages/index.ts` file:
+
+```ts
+export * from './Dashboard';
+```
+
+Step 10: Update the routes.ts file
+
+Replace the `src/routes/routes.ts` file with the following content:
+
+```ts
+import { Home, Dashboard } from 'pages';
 import { RouteType } from 'types';
 
 export enum RouteNamesEnum {
   home = '/',
-  dashboard = '/dashboard',
-  unlock = '/unlock'
+  dashboard = '/dashboard'
 }
 
 interface BasicRouteType {
@@ -111,12 +376,7 @@ export const routes: RouteType[] = [
     title: 'Home',
     component: Home,
     children: [
-      // since unlock is made trough a sidebar, we want to keep displaying the home page in the background
-      {
-        path: RouteNamesEnum.unlock,
-        title: 'Unlock',
-        component: Unlock
-      }
+      // Unlock page
     ]
   },
   {
@@ -128,215 +388,7 @@ export const routes: RouteType[] = [
 ];
 ```
 
-### Step 3: Create the Header component
-
-Create the Header component in the `src/components/Layout/components/Header.tsx` file.
-
-```bash
-mkdir -p src/components/Layout/components
-touch src/components/Layout/components/Header.tsx
-```
-
-Add the following content to the `src/components/Layout/components/Header.tsx` file:
-
-```tsx
-import { useNavigate } from 'react-router-dom';
-import { Button, MxLink } from 'components';
-import { environment } from 'config';
-import { RouteNamesEnum } from 'routes';
-
-export const Header = () => {
-  const isLoggedIn = false; // TODO: Replace with the actual login state
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    // TODO: Implement logout
-    navigate(RouteNamesEnum.home);
-  };
-
-  return (
-    <header className='flex flex-row align-center justify-between pl-6 pr-6 pt-6'>
-      <nav className='h-full w-full text-sm sm:relative sm:left-auto sm:top-auto sm:flex sm:w-auto sm:flex-row sm:justify-end sm:bg-transparent'>
-        <div className='flex justify-end container mx-auto items-center gap-2'>
-          <div className='flex gap-1 items-center'>
-            <div className='w-2 h-2 rounded-full bg-green-500' />
-            <p className='text-gray-600'>{environment}</p>
-          </div>
-
-          {isLoggedIn ? (
-            <>
-              <Button
-                onClick={handleLogout}
-                className='inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 text-gray-600 hover:bg-slate-100 mx-0'
-              >
-                Close
-              </Button>
-            </>
-          ) : (
-            <Button
-              onClick={() => {
-                navigate(RouteNamesEnum.dashboard); // TODO: replace with navigate(RouteNamesEnum.unlock);
-              }}
-            >
-              Connect
-            </Button>
-          )}
-        </div>
-      </nav>
-    </header>
-  );
-};
-```
-
-### Step 4: Create the Footer component
-
-Create the Footer component in the `src/components/Layout/components/Footer.tsx` file.
-
-```bash
-touch src/components/Layout/components/Footer.tsx
-```
-
-Add the following content to the `src/components/Layout/components/Footer.tsx` file:
-
-```tsx
-export const Footer = () => {
-  return (
-    <footer className='mx-auto w-full max-w-prose pb-6 pl-6 pr-6 text-center text-gray-400'>
-      <div className='flex flex-col items-center text sm text-gray-400'>
-        <a
-          target='_blank'
-          className='flex items-center text-sm hover:underline'
-          href='https://github.com/multiversx/mx-tutorial-sdk-dapp-v5'
-        >
-          GitHub Repository
-        </a>
-      </div>
-    </footer>
-  );
-};
-```
-
-Create the `src/components/Layout/components/index.ts` file.
-
-```bash
-touch src/components/Layout/components/index.ts
-```
-
-Add the following content to the `src/components/Layout/components/index.ts` file:
-
-```ts
-export * from './Header';
-export * from './Footer';
-```
-
-### Step 5: Update the Layout component to use the Header and Footer components
-
-Update the `src/components/Layout/Layout.tsx` file by replacing the content of the file with the following:
-
-```tsx
-import { PropsWithChildren } from 'react';
-import { Footer, Header } from './components';
-
-export const Layout = ({ children }: PropsWithChildren) => {
-  return (
-    <div className='flex min-h-screen flex-col bg-slate-200'>
-      <Header />
-      <main className='flex flex-grow items-stretch justify-center p-6'>
-        {children}
-      </main>
-      <Footer />
-    </div>
-  );
-};
-```
-
-### Step 6: Create the Transactions widget
-
-Create the `src/pages/Dashboard/widgets/Transactions.tsx` file.
-
-```bash
-touch src/pages/Dashboard/widgets/Transactions.tsx
-```
-
-Add the following content to the `src/pages/Dashboard/widgets/Transactions.tsx` file:
-
-```tsx
-import { OutputContainer } from 'components';
-
-export const Transactions = () => {
-  const isLoading = false; // TODO: Replace with the actual loading state
-  const transactions = []; // TODO: Replace with the actual transactions
-
-  if (!isLoading && transactions.length === 0) {
-    return (
-      <OutputContainer>
-        <p className='text-gray-400'>No transactions found</p>
-      </OutputContainer>
-    );
-  }
-
-  return (
-    <div className='flex flex-col'>
-      <OutputContainer isLoading={isLoading} className='p-0'>
-        <div className='w-full h-full overflow-x-auto bg-white shadow rounded-lg'>
-          {/* TODO: Add transactions table here */}
-        </div>
-      </OutputContainer>
-    </div>
-  );
-};
-```
-
-Export the Transactions component in the `src/pages/Dashboard/widgets/index.ts` file by appending the following content to the file:
-
-```ts
-export * from './Transactions';
-```
-
-### Step 7: Update the Dashboard page to use the Transactions widget
-
-Update the `src/pages/Dashboard/Dashboard.tsx` file by replacing the content of the file with the following:
-
-```tsx
-import { Widget, WidgetType } from './components';
-import { Account, PingPongAbi, Transactions } from './widgets';
-
-const WIDGETS: WidgetType[] = [
-  {
-    title: 'Account',
-    widget: Account,
-    description: 'Connected account details',
-    reference: 'https://docs.multiversx.com/sdk-and-tools/sdk-dapp/#account'
-  },
-  {
-    title: 'Ping & Pong (ABI)',
-    widget: PingPongAbi,
-    description:
-      'Smart Contract interactions using the ABI generated transactions',
-    reference:
-      'https://docs.multiversx.com/sdk-and-tools/sdk-js/sdk-js-cookbook/#using-interaction-when-the-abi-is-available'
-  },
-  {
-    title: 'Transactions',
-    widget: Transactions,
-    description: 'Transactions history',
-    reference:
-      'https://docs.multiversx.com/sdk-and-tools/sdk-dapp/#transactions'
-  }
-];
-
-export const Dashboard = () => {
-  return (
-    <div className='flex flex-col gap-6 max-w-3xl w-full'>
-      {WIDGETS.map((element) => (
-        <Widget key={element.title} {...element} />
-      ))}
-    </div>
-  );
-};
-```
-
-### Step 8: Lint the code
+Step 11: Lint the code
 
 ```bash
 yarn lint --fix

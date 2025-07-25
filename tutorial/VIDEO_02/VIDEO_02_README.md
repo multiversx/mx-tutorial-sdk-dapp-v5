@@ -138,7 +138,8 @@ Step 5: Create a Layout component
 
 ```bash
 mkdir -p src/components
-touch src/components/Layout.tsx
+mkdir -p src/components/Layout
+touch src/components/Layout/Layout.tsx
 ```
 
 Add the following content to Layout.tsx
@@ -155,6 +156,18 @@ export const Layout = ({ children }: PropsWithChildren) => {
     </div>
   );
 };
+```
+
+Create an index.ts file in the Layout folder
+
+```bash
+touch src/components/Layout/index.ts
+```
+
+Add the following content to index.ts
+
+```ts
+export * from './Layout';
 ```
 
 Create an index.ts file in the components folder

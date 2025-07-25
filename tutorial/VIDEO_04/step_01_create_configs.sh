@@ -22,16 +22,16 @@ cat > src/config/index.ts << 'EOF'
 export * from './config.devnet';
 EOF
 
-echo "Creating lib/sdkDapp/sdkDapp.types.ts file..."
-mkdir -p src/lib/sdkDapp
-cat > src/lib/sdkDapp/sdkDapp.types.ts << 'EOF'
+echo "Creating lib/sdk-dapp/sdk-dapp.types.ts file..."
+mkdir -p src/lib/sdk-dapp
+cat > src/lib/sdk-dapp/sdk-dapp.types.ts << 'EOF'
 export { EnvironmentsEnum } from '@multiversx/sdk-dapp/out/types/enums.types';
 EOF
 
-echo "Updating lib/sdkDapp/index.ts file..."
-cat > src/lib/sdkDapp/index.ts << 'EOF'
-export * from './sdkDapp.helpers';
-export * from './sdkDapp.types';
+echo "Updating lib/sdk-dapp/index.ts file..."
+cat > src/lib/sdk-dapp/index.ts << 'EOF'
+export * from './sdk-dapp.helpers';
+export * from './sdk-dapp.types';
 EOF
 
 echo "Updating package.json scripts..."
@@ -48,8 +48,8 @@ echo ""
 echo "Created files:"
 echo "  - src/config/config.devnet.ts: DevNet configuration"
 echo "  - src/config/index.ts: Config barrel export"
-echo "  - src/lib/sdkDapp/sdkDapp.types.ts: SDK dApp types"
-echo "  - Updated src/lib/sdkDapp/index.ts"
+echo "  - src/lib/sdk-dapp/sdk-dapp.types.ts: SDK dApp types"
+echo "  - Updated src/lib/sdk-dapp/index.ts"
 echo "  - Updated package.json with new scripts"
 echo ""
 echo "Added scripts to package.json:"

@@ -8,8 +8,11 @@ cd ../../
 echo "Creating components directory..."
 mkdir -p src/components
 
+echo "Creating Layout directory..."
+mkdir -p src/components/Layout
+
 echo "Creating Layout.tsx file..."
-cat > src/components/Layout.tsx << 'EOF'
+cat > src/components/Layout/Layout.tsx << 'EOF'
 import { PropsWithChildren } from 'react';
 
 export const Layout = ({ children }: PropsWithChildren) => {
@@ -23,6 +26,11 @@ export const Layout = ({ children }: PropsWithChildren) => {
 };
 EOF
 
+echo "Creating Layout index.ts file..."
+cat > src/components/Layout/index.ts << 'EOF'
+export * from './Layout';
+EOF
+
 echo "Creating components index.ts file..."
 cat > src/components/index.ts << 'EOF'
 export * from './Layout';
@@ -31,7 +39,8 @@ EOF
 echo "✅ Layout component created successfully!"
 echo ""
 echo "Created files:"
-echo "  - src/components/Layout.tsx: Main layout component"
+echo "  - src/components/Layout/Layout.tsx: Main layout component"
+echo "  - src/components/Layout/index.ts: Layout barrel export"
 echo "  - src/components/index.ts: Components barrel export"
 echo ""
 echo "Next: Continue with VIDEO_02 step 6" 
