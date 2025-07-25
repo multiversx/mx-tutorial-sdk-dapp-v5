@@ -23,11 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
-# Project files
 src
+public
 .prettierrc
-.eslint.config.js
-.index.html
+eslint.config.js
+index.html
 package.json
 postcss.config.js
 README.md
