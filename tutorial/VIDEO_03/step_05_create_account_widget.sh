@@ -11,24 +11,24 @@ import { Label, OutputContainer } from 'components';
 
 export const Account = () => {
   return (
-    <div className='text-sm border border-gray-200 rounded overflow-auto p-4'>
+    <OutputContainer>
       <div className='flex flex-col text-black' data-testid='topInfo'>
         <p className='truncate'>
-          <label className='text-gray-500'>Address:</label>
+          <Label>Address:</Label>
           <span data-testid='accountAddress'> ACCOUNT.ADDRESS</span>
         </p>
 
         <p>
-          <label className='text-gray-500'>Shard: </label> ACCOUNT.SHARD
+          <Label>Shard: </Label> ACCOUNT.SHARD
         </p>
 
         <p>
-          <label className='text-gray-500'>Balance: </label>
+          <Label>Balance: </Label>
 
           ACCOUNT.BALANCE
         </p>
       </div>
-    </div>
+    </OutputContainer>
   );
 };
 EOF

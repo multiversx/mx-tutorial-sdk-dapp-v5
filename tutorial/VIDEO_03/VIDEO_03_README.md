@@ -211,24 +211,24 @@ import { Label, OutputContainer } from 'components';
 
 export const Account = () => {
   return (
-    <div className='text-sm border border-gray-200 rounded overflow-auto p-4'>
+    <OutputContainer>
       <div className='flex flex-col text-black' data-testid='topInfo'>
         <p className='truncate'>
-          <label className='text-gray-500'>Address:</label>
+          <Label>Address:</Label>
           <span data-testid='accountAddress'> ACCOUNT.ADDRESS</span>
         </p>
 
         <p>
-          <label className='text-gray-500'>Shard: </label> ACCOUNT.SHARD
+          <Label>Shard: </Label> ACCOUNT.SHARD
         </p>
 
         <p>
-          <label className='text-gray-500'>Balance: </label>
+          <Label>Balance: </Label>
 
           ACCOUNT.BALANCE
         </p>
       </div>
-    </div>
+    </OutputContainer>
   );
 };
 ```
@@ -246,7 +246,6 @@ import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   Button,
-  Label,
   OutputContainer,
 } from 'components';
 
@@ -304,7 +303,6 @@ touch src/pages/dashboard/Dashboard.tsx
 Add the following content to Dashboard.tsx
 
 ```tsx
-import { contractAddress } from 'config';
 import { Widget, WidgetType } from './components';
 import {
   Account,

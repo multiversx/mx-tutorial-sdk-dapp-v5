@@ -7,7 +7,6 @@ cd ../../
 
 echo "Creating Dashboard.tsx page..."
 cat > src/pages/dashboard/Dashboard.tsx << 'EOF'
-import { contractAddress } from 'config';
 import { Widget, WidgetType } from './components';
 import {
   Account,

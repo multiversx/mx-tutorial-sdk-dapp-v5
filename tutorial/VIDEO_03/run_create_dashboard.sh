@@ -101,7 +101,5 @@ echo "🎉 Dashboard creation completed successfully!"
 echo ""
 echo "You can now view your dashboard with account and ping-pong widgets!"
 echo ""
-echo "📝 Manual step required:"
-echo "Don't forget to update your package.json scripts:"
-echo '  "start-devnet": "yarn run copy-devnet-config & vite dev",'
-echo '  "copy-devnet-config": "cp ./src/config/config.devnet.ts ./src/config/index.ts",' 
+echo "To start the development server with DevNet config, run:"
+echo "  yarn start-devnet" 
