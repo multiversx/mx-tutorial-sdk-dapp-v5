@@ -205,7 +205,7 @@ export * from './OutputContainer';
 export * from './Button';
 ```
 
-Step 4: Create the Account widget
+Step 5: Create the Account widget
 
 ```bash
 touch src/pages/Dashboard/widgets/Account.tsx
@@ -239,7 +239,7 @@ export const Account = () => {
 };
 ```
 
-Step 5: Create the PingPongAbi widget
+Step 6: Create the PingPongAbi widget
 
 ```bash
 touch src/pages/dashboard/widgets/PingPongAbi.tsx
@@ -275,7 +275,7 @@ export const PingPongAbi = () => {
 };
 ```
 
-Step 6: Create a widgets index file
+Step 7: Create a widgets index file
 
 ```bash
 touch src/pages/Dashboard/widgets/index.ts
@@ -288,7 +288,7 @@ export * from './Account';
 export * from './PingPongAbi';
 ```
 
-Step 7: Create the Dashboard page
+Step 8: Create the Dashboard page
 
 ```bash
 touch src/pages/Dashboard/Dashboard.tsx
@@ -328,7 +328,7 @@ export const Dashboard = () => {
 };
 ```
 
-Step 8: Export the Dashboard page
+Step 9: Export the Dashboard page
 
 ```bash
 touch src/pages/Dashboard/index.ts
@@ -346,7 +346,7 @@ Add Dashboard to the main index.ts file by appending the following content to th
 export * from './Dashboard';
 ```
 
-Step 9: Update the routes.ts file
+Step 10: Update the routes.ts file
 
 Replace the `src/routes/routes.ts` file with the following content:
 
@@ -388,7 +388,7 @@ export const routes: RouteType[] = [
 ];
 ```
 
-Step 10: Lint the code
+Step 11: Lint the code
 
 ```bash
 yarn lint --fix

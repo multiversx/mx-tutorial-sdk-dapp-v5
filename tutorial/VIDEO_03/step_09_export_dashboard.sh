@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 8: Exporting the Dashboard page ==="
+echo "=== Step 9: Exporting the Dashboard page ==="
 
 # Navigate to root directory
 cd ../../
