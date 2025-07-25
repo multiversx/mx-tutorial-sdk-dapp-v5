@@ -25,7 +25,7 @@ export const contractAddress =
 export const environment = EnvironmentsEnum.devnet;
 ```
 
-We will replace the default `dev` script from package.json with `start-devnet`:
+We will add the following scripts to package.json:
 
 ```json 
     "start-devnet": "yarn run copy-devnet-config & vite dev",

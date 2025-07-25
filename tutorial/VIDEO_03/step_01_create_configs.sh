@@ -35,22 +35,13 @@ export * from './sdkDapp.types';
 EOF
 
 echo "Updating package.json scripts..."
-# Create a temporary Node.js script to update package.json
-cat > temp_update_package.js << 'EOF'
+node -e "
 const fs = require('fs');
 const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-
-// Add the new scripts
 packageJson.scripts['start-devnet'] = 'yarn run copy-devnet-config & vite dev';
 packageJson.scripts['copy-devnet-config'] = 'cp ./src/config/config.devnet.ts ./src/config/index.ts';
-
-// Write back to package.json with proper formatting
-fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2) + '\n');
-EOF
-
-# Run the script and clean up
-node temp_update_package.js
-rm temp_update_package.js
+fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2));
+"
 
 echo "✅ Configs created successfully!"
 echo ""
