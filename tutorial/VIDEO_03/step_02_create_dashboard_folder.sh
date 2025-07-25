@@ -12,6 +12,7 @@ mkdir -p src/pages/Dashboard/widgets
 
 echo "Creating Widget.tsx component..."
 cat > src/pages/Dashboard/components/Widget.tsx << 'EOF'
+import { ReactElement } from 'react';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -19,7 +20,7 @@ export type WidgetType = {
   description?: string;
   reference: string;
   title: string;
-  widget: () => JSX.Element;
+  widget: () => ReactElement;
 };
 
 export const Widget = ({
@@ -47,6 +48,11 @@ export const Widget = ({
 };
 EOF
 
+echo "Creating components index.ts file..."
+cat > src/pages/Dashboard/components/index.ts << 'EOF'
+export * from './Widget';
+EOF
+
 echo "✅ Dashboard folder structure created successfully!"
 echo ""
 echo "Created:"
@@ -54,5 +60,6 @@ echo "  - src/pages/Dashboard/ directory"
 echo "  - src/pages/Dashboard/components/ directory"
 echo "  - src/pages/Dashboard/widgets/ directory"
 echo "  - src/pages/Dashboard/components/Widget.tsx: Widget wrapper component"
+echo "  - src/pages/Dashboard/components/index.ts: Components barrel export"
 echo ""
 echo "Next: Continue with VIDEO_03 step 3" 

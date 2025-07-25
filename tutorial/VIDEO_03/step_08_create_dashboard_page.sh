@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 7: Creating the Dashboard page ==="
+echo "=== Step 8: Creating the Dashboard page ==="
 
 # Navigate to root directory
 cd ../../
@@ -43,4 +43,4 @@ echo ""
 echo "Created files:"
 echo "  - src/pages/Dashboard/Dashboard.tsx: Main dashboard page with widgets"
 echo ""
-echo "Next: Continue with VIDEO_03 step 8" 
+echo "Next: Continue with VIDEO_03 step 9" 

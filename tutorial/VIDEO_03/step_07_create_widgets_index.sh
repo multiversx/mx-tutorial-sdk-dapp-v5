@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 6: Creating widgets index file ==="
+echo "=== Step 7: Creating widgets index file ==="
 
 # Navigate to root directory
 cd ../../

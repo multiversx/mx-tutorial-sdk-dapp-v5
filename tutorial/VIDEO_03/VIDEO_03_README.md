@@ -64,6 +64,7 @@ touch src/pages/Dashboard/components/Widget.tsx
 Add the following content to Widget.tsx:
 
 ```tsx
+import { ReactElement } from 'react';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -71,7 +72,7 @@ export type WidgetType = {
   description?: string;
   reference: string;
   title: string;
-  widget: () => JSX.Element;
+  widget: () => ReactElement;
 };
 
 export const Widget = ({
@@ -97,6 +98,18 @@ export const Widget = ({
     </div>
   );
 };
+```
+
+Create the widgets index.ts file:
+
+```bash
+touch src/pages/Dashboard/components/index.ts
+```
+
+Add the following content to index.ts:
+
+```ts
+export * from './Widget';
 ```
 
 Step 3: Install FontAwesome and classnames
@@ -134,7 +147,6 @@ import { PropsWithChildren } from 'react';
 
 export const OutputContainer = ({
   children,
-  isLoading = false,
   className = 'p-4'
 }: PropsWithChildren) => (
   <div

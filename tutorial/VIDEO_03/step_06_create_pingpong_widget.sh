@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 5: Creating the PingPongAbi widget ==="
+echo "=== Step 6: Creating the PingPongAbi widget ==="
 
 # Navigate to root directory
 cd ../../
