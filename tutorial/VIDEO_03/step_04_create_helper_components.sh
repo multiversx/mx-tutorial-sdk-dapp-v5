@@ -21,7 +21,6 @@ import { PropsWithChildren } from 'react';
 
 export const OutputContainer = ({
   children,
-  isLoading = false,
   className = 'p-4'
 }: PropsWithChildren) => (
   <div
