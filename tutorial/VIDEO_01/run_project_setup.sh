@@ -77,10 +77,10 @@ fi
 echo "✅ Step 7 completed"
 echo ""
 
-# Step 8
-echo "🎉 Setup completed successfully!"
-echo ""
-echo "Starting development server..."
-echo "Note: This will start the dev server and keep running."
-echo "Press Ctrl+C to stop the server when you're done."
-./step_08_start_dev_server.sh 
+# # Step 8
+# echo "🎉 Setup completed successfully!"
+# echo ""
+# echo "Starting development server..."
+# echo "Note: This will start the dev server and keep running."
+# echo "Press Ctrl+C to stop the server when you're done."
+# ./step_08_start_dev_server.sh 

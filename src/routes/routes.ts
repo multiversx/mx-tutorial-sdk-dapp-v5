@@ -1,7 +1,7 @@
-import { Home } from 'pages/Home';
+import { Home } from "../pages/Home";
 
 export enum RouteNamesEnum {
-  home = '/'
+  home = "/",
 }
 
 interface BasicRouteType {
@@ -18,10 +18,10 @@ interface RouteType extends BasicRouteType {
 export const routes: RouteType[] = [
   {
     path: RouteNamesEnum.home,
-    title: 'Home',
+    title: "Home",
     component: Home,
     children: [
       // Unlock page
-    ]
-  }
+    ],
+  },
 ];

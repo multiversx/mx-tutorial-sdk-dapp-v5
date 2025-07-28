@@ -138,7 +138,8 @@ Step 5: Create a Layout component
 
 ```bash
 mkdir -p src/components
-touch src/components/Layout.tsx
+mkdir -p src/components/Layout
+touch src/components/Layout/Layout.tsx
 ```
 
 Add the following content to Layout.tsx
@@ -155,6 +156,18 @@ export const Layout = ({ children }: PropsWithChildren) => {
     </div>
   );
 };
+```
+
+Create an index.ts file in the Layout folder
+
+```bash
+touch src/components/Layout/index.ts
+```
+
+Add the following content to index.ts
+
+```ts
+export * from './Layout';
 ```
 
 Create an index.ts file in the components folder
@@ -180,23 +193,23 @@ export default function App() {
   return (
     <Router>
         <Layout>
-        <Routes>
-            {routes.map((route) => (
-            <Route
-                key={`route-key-${route.path}`}
-                path={route.path}
-                element={<route.component />}
-            >
-                {route.children?.map((child) => (
+            <Routes>
+                {routes.map((route) => (
                 <Route
-                    key={`route-key-${route.path}-${child.path}`}
-                    path={child.path}
-                    element={<child.component />}
-                />
+                    key={`route-key-${route.path}`}
+                    path={route.path}
+                    element={<route.component />}
+                >
+                    {route.children?.map((child) => (
+                    <Route
+                        key={`route-key-${route.path}-${child.path}`}
+                        path={child.path}
+                        element={<child.component />}
+                    />
+                    ))}
+                </Route>
                 ))}
-            </Route>
-            ))}
-        </Routes>
+            </Routes>
         </Layout>
     </Router>
   );

@@ -10,7 +10,7 @@ Installing sdk-dapp
 ### Step 1: Install sdk-dapp & its dependencies
 
 ```bash
-yarn add @multiversx/sdk-dapp @multiversx/sdk-core @multiversx/sdk-dapp-utils @multiversx/sdk-dapp-ui bignumber.js axios
+yarn add @multiversx/sdk-dapp @multiversx/sdk-dapp-utils @multiversx/sdk-dapp-ui @multiversx/sdk-core bignumber.js axios moment
 ```
 
 ### Step 2: Create the lib folder from where we will re-export dependencies

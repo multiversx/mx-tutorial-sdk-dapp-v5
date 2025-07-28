@@ -6,7 +6,7 @@ echo "=== Step 1: Installing MultiversX SDK and its dependencies ==="
 cd ../../
 
 echo "Installing @multiversx/sdk-dapp and related packages..."
-yarn add @multiversx/sdk-dapp @multiversx/sdk-core @multiversx/sdk-dapp-utils @multiversx/sdk-dapp-ui bignumber.js axios
+yarn add @multiversx/sdk-dapp @multiversx/sdk-dapp-utils @multiversx/sdk-dapp-ui @multiversx/sdk-core bignumber.js axios moment
 
 echo "✅ MultiversX SDK packages installed successfully!"
 echo ""

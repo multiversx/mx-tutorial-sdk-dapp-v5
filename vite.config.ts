@@ -1,9 +1,9 @@
-import basicSsl from '@vitejs/plugin-basic-ssl';
-import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vite';
-import { nodePolyfills } from 'vite-plugin-node-polyfills';
-import svgrPlugin from 'vite-plugin-svgr';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import basicSsl from "@vitejs/plugin-basic-ssl";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
+import svgrPlugin from "vite-plugin-svgr";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   server: {
@@ -12,11 +12,11 @@ export default defineConfig({
     host: true,
     watch: {
       usePolling: false,
-      useFsEvents: false
+      useFsEvents: false,
     },
     hmr: {
-      overlay: false
-    }
+      overlay: false,
+    },
   },
   plugins: [
     react(),
@@ -24,18 +24,18 @@ export default defineConfig({
     tsconfigPaths(),
     svgrPlugin(),
     nodePolyfills({
-      globals: { Buffer: true, global: true, process: true }
-    })
+      globals: { Buffer: true, global: true, process: true },
+    }),
   ],
   css: {
-    postcss: './postcss.config.js'
+    postcss: "./postcss.config.js",
   },
   build: {
-    outDir: 'build'
+    outDir: "build",
   },
   preview: {
     port: 3002,
-    host: 'localhost',
-    strictPort: true
-  }
+    host: "localhost",
+    strictPort: true,
+  },
 });

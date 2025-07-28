@@ -1,6 +1,6 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { routes } from 'routes';
-import { Layout } from './components';
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { routes } from "./routes";
+import { Layout } from "./components";
 
 export default function App() {
   return (
