@@ -8,7 +8,8 @@
 4. Create a VIDEO_NUMBER_README.md in each folder (E.g. VIDEO_01_README.md)
 5. Ask agent to create a .sh file for each step of the video (E.g. step_01_create_project.sh)
 6. Create a run.sh main file in each folder that runs all the steps of the video
-7. In the tutorial folder create a run_all.sh file that runs all main run.sh files 
+7. In the tutorial folder create a run_all.sh file that runs all main run.sh files
+8. Make symlink cd /Users/tudor/Work/test/ping-pong-tutorial && ln -sf /Users/tudor/Work/test/prompt-template/tutorial tutorial
 
 ## 2. Setup filming:
 
