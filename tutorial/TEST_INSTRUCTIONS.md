@@ -1,4 +1,6 @@
-WORKFLOW:
+# Tutorial Workflow
+
+## 1. Create the final version of the project
 
 1. Create the final version of the project
 2. Split the project into phases (will be videos)
@@ -8,13 +10,15 @@ WORKFLOW:
 6. Create a run.sh main file in each folder that runs all the steps of the video
 7. In the tutorial folder create a run_all.sh file that runs all main run.sh files 
 
-Setup filming:
+## 2. Setup filming:
+
 1. Start a Chrome browser with remote debugging enabled
 2. Install code-server and navigate to the project folder
 3. Install the browser instance as a PWA so URL is hidden when filming
 4. Make sure code-server PWA is running when filming
 
-Filming:
+## 3. Filming:
+
 1. Create a global tests folder
 2. Replicate the VIDEO_NUMBER folder structure in the tests folder
 3. In each folder create a main video file (Eg. video01.spec.ts)
