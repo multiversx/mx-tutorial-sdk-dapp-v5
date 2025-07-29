@@ -29,11 +29,19 @@ rm -rf temp-project
 yarn
 ```
 
-### Step 3: Install Tailwind CSS and its dependencies:
+Initialize git repository & create first commit:
+
+```bash
+git init
+git add .
+git commit -m "01. Initial commit"
+```
+
+### Step 3: Install Tailwind CSS: 
 
 ```bash
 # Continue working in root directory
-yarn add -D tailwindcss postcss autoprefixer @tailwindcss/postcss
+yarn add -D tailwindcss@3.3.3 postcss autoprefixer
 ```
 
 Add tailwind config:
@@ -43,7 +51,11 @@ Add tailwind config:
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {}
+    extend: {},
+    backgroundImage: {
+      // eslint-disable-next-line quotes
+      'mvx-white': "url('../multiversx-white.svg')"
+    }
   },
   plugins: []
 };
@@ -54,10 +66,32 @@ Add postcss config:
 ```js
 export default {
   plugins: {
-    '@tailwindcss/postcss': {},
+    tailwindcss: {},
     autoprefixer: {}
   }
 };
+```
+
+Replace contents of src/index.css with the following:
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Copy the multiversx-white.svg file to the public folder.
+
+```bash
+cp ../../multiversx-white.svg public/multiversx-white.svg
+```
+
+Commit the project:
+
+```bash
+git add .
+git commit -m "02. Add tailwind css"
 ```
 
 ### Step 4: Configure eslint and prettier:
