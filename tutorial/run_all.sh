@@ -76,7 +76,7 @@ echo ""
 
 echo "📋 Cleaned project structure:"
 ls -la
-echo ""
+# echo ""
 
 # echo "🎬 Starting video setup sequence..."
 # echo ""

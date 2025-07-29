@@ -5,6 +5,9 @@ echo "=== Step 1: Creating a new Vite React project with TypeScript template ===
 # Navigate to root directory
 cd ../../
 
+# remove any existing repository
+rm -rf .git
+
 # Create the project in current directory by creating a temp project and moving files
 echo "Creating temporary project..."
 npx create-vite@latest temp-project --template react-ts --yes

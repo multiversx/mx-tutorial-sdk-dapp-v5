@@ -29,7 +29,15 @@ rm -rf temp-project
 yarn
 ```
 
-### Step 3: Install Tailwind CSS and its dependencies:
+Initialize git repository & create first commit:
+
+```bash
+git init
+git add .
+git commit -m "01. Initial commit"
+```
+
+### Step 3: Install Tailwind CSS: 
 
 ```bash
 # Continue working in root directory
@@ -77,6 +85,13 @@ Copy the multiversx-white.svg file to the public folder.
 
 ```bash
 cp ../../multiversx-white.svg public/multiversx-white.svg
+```
+
+Commit the project:
+
+```bash
+git add .
+git commit -m "02. Add tailwind css"
 ```
 
 ### Step 4: Configure eslint and prettier:
