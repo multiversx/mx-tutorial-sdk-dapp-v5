@@ -62,6 +62,6 @@ git add .
 git commit -m "02. Add tailwind css"
 
 # create video for Tailwind CSS Configuration
-videogit $(git log --grep="^01" --pretty=format:"%h" -n1) $(git log --grep="^02" --pretty=format:"%h" -n 1) -w 180 -r 24 -f tailwind.config.js --show-line-numbers --title "tailwind.config.js" --output-filename 01 -o /Users/tudor/Work/test/playwright-mcp/videos/VIDEO_01
+# videogit $(git log --grep="^01" --pretty=format:"%h" -n1) $(git log --grep="^02" --pretty=format:"%h" -n 1) -w 180 -r 24 -f tailwind.config.js --show-line-numbers --title "tailwind.config.js" --output-filename 01 -o /Users/tudor/Work/test/playwright-mcp/videos/VIDEO_01
 
 echo "Next: Run './step_04_configure_eslint_prettier.sh'" 
