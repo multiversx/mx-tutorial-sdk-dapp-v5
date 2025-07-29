@@ -4,7 +4,7 @@ WORKFLOW:
 2. Split the project into phases (will be videos)
 3. Create a folder for each step called VIDEO_NUMBER inside the tutorial folder (E.g. VIDEO_01)
 4. Create a VIDEO_NUMBER_README.md in each folder (E.g. VIDEO_01_README.md)
-5. Create a .sh file for each step of the video (E.g. step_01_create_project.sh)
+5. Ask agent to create a .sh file for each step of the video (E.g. step_01_create_project.sh)
 6. Create a run.sh main file in each folder that runs all the steps of the video
 7. In the tutorial folder create a run_all.sh file that runs all main run.sh files 
 
@@ -18,7 +18,7 @@ Filming:
 1. Create a global tests folder
 2. Replicate the VIDEO_NUMBER folder structure in the tests folder
 3. In each folder create a main video file (Eg. video01.spec.ts)
-4. For each sh file create a step file (Eg. step_01_create_project.ts)
+4. For each sh file ask agent to create a playwright step file (Eg. step_01_create_project.ts)
 5. Include the steps files in the main video file
 6. At the beginning of the main video file, use `playwright-video` to record the video and stop it at the end of the video
 7. Before each step that edits files, create a git commit to be able to compare the changes. Start commit messages with numbers 01, 02, 03, etc.
