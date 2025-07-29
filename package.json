@@ -1,0 +1,33 @@
+{
+  "name": "playwright-mcp",
+  "version": "1.0.0",
+  "description": "Playwright test for online notebook",
+  "main": "index.ts",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "start-chrome": "./scripts/start-chrome-debug.sh",
+    "test:video01": "playwright test --headed tests/VIDEO_01/video01.spec.ts",
+    "test:cdp": "npm run start-chrome && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "playwright",
+    "testing",
+    "e2e"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "dotenv": "^17.2.1",
+    "ghost-cursor": "^1.4.1",
+    "playwright-video": "^2.4.0"
+  }
+}
