@@ -1,17 +1,8 @@
 import { Page, Locator } from "@playwright/test";
-import { readFileSync } from "fs";
-import { join } from "path";
 
 interface Point {
   x: number;
   y: number;
-}
-
-interface BoundingBox {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
 }
 
 async function waitForVisualMouse(page: Page): Promise<void> {
@@ -29,19 +20,24 @@ async function waitForVisualMouse(page: Page): Promise<void> {
 
 async function injectVisualMouse(page: Page): Promise<void> {
   try {
-    const cursorSvgPath = join(__dirname, "cursor.svg");
-    const cursorSvg = readFileSync(cursorSvgPath, "utf-8");
+    await page.evaluate(() => {
+      // Remove existing style if it exists
+      const existingStyle = document.getElementById("visual-mouse-style");
+      if (existingStyle) {
+        existingStyle.remove();
+      }
 
-    // Modify the SVG to have correct viewBox proportions
-    const modifiedSvg = cursorSvg.replace(
-      'viewBox="0 0 28 28"',
-      'viewBox="0 0 16 26"'
-    );
+      const svgContent = `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+<polygon fill="#FFFFFF" points="8.2,20.9 8.2,4.9 19.8,16.5 13,16.5 12.6,16.6 "/>
+<polygon fill="#FFFFFF" points="17.3,21.6 13.7,23.1 9,12 12.7,10.5 "/>
+<rect x="12.5" y="13.6" transform="matrix(0.9221 -0.3871 0.3871 0.9221 -5.7605 6.5909)" width="2" height="8"/>
+<polygon points="9.2,7.3 9.2,18.5 12.2,15.6 12.6,15.5 17.4,15.5 "/>
+</svg>`;
 
-    await page.evaluate((svgContent: string) => {
-      if (!document.getElementById("visual-mouse-cursor")) {
-        const style = document.createElement("style");
-        style.textContent = `
+      const style = document.createElement("style");
+      style.id = "visual-mouse-style";
+      style.textContent = `
           .visual-mouse {
             position: fixed;
             width: 16px;
@@ -52,23 +48,22 @@ async function injectVisualMouse(page: Page): Promise<void> {
             opacity: 0.9;
           }
         `;
-        document.head.appendChild(style);
-        const cursor = document.createElement("div");
-        cursor.className = "visual-mouse";
-        cursor.id = "visual-mouse-cursor";
-        cursor.style.backgroundImage = `url('data:image/svg+xml;utf8,${encodeURIComponent(
-          svgContent
-        )}')`;
-        cursor.style.backgroundSize = "cover";
-        cursor.style.backgroundRepeat = "no-repeat";
-        cursor.style.backgroundPosition = "center";
-        document.body.appendChild(cursor);
-      }
+      document.head.appendChild(style);
+      const cursor = document.createElement("div");
+      cursor.className = "visual-mouse";
+      cursor.id = "visual-mouse-cursor";
+      cursor.style.backgroundImage = `url('data:image/svg+xml;utf8,${encodeURIComponent(
+        svgContent
+      )}')`;
+      cursor.style.backgroundSize = "cover";
+      cursor.style.backgroundRepeat = "no-repeat";
+      cursor.style.backgroundPosition = "center";
+      document.body.appendChild(cursor);
       (window as any).showVisualMouse = function (x: number, y: number) {
         const visualCursor = document.getElementById("visual-mouse-cursor");
         if (visualCursor) {
-          visualCursor.style.left = x - 8 + "px";
-          visualCursor.style.top = y - 13 + "px";
+          visualCursor.style.left = x - 12 + "px";
+          visualCursor.style.top = y - 3.5 + "px";
           visualCursor.style.display = "block";
         }
       };
@@ -79,7 +74,7 @@ async function injectVisualMouse(page: Page): Promise<void> {
         }
       };
       (window as any).showVisualMouse(100, 100);
-    }, modifiedSvg);
+    });
     await waitForVisualMouse(page);
   } catch (e) {
     console.log(
