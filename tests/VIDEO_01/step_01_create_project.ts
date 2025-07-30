@@ -1,6 +1,13 @@
 import { Page } from "@playwright/test";
+import { createTypewriterMessage } from "../../utils/typewriter-helper";
 
 export async function step01CreateProject(page: Page): Promise<void> {
+  // Display starting message with typewriter effect
+  await createTypewriterMessage(
+    page,
+    "Opening terminal and initializing project..."
+  );
+
   await page.keyboard.press("Control+`");
 
   // Wait a moment for terminal to be fully ready

@@ -117,7 +117,7 @@ async function smoothMove(
   page: Page,
   start: Point,
   end: Point,
-  steps: number = 50
+  steps: number = 25
 ): Promise<void> {
   for (let i = 0; i <= steps; i++) {
     const x = start.x + (end.x - start.x) * (i / steps);

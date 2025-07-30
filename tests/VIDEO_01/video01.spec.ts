@@ -2,9 +2,9 @@ import { test } from "../fixtures/cdpContext";
 import { step01CreateProject } from "./step_01_create_project";
 import { step02InstallDependencies } from "./step_02_install_dependencies";
 import { authenticateWithPassword } from "../../utils/password-helper";
-import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { chromium } from "@playwright/test";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
+import { saveVideo } from "playwright-video";
 
 // Set FFmpeg path for video recording
 process.env.FFMPEG_PATH = ffmpeg.path;
@@ -56,10 +56,10 @@ test.describe("VIDEO_01 - Step 1: Create Project", () => {
     const expectedUrl =
       "http://127.0.0.1:8080/?folder=/Users/tudor/Work/test/ping-pong-tutorial";
 
-    // const capture = await saveVideo(
-    //   page,
-    //   "test-results/videos/video01-recording.mp4"
-    // );
+    const capture = await saveVideo(
+      page,
+      "test-results/videos/video01-recording.mp4"
+    );
 
     if (currentUrl !== expectedUrl) {
       console.log("Navigating to code server instance...");
@@ -73,21 +73,16 @@ test.describe("VIDEO_01 - Step 1: Create Project", () => {
       console.log("Already on the correct code server instance");
     }
 
-    await page.waitForTimeout(4000);
+    await page.waitForTimeout(2000);
 
     await step01CreateProject(page);
 
-    // Display starting message with typewriter effect
-    await createTypewriterMessage(page, "#test-status", "Starting test...", {
-      delay: 100,
-      cursor: "█",
-    });
     await page.waitForTimeout(2000);
 
     await step02InstallDependencies(page);
     // await step03InstallTailwind(page);
 
-    // await capture.stop();
+    await capture.stop();
 
     console.log("Step 1 test completed successfully");
   });

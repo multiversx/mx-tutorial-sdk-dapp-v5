@@ -13,6 +13,7 @@ interface TypewriterOptions {
   wrapperClassName?: string;
   cursorClassName?: string;
   autoRemoveDelay?: number; // Delay in milliseconds before auto-removing the message
+  elementSelector?: string; // Optional element selector, defaults to "#test-status"
 }
 
 async function injectTypewriter(page: Page): Promise<void> {
@@ -23,72 +24,83 @@ async function injectTypewriter(page: Page): Promise<void> {
 
 async function createTypewriterMessage(
   page: Page,
-  elementSelector: string,
   message: string,
   options: TypewriterOptions = {}
 ): Promise<void> {
   // Inject typewriter functionality first
   await injectTypewriter(page);
 
-  await page.evaluate(
+  // Use default element selector if not provided
+  const elementSelector = options.elementSelector || "#test-status";
+
+  // Create a promise that resolves when typing is complete
+  const typingComplete = page.evaluate(
     ({ elementSelector, message, options }) => {
-      // Create container for the message if it doesn't exist
-      let container = document.querySelector(elementSelector) as HTMLElement;
-      if (!container) {
-        container = document.createElement("div");
-        container.id = elementSelector.replace("#", "");
-        container.style.cssText = `
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        padding: 15px 25px;
-        border-radius: 8px;
-        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-        font-size: 16px;
-        z-index: 10000;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(10px);
-      `;
-        document.body.appendChild(container);
-      }
-
-      // Clear previous content
-      container.innerHTML = "";
-
-      // Simple typewriter effect
-      const delay = (options.delay as number) || 100;
-      const cursor = options.cursor || "█";
-      let currentText = "";
-      let currentIndex = 0;
-
-      const typeNextChar = () => {
-        if (currentIndex < message.length) {
-          currentText += message[currentIndex];
-          container.textContent = currentText + cursor;
-          currentIndex++;
-          setTimeout(typeNextChar, delay);
-        } else {
-          // Remove cursor when done
-          container.textContent = currentText;
-
-          // Auto-remove message after specified delay (default 3 seconds)
-          const autoRemoveDelay = options.autoRemoveDelay || 3000;
-          setTimeout(() => {
-            if (container && container.parentNode) {
-              container.remove();
-            }
-          }, autoRemoveDelay);
+      return new Promise<void>((resolve) => {
+        // Create container for the message if it doesn't exist
+        let container = document.querySelector(elementSelector) as HTMLElement;
+        if (!container) {
+          container = document.createElement("div");
+          container.id = elementSelector.replace("#", "");
+          container.style.cssText = `
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(0, 0, 0, 0.8);
+          color: white;
+          padding: 15px 25px;
+          border-radius: 8px;
+          font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+          font-size: 16px;
+          z-index: 10000;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          backdrop-filter: blur(10px);
+        `;
+          document.body.appendChild(container);
         }
-      };
 
-      // Start the typewriter effect
-      typeNextChar();
+        // Clear previous content
+        container.innerHTML = "";
+
+        // Simple typewriter effect
+        const delay = (options.delay as number) || 50;
+        const cursor = options.cursor || "█";
+        let currentText = "";
+        let currentIndex = 0;
+
+        const typeNextChar = () => {
+          if (currentIndex < message.length) {
+            currentText += message[currentIndex];
+            container.textContent = currentText + cursor;
+            currentIndex++;
+            setTimeout(typeNextChar, delay);
+          } else {
+            // Remove cursor when done
+            container.textContent = currentText;
+
+            // Auto-remove message after specified delay (default 1 second)
+            const autoRemoveDelay = options.autoRemoveDelay || 1000;
+            setTimeout(() => {
+              if (container && container.parentNode) {
+                container.remove();
+              }
+            }, autoRemoveDelay);
+
+            // Resolve the promise when typing is complete
+            resolve();
+          }
+        };
+
+        // Start the typewriter effect
+        typeNextChar();
+      });
     },
     { elementSelector, message, options }
   );
+
+  // Wait for typing to complete
+  await typingComplete;
 }
 
 async function removeTypewriterMessage(
