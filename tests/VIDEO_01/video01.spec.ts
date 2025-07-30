@@ -1,10 +1,12 @@
 import { test } from "../fixtures/cdpContext";
 import { step01CreateProject } from "./step_01_create_project";
 import { step02InstallDependencies } from "./step_02_install_dependencies";
-import { step03InstallTailwind } from "./step_03_install_tailwind";
 import { authenticateWithPassword } from "../../utils/password-helper";
+import {
+  injectTypewriter,
+  createTypewriterMessage,
+} from "../../utils/typewriter-helper";
 import { chromium } from "@playwright/test";
-import { saveVideo } from "playwright-video";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
 
 // Set FFmpeg path for video recording
@@ -38,11 +40,6 @@ test.describe("VIDEO_01 - Step 1: Create Project", () => {
     const pages = context.pages();
     let page;
 
-    // list urls of all pages
-    for (const page of pages) {
-      console.log("page url", page.url());
-    }
-
     if (pages.length > 0) {
       // Use the first existing page
       page = pages[0];
@@ -56,7 +53,6 @@ test.describe("VIDEO_01 - Step 1: Create Project", () => {
 
     // Wait a bit for the page to be ready
     await page.waitForTimeout(400);
-    console.log("add a new log");
 
     // Check if the page is already on the code server instance
     const currentUrl = page.url();
@@ -83,6 +79,15 @@ test.describe("VIDEO_01 - Step 1: Create Project", () => {
     await page.waitForTimeout(4000);
 
     await step01CreateProject(page);
+
+    // Inject TypewriterJS and display starting message
+    await injectTypewriter(page);
+    await createTypewriterMessage(page, "#test-status", "Starting test...", {
+      delay: 100,
+      cursor: "█",
+    });
+    await page.waitForTimeout(2000);
+
     await step02InstallDependencies(page);
     // await step03InstallTailwind(page);
 

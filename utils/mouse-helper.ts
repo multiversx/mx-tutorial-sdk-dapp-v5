@@ -8,12 +8,14 @@ interface Point {
 async function waitForVisualMouse(page: Page): Promise<void> {
   try {
     await page.waitForFunction(
-      () => (window as any).showVisualMouse !== undefined,
+      () =>
+        (window as unknown as { showVisualMouse?: unknown }).showVisualMouse !==
+        undefined,
       {
         timeout: 5000,
       }
     );
-  } catch (e) {
+  } catch {
     console.log("Warning: Visual mouse not available");
   }
 }
@@ -59,7 +61,11 @@ async function injectVisualMouse(page: Page): Promise<void> {
       cursor.style.backgroundRepeat = "no-repeat";
       cursor.style.backgroundPosition = "center";
       document.body.appendChild(cursor);
-      (window as any).showVisualMouse = function (x: number, y: number) {
+      (
+        window as unknown as {
+          showVisualMouse?: (x: number, y: number) => void;
+        }
+      ).showVisualMouse = function (x: number, y: number) {
         const visualCursor = document.getElementById("visual-mouse-cursor");
         if (visualCursor) {
           visualCursor.style.left = x - 12 + "px";
@@ -67,19 +73,24 @@ async function injectVisualMouse(page: Page): Promise<void> {
           visualCursor.style.display = "block";
         }
       };
-      (window as any).hideVisualMouse = function () {
-        const visualCursor = document.getElementById("visual-mouse-cursor");
-        if (visualCursor) {
-          visualCursor.style.display = "none";
+      (window as unknown as { hideVisualMouse?: () => void }).hideVisualMouse =
+        function () {
+          const visualCursor = document.getElementById("visual-mouse-cursor");
+          if (visualCursor) {
+            visualCursor.style.display = "none";
+          }
+        };
+      (
+        window as unknown as {
+          showVisualMouse?: (x: number, y: number) => void;
         }
-      };
-      (window as any).showVisualMouse(100, 100);
+      ).showVisualMouse!(100, 100);
     });
     await waitForVisualMouse(page);
   } catch (e) {
     console.log(
       "Warning: Could not inject visual mouse:",
-      (e as Error).message
+      e instanceof Error ? e.message : String(e)
     );
   }
 }
@@ -87,12 +98,18 @@ async function injectVisualMouse(page: Page): Promise<void> {
 async function hideVisualMouse(page: Page): Promise<void> {
   try {
     await page.evaluate(() => {
-      if ((window as any).hideVisualMouse) {
-        (window as any).hideVisualMouse();
+      if (
+        (window as unknown as { hideVisualMouse?: () => void }).hideVisualMouse
+      ) {
+        (window as unknown as { hideVisualMouse?: () => void })
+          .hideVisualMouse!();
       }
     });
   } catch (e) {
-    console.log("Warning: Could not hide visual mouse:", (e as Error).message);
+    console.log(
+      "Warning: Could not hide visual mouse:",
+      e instanceof Error ? e.message : String(e)
+    );
   }
 }
 
@@ -110,13 +127,23 @@ async function smoothMove(
       await page.evaluate(
         (args: number[]) => {
           const [mx, my] = args;
-          if ((window as any).showVisualMouse) {
-            (window as any).showVisualMouse(mx, my);
+          if (
+            (
+              window as unknown as {
+                showVisualMouse?: (x: number, y: number) => void;
+              }
+            ).showVisualMouse
+          ) {
+            (
+              window as unknown as {
+                showVisualMouse?: (x: number, y: number) => void;
+              }
+            ).showVisualMouse!(mx, my);
           }
         },
         [x, y]
       );
-    } catch (e) {
+    } catch {
       // Ignore visual mouse errors during movement
     }
     await page.waitForTimeout(20);
