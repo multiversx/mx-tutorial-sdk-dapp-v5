@@ -2,10 +2,7 @@ import { test } from "../fixtures/cdpContext";
 import { step01CreateProject } from "./step_01_create_project";
 import { step02InstallDependencies } from "./step_02_install_dependencies";
 import { authenticateWithPassword } from "../../utils/password-helper";
-import {
-  injectTypewriter,
-  createTypewriterMessage,
-} from "../../utils/typewriter-helper";
+import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { chromium } from "@playwright/test";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
 
@@ -80,8 +77,7 @@ test.describe("VIDEO_01 - Step 1: Create Project", () => {
 
     await step01CreateProject(page);
 
-    // Inject TypewriterJS and display starting message
-    await injectTypewriter(page);
+    // Display starting message with typewriter effect
     await createTypewriterMessage(page, "#test-status", "Starting test...", {
       delay: 100,
       cursor: "█",

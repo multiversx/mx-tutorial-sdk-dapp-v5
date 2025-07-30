@@ -12,6 +12,7 @@ interface TypewriterOptions {
   skipAddStyles?: boolean;
   wrapperClassName?: string;
   cursorClassName?: string;
+  autoRemoveDelay?: number; // Delay in milliseconds before auto-removing the message
 }
 
 async function injectTypewriter(page: Page): Promise<void> {
@@ -26,6 +27,9 @@ async function createTypewriterMessage(
   message: string,
   options: TypewriterOptions = {}
 ): Promise<void> {
+  // Inject typewriter functionality first
+  await injectTypewriter(page);
+
   await page.evaluate(
     ({ elementSelector, message, options }) => {
       // Create container for the message if it doesn't exist
@@ -69,6 +73,14 @@ async function createTypewriterMessage(
         } else {
           // Remove cursor when done
           container.textContent = currentText;
+
+          // Auto-remove message after specified delay (default 3 seconds)
+          const autoRemoveDelay = options.autoRemoveDelay || 3000;
+          setTimeout(() => {
+            if (container && container.parentNode) {
+              container.remove();
+            }
+          }, autoRemoveDelay);
         }
       };
 

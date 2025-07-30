@@ -150,7 +150,14 @@ async function smoothMove(
   }
 }
 
-async function smoothClick(page: Page, element: Locator): Promise<void> {
+async function smoothClick(
+  page: Page,
+  element: Locator,
+  options?: { autoRemoveDelay?: number }
+): Promise<void> {
+  // Inject visual mouse automatically
+  await injectVisualMouse(page);
+
   const box = await element.boundingBox();
   if (!box) return;
 
@@ -167,6 +174,12 @@ async function smoothClick(page: Page, element: Locator): Promise<void> {
   await page.waitForTimeout(100);
   await page.mouse.click(targetPoint.x, targetPoint.y);
   await page.waitForTimeout(100);
+
+  // Auto-remove visual mouse after specified delay (default 1 second)
+  const autoRemoveDelay = options?.autoRemoveDelay || 1000;
+  setTimeout(async () => {
+    await hideVisualMouse(page);
+  }, autoRemoveDelay);
 }
 
 export { injectVisualMouse, hideVisualMouse, smoothMove, smoothClick };
