@@ -1,4 +1,6 @@
 import { Page, Locator } from "@playwright/test";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 interface Point {
   x: number;
@@ -27,46 +29,75 @@ async function waitForVisualMouse(page: Page): Promise<void> {
 
 async function injectVisualMouse(page: Page): Promise<void> {
   try {
-    await page.evaluate(() => {
+    const cursorSvgPath = join(__dirname, "cursor.svg");
+    const cursorSvg = readFileSync(cursorSvgPath, "utf-8");
+
+    // Modify the SVG to have correct viewBox proportions
+    const modifiedSvg = cursorSvg.replace(
+      'viewBox="0 0 28 28"',
+      'viewBox="0 0 16 26"'
+    );
+
+    await page.evaluate((svgContent: string) => {
       if (!document.getElementById("visual-mouse-cursor")) {
         const style = document.createElement("style");
         style.textContent = `
           .visual-mouse {
             position: fixed;
-            width: 24px;
-            height: 24px;
-            background: radial-gradient(circle, #ff0000 30%, #ff6666 70%);
-            border-radius: 50%;
+            width: 16px;
+            height: 26px;
             pointer-events: none;
             z-index: 999999;
-            border: 3px solid #ffffff;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
             transition: all 0.1s ease;
-            opacity: 0.8;
+            opacity: 0.9;
           }
         `;
         document.head.appendChild(style);
         const cursor = document.createElement("div");
         cursor.className = "visual-mouse";
         cursor.id = "visual-mouse-cursor";
+        cursor.style.backgroundImage = `url('data:image/svg+xml;utf8,${encodeURIComponent(
+          svgContent
+        )}')`;
+        cursor.style.backgroundSize = "cover";
+        cursor.style.backgroundRepeat = "no-repeat";
+        cursor.style.backgroundPosition = "center";
         document.body.appendChild(cursor);
       }
       (window as any).showVisualMouse = function (x: number, y: number) {
         const visualCursor = document.getElementById("visual-mouse-cursor");
         if (visualCursor) {
-          visualCursor.style.left = x - 12 + "px";
-          visualCursor.style.top = y - 12 + "px";
+          visualCursor.style.left = x - 8 + "px";
+          visualCursor.style.top = y - 13 + "px";
           visualCursor.style.display = "block";
         }
       };
+      (window as any).hideVisualMouse = function () {
+        const visualCursor = document.getElementById("visual-mouse-cursor");
+        if (visualCursor) {
+          visualCursor.style.display = "none";
+        }
+      };
       (window as any).showVisualMouse(100, 100);
-    });
+    }, modifiedSvg);
     await waitForVisualMouse(page);
   } catch (e) {
     console.log(
       "Warning: Could not inject visual mouse:",
       (e as Error).message
     );
+  }
+}
+
+async function hideVisualMouse(page: Page): Promise<void> {
+  try {
+    await page.evaluate(() => {
+      if ((window as any).hideVisualMouse) {
+        (window as any).hideVisualMouse();
+      }
+    });
+  } catch (e) {
+    console.log("Warning: Could not hide visual mouse:", (e as Error).message);
   }
 }
 
@@ -116,4 +147,4 @@ async function smoothClick(page: Page, element: Locator): Promise<void> {
   await page.waitForTimeout(100);
 }
 
-export { injectVisualMouse, smoothMove, smoothClick };
+export { injectVisualMouse, hideVisualMouse, smoothMove, smoothClick };

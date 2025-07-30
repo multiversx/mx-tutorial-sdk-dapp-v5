@@ -1,13 +1,18 @@
 import { Page } from "@playwright/test";
+import {
+  injectVisualMouse,
+  smoothClick,
+  hideVisualMouse,
+} from "../../utils/mouse-helper";
 
 export async function step02InstallDependencies(page: Page): Promise<void> {
-  // open package.json by pressing cmd+p
-  await page.keyboard.press("Meta+p");
-  await page.waitForTimeout(400);
-  await page.keyboard.type("package.json");
-  await page.waitForTimeout(400);
-  await page.keyboard.press("Enter");
+  // inject visual mouse and smoothly move to package.json
+  await injectVisualMouse(page);
+  const packageJsonElement = page.locator("text=package.json");
+  await smoothClick(page, packageJsonElement);
   await page.waitForTimeout(4000);
+
+  await hideVisualMouse(page);
 
   // open install dependencies script
   await page.keyboard.press("Control+`");
