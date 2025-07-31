@@ -1,26 +1,8 @@
 #!/bin/bash
 
-echo "=== Step 4: Configuring eslint and prettier ==="
+echo "=== Step 12: Configure eslint.config.js ==="
 
-# Change to root directory
 cd ../../
-
-# Install eslint and prettier dependencies
-yarn add -D @eslint/js eslint prettier eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-sort-exports
-
-# Create .prettierrc
-cat > .prettierrc << 'EOF'
-{
-  "singleQuote": true,
-  "jsxSingleQuote": true,
-  "semi": true,
-  "tabWidth": 2,
-  "bracketSpacing": true,
-  "jsxBracketSameLine": false,
-  "arrowParens": "always",
-  "trailingComma": "none"
-}
-EOF
 
 # Create eslint.config.js
 cat > eslint.config.js << 'EOF'
@@ -168,7 +150,5 @@ export default tseslint.config([
 ]);
 EOF
 
-echo "✅ ESLint and Prettier configured successfully!"
-echo "✅ .prettierrc created"
-echo "✅ eslint.config.js created"
-echo "Next: Run './step_05_configure_vite.sh'" 
+echo "✅ eslint.config.js configured successfully!"
+echo "Next: Run './step_13_configure_vite.sh'" 

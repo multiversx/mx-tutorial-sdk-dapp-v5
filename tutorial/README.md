@@ -1,10 +1,10 @@
 # Building a React dApp from scratch with @multiversx/sdk-dapp
 
-## Overview
+#### Overview
 
 This is the scenario description for the instructive video chapters on how to build a dApp from scratch with React, Tailwind, @multiversx/sdk-core and @multiversx/sdk-dapp.
 
-Main chapters are:
+## Main chapters
 
 1. Creating a new React project with Vite
 2. Preparing the basic App structure with routing

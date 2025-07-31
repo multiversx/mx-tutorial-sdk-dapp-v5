@@ -4,15 +4,13 @@
 
 This is the scenario description for the instructive video series on how to build a dApp from scratch with React, Tailwind, @multiversx/sdk-core and @multiversx/sdk-dapp.
 
-Video 1:
-Creating a new React project with Vite
+## Video 1. Creating a new React project with Vite
 
 ### Step 1: Create a new Vite React project (TypeScript template).
 
 The project will be created directly in the current directory.
 
 ```bash
-# Navigate to root directory
 cd ../../
 
 # Create temporary project and move files to current directory
@@ -25,26 +23,30 @@ rm -rf temp-project
 ### Step 2: Install dependencies:
 
 ```bash
-# Already in root directory
+cd ../../
+# Install dependencies
 yarn
 ```
 
-Initialize git repository & create first commit:
+### Step 3: Initialize git repository & create first commit:
 
 ```bash
+cd ../../
+# Initialize git repository and create first commit
 git init
 git add .
 git commit -m "01. Initial commit"
 ```
 
-### Step 3: Install Tailwind CSS: 
+### Step 4: Install Tailwind CSS: 
 
 ```bash
-# Continue working in root directory
+cd ../../
+# Install Tailwind CSS
 yarn add -D tailwindcss@3.3.3 postcss autoprefixer
 ```
 
-Add tailwind config:
+### Step 5: Add tailwind.config.js:
 
 ```ts
 /** @type {import('tailwindcss').Config} */
@@ -61,7 +63,7 @@ export default {
 };
 ```
 
-Add postcss config:
+### Step 6: Add postcss.config.js:
 
 ```js
 export default {
@@ -72,7 +74,7 @@ export default {
 };
 ```
 
-Replace contents of src/index.css with the following:
+### Step 7: Replace contents of src/index.css:
 
 ```css
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
@@ -81,29 +83,31 @@ Replace contents of src/index.css with the following:
 @tailwind utilities;
 ```
 
-Copy the multiversx-white.svg file to the public folder.
+### Step 8: Copy the multiversx-white.svg file to the public folder.
 
 ```bash
-cp ../../multiversx-white.svg public/multiversx-white.svg
+# Copy the multiversx-white.svg file to the public folder
+cp tutorial/VIDEO_01/multiversx-white.svg public/multiversx-white.svg
 ```
 
-Commit the project:
+### Step 9: Commit the project:
 
 ```bash
+cd ../../
+# Create a new commit
 git add .
 git commit -m "02. Add tailwind css"
 ```
 
-### Step 4: Configure eslint and prettier:
+### Step 10: Configure eslint and prettier:
 
 ```bash
-# Continue working in root directory
+cd ../../
+# Install eslint and prettier
 yarn add -D @eslint/js eslint prettier eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-sort-exports
 ```
 
-Configure .eslintrc and .prettierrc.
-
-Use the following .prettierrc file:
+### Step 11: Configure .prettierrc.
 
 ```json
 {
@@ -118,7 +122,7 @@ Use the following .prettierrc file:
 }
 ```
 
-Use the following eslint.config.js file:
+### Step 12: Configure eslint.config.js:
 
 ```js
 import js from '@eslint/js';
@@ -265,14 +269,15 @@ export default tseslint.config([
 ]);
 ```
 
-### Step 5: Configure vite
+### Step 13: Configure vite
 
 ```bash
-# Continue working in root directory
+cd ../../
+# Install vite dependencies
 yarn add -D @types/node @vitejs/plugin-basic-ssl vite-plugin-node-polyfills vite-plugin-svgr vite-tsconfig-paths
 ```
 
-Configure vite.config.ts file:
+### Step 14: Configure vite.config.ts:
 
 ```ts
 import basicSsl from '@vitejs/plugin-basic-ssl';
@@ -315,7 +320,7 @@ export default defineConfig({
 });
 ```
 
-### Step 6: Configure tsconfig.json
+### Step 15: Configure tsconfig.json
 
 Keep only one tsconfig.json file in the root of the project (remove the tsconfig.app.json file and the tsconfig.node.json file).
 
@@ -346,20 +351,24 @@ Keep only one tsconfig.json file in the root of the project (remove the tsconfig
 }
 ```
 
-### Step 7: Add formatting scripts and run them
+### Step 16: Add formatting scripts
 
 ```json
 "lint": "eslint --ext js,ts,tsx src --fix",
 "format": "prettier --write . --ignore-path .gitignore --ignore-pattern 'public/**' --ignore-pattern 'node_modules/**' --ignore-pattern 'yarn.lock'",
-
 ```
 
+### Step 17: Run lint
 ```bash
+cd ../../
+# Run lint  
 yarn lint
 ```
 
-### Step 8: Check if the project is running
+### Step 18: Check if the project is running
 
 ```bash
+cd ../../
+# Run the project
 yarn dev
 ```

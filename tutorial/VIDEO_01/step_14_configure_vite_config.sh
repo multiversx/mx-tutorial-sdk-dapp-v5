@@ -1,12 +1,8 @@
 #!/bin/bash
 
-echo "=== Step 5: Configuring Vite ==="
+echo "=== Step 14: Configure vite.config.ts ==="
 
-# Change to root directory
 cd ../../
-
-# Install Vite plugins
-yarn add -D @types/node @vitejs/plugin-basic-ssl vite-plugin-node-polyfills vite-plugin-svgr vite-tsconfig-paths
 
 # Create vite.config.ts
 cat > vite.config.ts << 'EOF'
@@ -50,6 +46,5 @@ export default defineConfig({
 });
 EOF
 
-echo "✅ Vite plugins installed and configured successfully!"
-echo "✅ vite.config.ts created"
-echo "Next: Run './step_06_configure_tsconfig.sh'" 
+echo "✅ vite.config.ts configured successfully!"
+echo "Next: Run './step_15_configure_tsconfig.sh'" 

@@ -1,14 +1,13 @@
 #!/bin/bash
 
-echo "=== Step 6: Configuring tsconfig.json ==="
+echo "=== Step 15: Configure tsconfig.json ==="
 
-# Change to root directory
 cd ../../
 
-# Remove additional tsconfig files if they exist
+# Remove existing tsconfig files if they exist
 rm -f tsconfig.app.json tsconfig.node.json
 
-# Create new tsconfig.json
+# Create tsconfig.json
 cat > tsconfig.json << 'EOF'
 {
   "compilerOptions": {
@@ -37,4 +36,4 @@ cat > tsconfig.json << 'EOF'
 EOF
 
 echo "✅ tsconfig.json configured successfully!"
-echo "Next: Run './step_07_add_lint_command.sh'" 
+echo "Next: Run './step_16_add_formatting_scripts.sh'" 

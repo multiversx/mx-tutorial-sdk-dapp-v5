@@ -19,7 +19,7 @@ echo ""
 
 # Step 2
 echo "Running Step 2: Create pages folder and Home page"
-./step_02_create_pages.sh
+./step_02_create_home_page.sh
 if [ $? -ne 0 ]; then
     echo "❌ Step 2 failed. Stopping."
     exit 1
