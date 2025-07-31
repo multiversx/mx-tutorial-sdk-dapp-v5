@@ -17,7 +17,10 @@ export async function step14ConfigureViteConfig(page: Page): Promise<void> {
   await clickLocator(page, "vite.config.ts");
   await page.waitForTimeout(2000);
 
-  await createTypewriterMessage(page, "Vite configuration looks good 👍");
+  await createTypewriterMessage(
+    page,
+    "Vite configuration now includes polyfills"
+  );
   await openTutorialVideoTerminal(page, "VIDEO_01");
   await waitForStepCompletion(page, basename(__filename, ".ts"));
 

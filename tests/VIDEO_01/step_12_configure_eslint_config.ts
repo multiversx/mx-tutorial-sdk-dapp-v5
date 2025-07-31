@@ -17,7 +17,7 @@ export async function step12ConfigureEslintConfig(page: Page): Promise<void> {
   await clickLocator(page, "eslint.config.js");
   await page.waitForTimeout(2000);
 
-  await createTypewriterMessage(page, "ESLint configuration looks good 👍");
+  await createTypewriterMessage(page, "ESLint configuration completed 👍");
   await openTutorialVideoTerminal(page, "VIDEO_01");
   await waitForStepCompletion(page, basename(__filename, ".ts"));
 

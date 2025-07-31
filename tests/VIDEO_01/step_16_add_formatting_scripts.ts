@@ -18,6 +18,12 @@ export async function step16AddFormattingScripts(page: Page): Promise<void> {
 
   await page.waitForTimeout(2000);
   await clickLocator(page, "package.json");
+  await page.waitForTimeout(2000);
+  await clickLocator(page, `"lint"`);
+  await page.waitForTimeout(2000);
+  await clickLocator(page, `"format"`);
+  await page.waitForTimeout(2000);
+
   await createTypewriterMessage(
     page,
     "Formatting scripts added to package.json successfully"

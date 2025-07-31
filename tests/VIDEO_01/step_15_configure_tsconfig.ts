@@ -19,7 +19,7 @@ export async function step15ConfigureTsconfig(page: Page): Promise<void> {
   await page.waitForTimeout(2000);
   await clickLocator(page, "tsconfig.json");
   await page.waitForTimeout(2000);
-  await createTypewriterMessage(page, "TypeScript configuration looks good 👍");
+  await createTypewriterMessage(page, "We only need one tsconfig.json file");
   await openTutorialVideoTerminal(page, "VIDEO_01");
   await waitForStepCompletion(page, basename(__filename, ".ts"));
 
