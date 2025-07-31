@@ -192,17 +192,13 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
         await step.function(page);
 
         console.log(`✅ Step ${stepNumber} completed`);
-
-        // Wait only after last step
-        if (stepNumber >= steps.length) {
-          await page.waitForTimeout(10000);
-        }
       } catch (error) {
         console.error(`❌ Step ${stepNumber} failed: ${error}`);
         throw error;
       }
     }
 
+    console.log("Screen capture stopped");
     await capture.stop();
 
     console.log("🎉 All 18 steps completed successfully!");
