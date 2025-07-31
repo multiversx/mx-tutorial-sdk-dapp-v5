@@ -2,6 +2,8 @@ import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { clickLocator } from "../helpers/clickLocator";
 import { openTutorialVideoTerminal } from "../helpers/openTutorialVideoTerminal";
+import { waitForStepCompletion } from "../../utils/progress-helper";
+import { basename } from "path";
 
 export async function step05AddTailwindConfig(page: Page): Promise<void> {
   // Display starting message with typewriter effect
@@ -21,7 +23,7 @@ export async function step05AddTailwindConfig(page: Page): Promise<void> {
     "Tailwind CSS configuration looks good 👍"
   );
   await openTutorialVideoTerminal(page, "VIDEO_01");
-  await page.waitForTimeout(4000);
+  await waitForStepCompletion(page, basename(__filename, ".ts"));
 
   console.log("Tailwind configuration file created successfully");
 }

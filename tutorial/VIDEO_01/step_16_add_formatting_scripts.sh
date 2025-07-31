@@ -25,4 +25,5 @@ else
   exit 1
 fi
 
+echo "Done: step_16_add_formatting_scripts" >> progress.txt
 echo "Next: Run './step_17_run_lint.sh'" 

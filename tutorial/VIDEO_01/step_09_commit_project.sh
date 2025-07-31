@@ -12,4 +12,6 @@ type_and_execute "git add ."
 type_and_execute "git commit -m \"02. Add tailwind css\""
 
 echo "✅ Project committed successfully!"
+
+echo "Done: step_09_commit_project" >> progress.txt
 echo "Next: Run './step_10_configure_eslint_prettier.sh'" 

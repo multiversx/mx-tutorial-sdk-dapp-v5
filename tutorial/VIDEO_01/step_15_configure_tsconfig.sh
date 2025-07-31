@@ -36,4 +36,6 @@ cat > tsconfig.json << 'EOF'
 EOF
 
 echo "✅ tsconfig.json configured successfully!"
+
+echo "Done: step_15_configure_tsconfig" >> progress.txt
 echo "Next: Run './step_16_add_formatting_scripts.sh'" 

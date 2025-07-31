@@ -11,4 +11,6 @@ cd ../../
 # type_and_execute "yarn dev"
 
 echo "✅ Development server started successfully!"
+
+echo "Done: step_18_start_dev_server" >> progress.txt
 echo "🎉 Video 1 setup completed! The project should now be running on http://localhost:3000" 

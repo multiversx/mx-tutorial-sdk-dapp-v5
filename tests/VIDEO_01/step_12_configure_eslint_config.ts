@@ -2,6 +2,8 @@ import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { clickLocator } from "../helpers/clickLocator";
 import { openTutorialVideoTerminal } from "../helpers/openTutorialVideoTerminal";
+import { waitForStepCompletion } from "../../utils/progress-helper";
+import { basename } from "path";
 
 export async function step12ConfigureEslintConfig(page: Page): Promise<void> {
   // Display starting message with typewriter effect
@@ -15,7 +17,7 @@ export async function step12ConfigureEslintConfig(page: Page): Promise<void> {
   await clickLocator(page, "eslint.config.js");
   await createTypewriterMessage(page, "ESLint configuration looks good 👍");
   await openTutorialVideoTerminal(page, "VIDEO_01");
-  await page.waitForTimeout(4000);
+  await waitForStepCompletion(page, basename(__filename, ".ts"));
 
   console.log("ESLint configuration file created successfully");
 }

@@ -47,4 +47,6 @@ export default defineConfig({
 EOF
 
 echo "✅ vite.config.ts configured successfully!"
+
+echo "Done: step_14_configure_vite_config" >> progress.txt
 echo "Next: Run './step_15_configure_tsconfig.sh'" 

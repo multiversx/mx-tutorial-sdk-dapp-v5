@@ -21,7 +21,7 @@ import { authenticateWithPassword } from "../../utils/password-helper";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { chromium } from "@playwright/test";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
-// import { saveVideo } from "playwright-video";
+import { saveVideo } from "playwright-video";
 
 // Set FFmpeg path for video recording
 process.env.FFMPEG_PATH = ffmpeg.path;
@@ -40,66 +40,66 @@ const steps = [
     description: "Initialize git repository & create first commit",
     function: step03InitializeGit,
   },
-  // {
-  //   description: "Install Tailwind CSS",
-  //   function: step04InstallTailwind,
-  // },
-  // {
-  //   description: "Add tailwind.config.js",
-  //   function: step05AddTailwindConfig,
-  // },
-  // {
-  //   description: "Add postcss.config.js",
-  //   function: step06AddPostcssConfig,
-  // },
-  // {
-  //   description: "Replace contents of src/index.css",
-  //   function: step07ReplaceIndexCss,
-  // },
-  // {
-  //   description: "Copy the multiversx-white.svg file to the public folder",
-  //   function: step08CopySvgFile,
-  // },
-  // {
-  //   description: "Commit the project",
-  //   function: step09CommitProject,
-  // },
-  // {
-  //   description: "Configure eslint and prettier",
-  //   function: step10ConfigureEslintPrettier,
-  // },
-  // {
-  //   description: "Configure .prettierrc",
-  //   function: step11ConfigurePrettierrc,
-  // },
-  // {
-  //   description: "Configure eslint.config.js",
-  //   function: step12ConfigureEslintConfig,
-  // },
-  // {
-  //   description: "Configure vite",
-  //   function: step13ConfigureVite,
-  // },
-  // {
-  //   description: "Configure vite.config.ts",
-  //   function: step14ConfigureViteConfig,
-  // },
-  // {
-  //   description: "Configure tsconfig.json",
-  //   function: step15ConfigureTsconfig,
-  // },
-  // {
-  //   description: "Add formatting scripts",
-  //   function: step16AddFormattingScripts,
-  // },
-  // {
-  //   description: "Run lint",
-  //   function: step17RunLint,
-  // },
-  // {
-  //   description: "Check if the project is running",
-  //   function: step18StartDevServer,
-  // },
+  {
+    description: "Install Tailwind CSS",
+    function: step04InstallTailwind,
+  },
+  {
+    description: "Add tailwind.config.js",
+    function: step05AddTailwindConfig,
+  },
+  {
+    description: "Add postcss.config.js",
+    function: step06AddPostcssConfig,
+  },
+  {
+    description: "Replace contents of src/index.css",
+    function: step07ReplaceIndexCss,
+  },
+  {
+    description: "Copy the multiversx-white.svg file to the public folder",
+    function: step08CopySvgFile,
+  },
+  {
+    description: "Commit the project",
+    function: step09CommitProject,
+  },
+  {
+    description: "Configure eslint and prettier",
+    function: step10ConfigureEslintPrettier,
+  },
+  {
+    description: "Configure .prettierrc",
+    function: step11ConfigurePrettierrc,
+  },
+  {
+    description: "Configure eslint.config.js",
+    function: step12ConfigureEslintConfig,
+  },
+  {
+    description: "Configure vite",
+    function: step13ConfigureVite,
+  },
+  {
+    description: "Configure vite.config.ts",
+    function: step14ConfigureViteConfig,
+  },
+  {
+    description: "Configure tsconfig.json",
+    function: step15ConfigureTsconfig,
+  },
+  {
+    description: "Add formatting scripts",
+    function: step16AddFormattingScripts,
+  },
+  {
+    description: "Run lint",
+    function: step17RunLint,
+  },
+  {
+    description: "Check if the project is running",
+    function: step18StartDevServer,
+  },
 ];
 
 test.describe("VIDEO_01 - Complete Project Setup", () => {
@@ -154,10 +154,10 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
     const expectedUrl =
       "http://127.0.0.1:8080/?folder=/Users/tudor/Work/test/ping-pong-tutorial";
 
-    // const capture = await saveVideo(
-    //   page,
-    //   "test-results/videos/video01-recording.mp4"
-    // );
+    const capture = await saveVideo(
+      page,
+      "test-results/videos/video01-recording.mp4"
+    );
 
     if (currentUrl !== expectedUrl) {
       console.log("Navigating to code server instance...");
@@ -203,7 +203,7 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
       }
     }
 
-    // await capture.stop();
+    await capture.stop();
 
     console.log("🎉 All 18 steps completed successfully!");
     console.log(

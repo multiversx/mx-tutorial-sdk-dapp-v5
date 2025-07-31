@@ -38,6 +38,7 @@ async function createTypewriterMessage(
     ({ elementSelector, message, options }) => {
       return new Promise<void>((resolve) => {
         const TYPING_DEFAULT_DELAY = 30;
+        const AUTO_REMOVE_DELAY = 1000;
 
         // Create container for the message if it doesn't exist
         let container = document.querySelector(elementSelector) as HTMLElement;
@@ -82,15 +83,16 @@ async function createTypewriterMessage(
             container.textContent = currentText;
 
             // Auto-remove message after specified delay (default 1 second)
-            const autoRemoveDelay = options.autoRemoveDelay || 1000;
+            const autoRemoveDelay =
+              options.autoRemoveDelay || AUTO_REMOVE_DELAY;
+
             setTimeout(() => {
               if (container && container.parentNode) {
                 container.remove();
+                // Resolve the promise when typing is complete
+                resolve();
               }
             }, autoRemoveDelay);
-
-            // Resolve the promise when typing is complete
-            resolve();
           }
         };
 

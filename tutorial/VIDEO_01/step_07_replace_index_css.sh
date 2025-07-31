@@ -13,4 +13,6 @@ cat > src/index.css << 'EOF'
 EOF
 
 echo "✅ src/index.css updated successfully!"
+
+echo "Done: step_07_replace_index_css" >> progress.txt
 echo "Next: Run './step_08_copy_svg_file.sh'" 

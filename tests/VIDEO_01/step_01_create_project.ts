@@ -1,6 +1,8 @@
 import { Page } from "@playwright/test";
 import { openTutorialVideoTerminal } from "../helpers/openTutorialVideoTerminal";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
+import { waitForStepCompletion } from "../../utils/progress-helper";
+import { basename } from "path";
 
 export async function step01CreateProject(page: Page): Promise<void> {
   // Display starting message with typewriter effect
@@ -18,8 +20,7 @@ export async function step01CreateProject(page: Page): Promise<void> {
   await page.keyboard.type("./step_01_create_project.sh");
   await page.keyboard.press("Enter");
 
-  // Additional wait to ensure everything is settled
-  await page.waitForTimeout(2000);
+  await waitForStepCompletion(page, basename(__filename, ".ts"));
 
   console.log("Project creation script completed");
 }

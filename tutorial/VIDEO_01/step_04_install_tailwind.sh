@@ -11,4 +11,6 @@ cd ../../
 type_and_execute "yarn add -D tailwindcss@3.3.3 postcss autoprefixer"
 
 echo "✅ Tailwind CSS installed successfully!"
+
+echo "Done: step_04_install_tailwind" >> progress.txt
 echo "Next: Run './step_05_add_tailwind_config.sh'" 

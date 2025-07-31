@@ -151,4 +151,6 @@ export default tseslint.config([
 EOF
 
 echo "✅ eslint.config.js configured successfully!"
+
+echo "Done: step_12_configure_eslint_config" >> progress.txt
 echo "Next: Run './step_13_configure_vite.sh'" 

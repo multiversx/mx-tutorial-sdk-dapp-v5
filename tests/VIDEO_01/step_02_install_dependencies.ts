@@ -2,6 +2,8 @@ import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { openTutorialVideoTerminal } from "../helpers/openTutorialVideoTerminal";
 import { clickLocator } from "../helpers/clickLocator";
+import { waitForStepCompletion } from "../../utils/progress-helper";
+import { basename } from "path";
 
 export async function step02InstallDependencies(page: Page): Promise<void> {
   // Display starting message with typewriter effect
@@ -23,7 +25,7 @@ export async function step02InstallDependencies(page: Page): Promise<void> {
   await openTutorialVideoTerminal(page, "VIDEO_01");
   await page.keyboard.type("./step_02_install_dependencies.sh");
   await page.keyboard.press("Enter");
-  await page.waitForTimeout(12000);
+  await waitForStepCompletion(page, basename(__filename, ".ts"));
 
   console.log("Executing step_02_install_dependencies.sh...");
 }

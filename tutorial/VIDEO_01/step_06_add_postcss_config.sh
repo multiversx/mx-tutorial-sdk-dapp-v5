@@ -15,4 +15,6 @@ export default {
 EOF
 
 echo "✅ postcss.config.js created successfully!"
+
+echo "Done: step_06_add_postcss_config" >> progress.txt
 echo "Next: Run './step_07_replace_index_css.sh'" 
