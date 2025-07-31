@@ -16,8 +16,6 @@ interface TypewriterOptions {
   elementSelector?: string; // Optional element selector, defaults to "#test-status"
 }
 
-const TYPING_DEFAULT_DELAY = 30;
-
 async function injectTypewriter(page: Page): Promise<void> {
   await page.evaluate(() => {
     console.log("Typewriter functionality ready");
@@ -39,6 +37,8 @@ async function createTypewriterMessage(
   const typingComplete = page.evaluate(
     ({ elementSelector, message, options }) => {
       return new Promise<void>((resolve) => {
+        const TYPING_DEFAULT_DELAY = 30;
+
         // Create container for the message if it doesn't exist
         let container = document.querySelector(elementSelector) as HTMLElement;
         if (!container) {

@@ -1,16 +1,16 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 
-export async function step03InstallTailwind(page: Page): Promise<void> {
+export async function step10ConfigureEslintPrettier(page: Page): Promise<void> {
   // Display starting message with typewriter effect
   await createTypewriterMessage(
     page,
-    "Installing Tailwind CSS and its dependencies..."
+    "Installing ESLint and Prettier for code formatting..."
   );
 
-  await page.keyboard.type("./step_03_install_tailwind.sh");
+  await page.keyboard.type("./step_10_configure_eslint_prettier.sh");
   await page.keyboard.press("Enter");
   await page.waitForTimeout(8000);
 
-  console.log("Tailwind CSS installed successfully");
+  console.log("ESLint and Prettier installed successfully");
 }
