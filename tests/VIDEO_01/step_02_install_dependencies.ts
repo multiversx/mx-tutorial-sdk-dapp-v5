@@ -12,11 +12,12 @@ export async function step02InstallDependencies(page: Page): Promise<void> {
 
   // smoothly move to package.json (visual mouse is auto-injected and removed)
   await clickLocator(page, "package.json");
+  await page.waitForTimeout(4000);
   await createTypewriterMessage(page, "The package.json file looks good 👍");
   await page.waitForTimeout(1000);
 
   await createTypewriterMessage(page, "Continuing to install dependencies...");
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(2000);
 
   // open install dependencies script
   await openTutorialVideoTerminal(page, "VIDEO_01");

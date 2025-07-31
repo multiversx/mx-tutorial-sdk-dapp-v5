@@ -40,66 +40,66 @@ const steps = [
     description: "Initialize git repository & create first commit",
     function: step03InitializeGit,
   },
-  {
-    description: "Install Tailwind CSS",
-    function: step04InstallTailwind,
-  },
-  {
-    description: "Add tailwind.config.js",
-    function: step05AddTailwindConfig,
-  },
-  {
-    description: "Add postcss.config.js",
-    function: step06AddPostcssConfig,
-  },
-  {
-    description: "Replace contents of src/index.css",
-    function: step07ReplaceIndexCss,
-  },
-  {
-    description: "Copy the multiversx-white.svg file to the public folder",
-    function: step08CopySvgFile,
-  },
-  {
-    description: "Commit the project",
-    function: step09CommitProject,
-  },
-  {
-    description: "Configure eslint and prettier",
-    function: step10ConfigureEslintPrettier,
-  },
-  {
-    description: "Configure .prettierrc",
-    function: step11ConfigurePrettierrc,
-  },
-  {
-    description: "Configure eslint.config.js",
-    function: step12ConfigureEslintConfig,
-  },
-  {
-    description: "Configure vite",
-    function: step13ConfigureVite,
-  },
-  {
-    description: "Configure vite.config.ts",
-    function: step14ConfigureViteConfig,
-  },
-  {
-    description: "Configure tsconfig.json",
-    function: step15ConfigureTsconfig,
-  },
-  {
-    description: "Add formatting scripts",
-    function: step16AddFormattingScripts,
-  },
-  {
-    description: "Run lint",
-    function: step17RunLint,
-  },
-  {
-    description: "Check if the project is running",
-    function: step18StartDevServer,
-  },
+  // {
+  //   description: "Install Tailwind CSS",
+  //   function: step04InstallTailwind,
+  // },
+  // {
+  //   description: "Add tailwind.config.js",
+  //   function: step05AddTailwindConfig,
+  // },
+  // {
+  //   description: "Add postcss.config.js",
+  //   function: step06AddPostcssConfig,
+  // },
+  // {
+  //   description: "Replace contents of src/index.css",
+  //   function: step07ReplaceIndexCss,
+  // },
+  // {
+  //   description: "Copy the multiversx-white.svg file to the public folder",
+  //   function: step08CopySvgFile,
+  // },
+  // {
+  //   description: "Commit the project",
+  //   function: step09CommitProject,
+  // },
+  // {
+  //   description: "Configure eslint and prettier",
+  //   function: step10ConfigureEslintPrettier,
+  // },
+  // {
+  //   description: "Configure .prettierrc",
+  //   function: step11ConfigurePrettierrc,
+  // },
+  // {
+  //   description: "Configure eslint.config.js",
+  //   function: step12ConfigureEslintConfig,
+  // },
+  // {
+  //   description: "Configure vite",
+  //   function: step13ConfigureVite,
+  // },
+  // {
+  //   description: "Configure vite.config.ts",
+  //   function: step14ConfigureViteConfig,
+  // },
+  // {
+  //   description: "Configure tsconfig.json",
+  //   function: step15ConfigureTsconfig,
+  // },
+  // {
+  //   description: "Add formatting scripts",
+  //   function: step16AddFormattingScripts,
+  // },
+  // {
+  //   description: "Run lint",
+  //   function: step17RunLint,
+  // },
+  // {
+  //   description: "Check if the project is running",
+  //   function: step18StartDevServer,
+  // },
 ];
 
 test.describe("VIDEO_01 - Complete Project Setup", () => {
@@ -178,7 +178,7 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
       page,
       "🚀 React + Tailwind + MultiversX dApp Setup Tutorial"
     );
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(4000);
 
     // Loop through all steps dynamically
     for (let i = 0; i < steps.length; i++) {
