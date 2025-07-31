@@ -16,6 +16,8 @@ interface TypewriterOptions {
   elementSelector?: string; // Optional element selector, defaults to "#test-status"
 }
 
+const TYPING_DEFAULT_DELAY = 30;
+
 async function injectTypewriter(page: Page): Promise<void> {
   await page.evaluate(() => {
     console.log("Typewriter functionality ready");
@@ -64,7 +66,7 @@ async function createTypewriterMessage(
         container.innerHTML = "";
 
         // Simple typewriter effect
-        const delay = (options.delay as number) || 50;
+        const delay = (options.delay as number) || TYPING_DEFAULT_DELAY;
         const cursor = options.cursor || "█";
         let currentText = "";
         let currentIndex = 0;

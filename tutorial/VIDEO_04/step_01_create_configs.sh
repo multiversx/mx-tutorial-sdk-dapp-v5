@@ -56,4 +56,4 @@ echo "Added scripts to package.json:"
 echo '  "start-devnet": "yarn run copy-devnet-config & vite dev"'
 echo '  "copy-devnet-config": "cp ./src/config/config.devnet.ts ./src/config/index.ts"'
 echo ""
-echo "Next: Continue with VIDEO_03 step 2"  
+echo "Next: Run './step_02_create_dashboard_folder.sh'"
