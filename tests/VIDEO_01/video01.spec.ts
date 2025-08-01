@@ -48,10 +48,10 @@ const steps = [
     description: "Add tailwind.config.js",
     function: step05AddTailwindConfig,
   },
-  // {
-  //   description: "Add postcss.config.js",
-  //   function: step06AddPostcssConfig,
-  // },
+  {
+    description: "Add postcss.config.js",
+    function: step06AddPostcssConfig,
+  },
   // {
   //   description: "Replace contents of src/index.css",
   //   function: step07ReplaceIndexCss,
@@ -170,8 +170,6 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
     } else {
       console.log("Already on the correct code server instance");
     }
-
- 
 
     // Loop through all steps dynamically
     for (let i = 0; i < steps.length; i++) {

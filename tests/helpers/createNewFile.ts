@@ -13,8 +13,10 @@ export const createNewFile = async (page: Page, path: string) => {
   await page.keyboard.press("Enter");
   await waitFor(500);
 
-  for (const part of parts) {
-    await page.keyboard.type(part);
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i];
+    const hasSlash = i < parts.length - 1;
+    await page.keyboard.type(hasSlash ? part + "/" : part);
     await waitFor(500);
   }
 
@@ -22,8 +24,8 @@ export const createNewFile = async (page: Page, path: string) => {
   await waitFor(500);
 
   await page.keyboard.press("Space");
-  await waitFor(300);
+  await waitFor(500);
 
   await page.keyboard.press("Enter");
-  await waitFor(300);
+  await waitFor(500);
 };

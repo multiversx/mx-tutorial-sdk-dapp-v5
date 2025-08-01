@@ -23,6 +23,7 @@ export async function step05AddTailwindConfig(page: Page): Promise<void> {
 }`);
   });
   await page.keyboard.press("Meta+v");
+  await page.keyboard.press("Meta+s");
 
   await createTypewriterMessage(page, "Done! 🎉");
 
