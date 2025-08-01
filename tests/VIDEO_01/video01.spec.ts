@@ -21,7 +21,7 @@ import { authenticateWithPassword } from "../../utils/password-helper";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { chromium } from "@playwright/test";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
-// import { saveVideo } from "playwright-video";
+import { saveVideo } from "playwright-video";
 
 // Set FFmpeg path for video recording
 process.env.FFMPEG_PATH = ffmpeg.path;
@@ -44,18 +44,18 @@ const steps = [
   //   description: "Install Tailwind CSS",
   //   function: step04InstallTailwind,
   // },
-  // {
-  //   description: "Add tailwind.config.js",
-  //   function: step05AddTailwindConfig,
-  // },
+  {
+    description: "Add tailwind.config.js",
+    function: step05AddTailwindConfig,
+  },
   // {
   //   description: "Add postcss.config.js",
   //   function: step06AddPostcssConfig,
   // },
-  {
-    description: "Replace contents of src/index.css",
-    function: step07ReplaceIndexCss,
-  },
+  // {
+  //   description: "Replace contents of src/index.css",
+  //   function: step07ReplaceIndexCss,
+  // },
   // {
   //   description: "Copy the multiversx-white.svg file to the public folder",
   //   function: step08CopySvgFile,

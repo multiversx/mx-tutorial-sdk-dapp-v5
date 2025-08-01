@@ -1,9 +1,7 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { clickLocator } from "../helpers/clickLocator";
-import { openTutorialVideoTerminal } from "../helpers/openTutorialVideoTerminal";
-import { waitForStepCompletion } from "../../utils/progress-helper";
-import { basename } from "path";
+import { createNewFile } from "../helpers/createNewFile";
+import { waitFor } from "../helpers/waitFor";
 
 export async function step11ConfigurePrettierrc(page: Page): Promise<void> {
   // Display starting message with typewriter effect
@@ -12,17 +10,32 @@ export async function step11ConfigurePrettierrc(page: Page): Promise<void> {
     "Creating Prettier configuration file..."
   );
 
-  await page.keyboard.type("./step_11_configure_prettierrc.sh");
-  await page.keyboard.press("Enter");
-  await page.keyboard.press("Control+`");
+  await createNewFile(page, "../.prettierrc");
 
-  await page.waitForTimeout(2000);
-  await clickLocator(page, ".prettierrc");
-  await page.waitForTimeout(2000);
+  await createTypewriterMessage(
+    page,
+    "Paste Prettier configuration from clipboard..."
+  );
 
-  await createTypewriterMessage(page, "Prettier configuration looks good 👍");
-  await openTutorialVideoTerminal(page, "VIDEO_01");
-  await waitForStepCompletion(page, basename(__filename, ".ts"));
+  await page.evaluate(() => {
+    navigator.clipboard.writeText(
+      `{
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "semi": true,
+  "tabWidth": 2,
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "arrowParens": "always",
+  "trailingComma": "none"
+}`
+    );
+  });
+  await page.keyboard.press("Meta+v");
+  await page.keyboard.press("Meta+s");
+
+  await waitFor(1000);
+  await createTypewriterMessage(page, "Done! 🎉");
 
   console.log("Prettier configuration file created successfully");
 }
