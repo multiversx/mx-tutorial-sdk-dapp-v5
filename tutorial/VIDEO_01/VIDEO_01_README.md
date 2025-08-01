@@ -43,24 +43,24 @@ git commit -m "01. Initial commit"
 ```bash
 cd ../../
 # Install Tailwind CSS
-yarn add -D tailwindcss@3.3.3 postcss autoprefixer
+yarn add -D tailwindcss @tailwindcss/vite @tailwindcss/postcss @tailwindcss/cli
 ```
 
-### Step 5: Add tailwind.config.js:
+### Step 5: Add src/tailwind.css:
 
 ```ts
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-  theme: {
-    extend: {},
-    backgroundImage: {
-      // eslint-disable-next-line quotes
-      'mvx-white': "url('../multiversx-white.svg')"
-    }
-  },
-  plugins: []
-};
+@import 'tailwindcss';
+
+@theme {
+    --background-image-mvx-white: url('../multiversx-white.svg');
+}
+```
+
+and import it in the main.tsx file:
+
+```ts
+import './tailwind.css';
 ```
 
 ### Step 6: Add postcss.config.js:
@@ -68,7 +68,7 @@ export default {
 ```js
 export default {
   plugins: {
-    tailwindcss: {},
+    '@tailwindcss/postcss': {},
     autoprefixer: {}
   }
 };
@@ -82,6 +82,8 @@ export default {
 @tailwind components;
 @tailwind utilities;
 ```
+
+
 
 ### Step 8: Copy the multiversx-white.svg file to the public folder.
 
@@ -309,6 +311,9 @@ export default defineConfig({
       globals: { Buffer: true, global: true, process: true }
     })
   ],
+  css: {
+    postcss: './postcss.config.js'
+  },
   build: {
     outDir: 'build'
   },

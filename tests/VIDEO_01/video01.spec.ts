@@ -3,7 +3,7 @@ import { step01CreateProject } from "./step_01_create_project";
 import { step02InstallDependencies } from "./step_02_install_dependencies";
 import { step03InitializeGit } from "./step_03_initialize_git";
 import { step04InstallTailwind } from "./step_04_install_tailwind";
-import { step05AddTailwindConfig } from "./step_05_add_tailwind_config";
+import { step05AddTailwindConfig } from "./step_05_add_tailwind_css";
 import { step06AddPostcssConfig } from "./step_06_add_postcss_config";
 import { step07ReplaceIndexCss } from "./step_07_replace_index_css";
 import { step08CopySvgFile } from "./step_08_copy_svg_file";
@@ -21,85 +21,85 @@ import { authenticateWithPassword } from "../../utils/password-helper";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { chromium } from "@playwright/test";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
-import { saveVideo } from "playwright-video";
+// import { saveVideo } from "playwright-video";
 
 // Set FFmpeg path for video recording
 process.env.FFMPEG_PATH = ffmpeg.path;
 
 // Define steps with descriptions and functions in a single array
 const steps = [
-  {
-    description: "Create new Vite React project",
-    function: step01CreateProject,
-  },
-  {
-    description: "Install dependencies",
-    function: step02InstallDependencies,
-  },
-  {
-    description: "Initialize git repository & create first commit",
-    function: step03InitializeGit,
-  },
-  {
-    description: "Install Tailwind CSS",
-    function: step04InstallTailwind,
-  },
+  // {
+  //   description: "Create new Vite React project",
+  //   function: step01CreateProject,
+  // },
+  // {
+  //   description: "Install dependencies",
+  //   function: step02InstallDependencies,
+  // },
+  // {
+  //   description: "Initialize git repository & create first commit",
+  //   function: step03InitializeGit,
+  // },
+  // {
+  //   description: "Install Tailwind CSS",
+  //   function: step04InstallTailwind,
+  // },
   {
     description: "Add tailwind.config.js",
     function: step05AddTailwindConfig,
   },
-  {
-    description: "Add postcss.config.js",
-    function: step06AddPostcssConfig,
-  },
-  {
-    description: "Replace contents of src/index.css",
-    function: step07ReplaceIndexCss,
-  },
-  {
-    description: "Copy the multiversx-white.svg file to the public folder",
-    function: step08CopySvgFile,
-  },
-  {
-    description: "Commit the project",
-    function: step09CommitProject,
-  },
-  {
-    description: "Configure eslint and prettier",
-    function: step10ConfigureEslintPrettier,
-  },
-  {
-    description: "Configure .prettierrc",
-    function: step11ConfigurePrettierrc,
-  },
-  {
-    description: "Configure eslint.config.js",
-    function: step12ConfigureEslintConfig,
-  },
-  {
-    description: "Configure vite",
-    function: step13ConfigureVite,
-  },
-  {
-    description: "Configure vite.config.ts",
-    function: step14ConfigureViteConfig,
-  },
-  {
-    description: "Configure tsconfig.json",
-    function: step15ConfigureTsconfig,
-  },
-  {
-    description: "Add formatting scripts",
-    function: step16AddFormattingScripts,
-  },
-  {
-    description: "Run lint",
-    function: step17RunLint,
-  },
-  {
-    description: "Check if the project is running",
-    function: step18StartDevServer,
-  },
+  // {
+  //   description: "Add postcss.config.js",
+  //   function: step06AddPostcssConfig,
+  // },
+  // {
+  //   description: "Replace contents of src/index.css",
+  //   function: step07ReplaceIndexCss,
+  // },
+  // {
+  //   description: "Copy the multiversx-white.svg file to the public folder",
+  //   function: step08CopySvgFile,
+  // },
+  // {
+  //   description: "Commit the project",
+  //   function: step09CommitProject,
+  // },
+  // {
+  //   description: "Configure eslint and prettier",
+  //   function: step10ConfigureEslintPrettier,
+  // },
+  // {
+  //   description: "Configure .prettierrc",
+  //   function: step11ConfigurePrettierrc,
+  // },
+  // {
+  //   description: "Configure eslint.config.js",
+  //   function: step12ConfigureEslintConfig,
+  // },
+  // {
+  //   description: "Configure vite",
+  //   function: step13ConfigureVite,
+  // },
+  // {
+  //   description: "Configure vite.config.ts",
+  //   function: step14ConfigureViteConfig,
+  // },
+  // {
+  //   description: "Configure tsconfig.json",
+  //   function: step15ConfigureTsconfig,
+  // },
+  // {
+  //   description: "Add formatting scripts",
+  //   function: step16AddFormattingScripts,
+  // },
+  // {
+  //   description: "Run lint",
+  //   function: step17RunLint,
+  // },
+  // {
+  //   description: "Check if the project is running",
+  //   function: step18StartDevServer,
+  // },
 ];
 
 test.describe("VIDEO_01 - Complete Project Setup", () => {
@@ -154,10 +154,10 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
     const expectedUrl =
       "http://127.0.0.1:8080/?folder=/Users/tudor/Work/test/ping-pong-tutorial";
 
-    const capture = await saveVideo(
-      page,
-      "test-results/videos/video01-recording.mp4"
-    );
+    // const capture = await saveVideo(
+    //   page,
+    //   "test-results/videos/video01-recording.mp4"
+    // );
 
     if (currentUrl !== expectedUrl) {
       console.log("Navigating to code server instance...");
@@ -171,14 +171,7 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
       console.log("Already on the correct code server instance");
     }
 
-    await page.waitForTimeout(2000);
-
-    // Display starting message
-    await createTypewriterMessage(
-      page,
-      "🚀 React + Tailwind + MultiversX dApp Setup Tutorial"
-    );
-    await page.waitForTimeout(4000);
+ 
 
     // Loop through all steps dynamically
     for (let i = 0; i < steps.length; i++) {
@@ -199,7 +192,7 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
     }
 
     console.log("Screen capture stopped");
-    await capture.stop();
+    // await capture.stop();
 
     console.log("🎉 All 18 steps completed successfully!");
     console.log(

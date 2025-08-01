@@ -8,7 +8,7 @@ echo "=== Step 4: Install Tailwind CSS ==="
 cd ../../
 
 # Install Tailwind CSS
-type_and_execute "yarn add -D tailwindcss@3.3.3 postcss autoprefixer"
+type_and_execute "yarn add -D tailwindcss @tailwindcss/vite @tailwindcss/postcss @tailwindcss/cli"
 
 echo "✅ Tailwind CSS installed successfully!"
 

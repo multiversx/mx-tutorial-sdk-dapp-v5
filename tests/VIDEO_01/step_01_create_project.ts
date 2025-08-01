@@ -5,6 +5,15 @@ import { waitForStepCompletion } from "../../utils/progress-helper";
 import { basename } from "path";
 
 export async function step01CreateProject(page: Page): Promise<void> {
+  await page.waitForTimeout(2000);
+
+  // Display starting message
+  await createTypewriterMessage(
+    page,
+    "🚀 React + Tailwind + MultiversX dApp Setup Tutorial"
+  );
+  await page.waitForTimeout(2000);
+
   // Display starting message with typewriter effect
   await createTypewriterMessage(
     page,

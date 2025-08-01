@@ -7,9 +7,10 @@ cd ../../
 # Replace contents of src/index.css
 cat > src/index.css << 'EOF'
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+* {
+  font-family: 'Inter', sans-serif;
+}
 EOF
 
 echo "✅ src/index.css updated successfully!"
