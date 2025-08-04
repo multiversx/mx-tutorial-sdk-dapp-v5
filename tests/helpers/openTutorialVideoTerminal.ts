@@ -4,7 +4,7 @@ export async function openTutorialVideoTerminal(
   page: Page,
   video: string
 ): Promise<void> {
-  await page.keyboard.press("Control+`");
+  await page.keyboard.press("Control+Shift+`");
 
   // Wait a moment for terminal to be fully ready
   await page.waitForTimeout(1000);

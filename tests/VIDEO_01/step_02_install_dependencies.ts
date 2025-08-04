@@ -9,7 +9,7 @@ export async function step02InstallDependencies(page: Page): Promise<void> {
   // Display starting message with typewriter effect
   await createTypewriterMessage(page, "Inspecting package.json file");
   // minimize terminal
-  await page.keyboard.press("Control+`");
+  await page.keyboard.press("Control+Meta+h");
   await page.waitForTimeout(2000);
 
   // smoothly move to package.json (visual mouse is auto-injected and removed)

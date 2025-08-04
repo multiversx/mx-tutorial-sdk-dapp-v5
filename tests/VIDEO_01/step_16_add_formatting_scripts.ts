@@ -14,7 +14,7 @@ export async function step16AddFormattingScripts(page: Page): Promise<void> {
 
   await page.keyboard.type("./step_16_add_formatting_scripts.sh");
   await page.keyboard.press("Enter");
-  await page.keyboard.press("Control+`");
+  await page.keyboard.press("Control+Meta+h");
 
   await page.waitForTimeout(2000);
   await clickLocator(page, "package.json");

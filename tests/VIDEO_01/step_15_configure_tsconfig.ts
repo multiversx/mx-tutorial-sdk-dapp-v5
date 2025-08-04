@@ -1,27 +1,82 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { clickLocator } from "../helpers/clickLocator";
+import { waitFor } from "../helpers/waitFor";
+import { navigateToFile } from "../helpers/navigateToFile";
 import { openTutorialVideoTerminal } from "../helpers/openTutorialVideoTerminal";
-import { waitForStepCompletion } from "../../utils/progress-helper";
-import { basename } from "path";
+import { typeAndEnter } from "../../utils/type-helper";
 
 export async function step15ConfigureTsconfig(page: Page): Promise<void> {
-  // Display starting message with typewriter effect
+  await createTypewriterMessage(page, "Removing unused tsconfig files...");
+
+  await openTutorialVideoTerminal(page, "VIDEO_01");
+
+  await typeAndEnter(page, "../../");
+  await typeAndEnter(page, "rm -f tsconfig.app.json tsconfig.node.json");
+
+  await page.keyboard.press("Control+Meta+h");
+
   await createTypewriterMessage(
     page,
-    "Creating TypeScript configuration file..."
+    "Editing TypeScript configuration file..."
   );
 
-  await page.keyboard.type("./step_15_configure_tsconfig.sh");
-  await page.keyboard.press("Enter");
-  await page.keyboard.press("Control+`");
+  await navigateToFile(page, "tsconfig.json");
+  await waitFor(500);
 
-  await page.waitForTimeout(2000);
-  await clickLocator(page, "tsconfig.json");
-  await page.waitForTimeout(2000);
-  await createTypewriterMessage(page, "We only need one tsconfig.json file");
-  await openTutorialVideoTerminal(page, "VIDEO_01");
-  await waitForStepCompletion(page, basename(__filename, ".ts"));
+  await page.keyboard.press("Meta+a");
+  await waitFor(1500);
+  await page.keyboard.press("Backspace");
+  await waitFor(1500);
+
+  await createTypewriterMessage(
+    page,
+    "Paste TypeScript configuration from clipboard..."
+  );
+
+  await waitFor(1000);
+
+  await page.evaluate(() => {
+    navigator.clipboard.writeText(
+      `{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "src"
+  },
+  "include": ["src"]
+}`
+    );
+  });
+  await page.keyboard.press("Meta+v");
+  await page.keyboard.press("Meta+s");
+  await waitFor(500);
+
+  await page.keyboard.press("Control+g");
+  await typeAndEnter(page, "15");
+  await page.keyboard.press("Meta+Shift+ArrowRight");
+
+  await waitFor(1000);
+  await createTypewriterMessage(
+    page,
+    "Now tsconfig.json is has absolute imports and module resolution set to bundler"
+  );
+  await waitFor(1000);
 
   console.log("TypeScript configuration file created successfully");
 }

@@ -7,7 +7,7 @@ import { navigateToFile } from "../helpers/navigateToFile";
 
 export async function step05AddTailwindConfig(page: Page): Promise<void> {
   await page.keyboard.press("Enter");
-  await page.keyboard.press("Control+`");
+  await page.keyboard.press("Control+Meta+h");
 
   await createNewFile(page, "src/tailwind.css");
 

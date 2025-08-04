@@ -4,8 +4,9 @@ echo "=== Step 15: Configure tsconfig.json ==="
 
 cd ../../
 
-# Remove existing tsconfig files if they exist
-rm -f tsconfig.app.json tsconfig.node.json
+# Remove unused tsconfig files
+echo "Removing unused tsconfig files..."
+type_and_execute "rm -f tsconfig.app.json tsconfig.node.json"
 
 # Create tsconfig.json
 cat > tsconfig.json << 'EOF'

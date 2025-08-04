@@ -35,6 +35,9 @@ export default defineConfig({
       globals: { Buffer: true, global: true, process: true }
     })
   ],
+  css: {
+    postcss: './postcss.config.js'
+  },
   build: {
     outDir: 'build'
   },
