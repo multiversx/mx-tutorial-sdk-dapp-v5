@@ -19,9 +19,9 @@ export async function step05AddTailwindConfig(page: Page): Promise<void> {
 
   await page.evaluate(() => {
     navigator.clipboard.writeText(`
-  @theme {
-      --background-image-mvx-white: url('../multiversx-white.svg');
-  }`);
+@theme {
+    --background-image-mvx-white: url('../multiversx-white.svg');
+}`);
   });
   await page.keyboard.press("Meta+v");
   await page.keyboard.press("Meta+s");

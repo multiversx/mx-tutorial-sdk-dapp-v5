@@ -8,26 +8,26 @@ import { step07RunLint } from "./step_07_run_lint";
 
 // Define steps with descriptions and functions in a single array
 export const video02steps = [
-  //   {
-  //     description: "Install react-router-dom",
-  //     function: step01InstallReactRouterDom,
-  //   },
-  //   {
-  //     description: "Create pages folder and Home page",
-  //     function: step02CreateHomePage,
-  //   },
-  //   {
-  //     description: "Create routes folder",
-  //     function: step03CreateRoutesFolder,
-  //   },
-  //   {
-  //     description: "Create routes configuration files",
-  //     function: step04CreateRoutesFiles,
-  //   },
-  //   {
-  //     description: "Create Layout component",
-  //     function: step05CreateLayoutComponent,
-  //   },
+  {
+    description: "Install react-router-dom",
+    function: step01InstallReactRouterDom,
+  },
+  {
+    description: "Create pages folder and Home page",
+    function: step02CreateHomePage,
+  },
+  {
+    description: "Create routes folder",
+    function: step03CreateRoutesFolder,
+  },
+  {
+    description: "Create routes configuration files",
+    function: step04CreateRoutesFiles,
+  },
+  {
+    description: "Create Layout component",
+    function: step05CreateLayoutComponent,
+  },
   {
     description: "Update App.tsx file",
     function: step06UpdateApp,

@@ -4,7 +4,7 @@ import { chromium } from "@playwright/test";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
 import { saveVideo } from "playwright-video";
 import { video02steps } from "./VIDEO_02";
-// import { video01steps } from "./VIDEO_01";
+import { video01steps } from "./VIDEO_01";
 
 // Set FFmpeg path for video recording
 process.env.FFMPEG_PATH = ffmpeg.path;
@@ -63,7 +63,7 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
 
     const capture = await saveVideo(
       page,
-      "test-results/videos/video01-recording.mp4"
+      "test-results/videos/video-recording.mp4"
     );
 
     if (currentUrl !== expectedUrl) {
@@ -78,9 +78,11 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
       console.log("Already on the correct code server instance");
     }
 
+    const steps = [...video01steps, ...video02steps];
+
     // Loop through all steps dynamically
-    for (let i = 0; i < video02steps.length; i++) {
-      const step = video02steps[i];
+    for (let i = 0; i < steps.length; i++) {
+      const step = steps[i];
       const stepNumber = i + 1; // Convert 0-based index to 1-based step number
 
       console.log(`Running Step ${stepNumber}: ${step.description}`);

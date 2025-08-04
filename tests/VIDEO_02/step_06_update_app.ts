@@ -60,6 +60,8 @@ export default function App() {
   });
   await page.keyboard.press("Meta+v");
   await page.keyboard.press("Meta+s");
+  await page.keyboard.press("Meta+ArrowUp");
+
   await waitFor(1000);
   await createTypewriterMessage(page, "Done! 🎉");
 

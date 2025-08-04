@@ -74,6 +74,7 @@ export const Home = () => {
   await createTypewriterMessage(page, "Export the new Home page...");
   await humanType(page, "export * from './Home';");
   await page.keyboard.press("Meta+s");
+  await page.keyboard.press("Meta+ArrowUp");
   await waitFor(1000);
   await createTypewriterMessage(page, "Done! 🎉");
 

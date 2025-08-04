@@ -8,7 +8,7 @@ export async function step17RunLint(page: Page): Promise<void> {
   // Display starting message with typewriter effect
   await createTypewriterMessage(
     page,
-    "Running linting and formatting on the project..."
+    "Running linting and creating a new commit..."
   );
 
   await openTutorialVideoTerminal(page, "VIDEO_01");

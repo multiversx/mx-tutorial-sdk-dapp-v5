@@ -364,11 +364,14 @@ Keep only one tsconfig.json file in the root of the project (remove the tsconfig
 "lint": "eslint --ext js,ts,tsx src --fix && prettier --write . --ignore-path .gitignore --ignore-pattern 'public/*' --ignore-pattern 'node_modules/**' --ignore-pattern 'yarn.lock'",
 ```
 
-### Step 17: Run lint
+### Step 17: Run lint and create a new commit
+
 ```bash
 cd ../../
 # Run lint  
 yarn lint
+git add .
+git commit -m "03. Linting and formatting"
 ```
 
 ### Step 18: Check if the project is running

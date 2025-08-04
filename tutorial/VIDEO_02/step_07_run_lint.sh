@@ -9,4 +9,4 @@ echo "Running lint with auto-fix..."
 yarn lint --fix
 
 echo "✅ Lint completed successfully!"
-echo "Done: step_17_run_lint" >> progress.txt
+echo "Done: step_07_run_lint" >> progress.txt
