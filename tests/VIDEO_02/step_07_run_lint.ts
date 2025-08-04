@@ -9,7 +9,7 @@ export async function step07RunLint(page: Page): Promise<void> {
 
   await createTypewriterMessage(
     page,
-    "Running lint to fix any code formatting issues..."
+    "Running linting and creating a new commit..."
   );
 
   await page.waitForTimeout(1000);

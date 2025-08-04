@@ -29,6 +29,7 @@ export async function step16AddFormattingScripts(page: Page): Promise<void> {
     );
   });
   await page.keyboard.press("Meta+v");
+  await page.keyboard.press("Meta+ArrowLeft");
   await page.waitForTimeout(500);
   await page.keyboard.press("Alt+Shift+f");
   await page.waitForTimeout(500);

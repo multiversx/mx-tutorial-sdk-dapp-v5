@@ -15,6 +15,9 @@ export async function step06UpdateApp(page: Page): Promise<void> {
 
   await navigateToFile(page, "App.tsx");
 
+  // minimize the terminal
+  await page.keyboard.press("Control+Meta+h");
+
   await waitFor(1000);
   await page.keyboard.press("Meta+a");
   await waitFor(1500);
