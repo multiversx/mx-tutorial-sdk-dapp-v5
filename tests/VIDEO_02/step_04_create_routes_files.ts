@@ -1,22 +1,63 @@
 import { Page } from "@playwright/test";
-import { openTutorialVideoTerminal } from "../helpers/openTutorialVideoTerminal";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { waitForStepCompletion } from "../../utils/progress-helper";
-import { basename } from "path";
+import { createNewFile } from "../helpers/createNewFile";
+import { waitFor } from "../helpers/waitFor";
+import { humanType } from "../../utils/type-helper";
 
 export async function step04CreateRoutesFiles(page: Page): Promise<void> {
   await page.waitForTimeout(2000);
 
   await createTypewriterMessage(page, "Creating routes configuration files...");
 
-  await page.waitForTimeout(1000);
+  await createNewFile(page, "src/routes/routes.ts");
+  await createTypewriterMessage(
+    page,
+    "Paste routes configuration from clipboard..."
+  );
+  await page.evaluate(() => {
+    navigator.clipboard.writeText(
+      `import { Home } from 'pages';
 
-  await openTutorialVideoTerminal(page, "VIDEO_02");
+export enum RouteNamesEnum {
+  home = '/',
+}
 
-  await page.keyboard.type("./step_04_create_routes_files.sh");
-  await page.keyboard.press("Enter");
+interface BasicRouteType {
+  path: string;
+  title: string;
+  component: () => React.ReactNode;
+  authenticatedRoute?: boolean;
+}
 
-  await waitForStepCompletion(page, basename(__filename, ".ts"));
+interface RouteType extends BasicRouteType {
+  children?: BasicRouteType[];
+}
+
+export const routes: RouteType[] = [
+  {
+    path: RouteNamesEnum.home,
+    title: 'Home',
+    component: Home,
+    children: [
+        // Unlock page
+    ]
+  }
+];`
+    );
+  });
+  await page.keyboard.press("Meta+v");
+  await page.keyboard.press("Meta+s");
+  await waitFor(1000);
+  await createTypewriterMessage(page, "Done! 🎉");
+  await waitFor(6000);
+
+  // Create src/routes/index.ts
+  await createNewFile(page, "index.ts");
+  await createTypewriterMessage(page, "Export the routes configuration...");
+  await humanType(page, "export * from './routes';");
+  await page.keyboard.press("Meta+s");
+  await waitFor(1000);
+  await createTypewriterMessage(page, "Done! 🎉");
 
   console.log("Routes files creation completed");
 }

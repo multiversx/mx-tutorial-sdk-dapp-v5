@@ -3,7 +3,8 @@ import { authenticateWithPassword } from "../utils/password-helper";
 import { chromium } from "@playwright/test";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
 import { saveVideo } from "playwright-video";
-import { video01steps } from "./VIDEO_01";
+import { video02steps } from "./VIDEO_02";
+// import { video01steps } from "./VIDEO_01";
 
 // Set FFmpeg path for video recording
 process.env.FFMPEG_PATH = ffmpeg.path;
@@ -78,8 +79,8 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
     }
 
     // Loop through all steps dynamically
-    for (let i = 0; i < video01steps.length; i++) {
-      const step = video01steps[i];
+    for (let i = 0; i < video02steps.length; i++) {
+      const step = video02steps[i];
       const stepNumber = i + 1; // Convert 0-based index to 1-based step number
 
       console.log(`Running Step ${stepNumber}: ${step.description}`);

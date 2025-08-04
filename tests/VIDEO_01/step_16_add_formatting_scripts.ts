@@ -25,9 +25,7 @@ export async function step16AddFormattingScripts(page: Page): Promise<void> {
   await page.waitForTimeout(500);
   await page.evaluate(() => {
     navigator.clipboard.writeText(
-      `   "lint": "eslint --ext js,ts,tsx src --fix",
-  "format": "prettier --write . --ignore-path .gitignore --ignore-pattern 'public/*' --ignore-pattern 'node_modules/**' --ignore-pattern 'yarn.lock'",
-`
+      `    "lint": "eslint --ext js,ts,tsx src --fix && prettier --write . --ignore-path .gitignore --ignore-pattern 'public/*' --ignore-pattern 'node_modules/**' --ignore-pattern 'yarn.lock'",`
     );
   });
   await page.keyboard.press("Meta+v");

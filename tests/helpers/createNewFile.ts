@@ -1,13 +1,17 @@
 import { Page } from "@playwright/test";
 import { waitFor } from "./waitFor";
 
-export const createNewFile = async (page: Page, path: string) => {
+export const createNewFile = async (
+  page: Page,
+  path: string,
+  isNewFolder = false
+) => {
   const parts = path.split("/");
 
   await page.keyboard.press("Meta+Shift+P");
   await waitFor(500);
 
-  await page.keyboard.type("New file");
+  await page.keyboard.type(isNewFolder ? "New folder" : "New file");
   await waitFor(500);
 
   await page.keyboard.press("Enter");
@@ -26,6 +30,8 @@ export const createNewFile = async (page: Page, path: string) => {
   await page.keyboard.press("Space");
   await waitFor(500);
 
-  await page.keyboard.press("Enter");
-  await waitFor(500);
+  if (!isNewFolder) {
+    await page.keyboard.press("Enter");
+    await waitFor(500);
+  }
 };

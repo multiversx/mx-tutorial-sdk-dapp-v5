@@ -361,8 +361,7 @@ Keep only one tsconfig.json file in the root of the project (remove the tsconfig
 ### Step 16: Add formatting scripts
 
 ```json
-"lint": "eslint --ext js,ts,tsx src --fix",
-"format": "prettier --write . --ignore-path .gitignore --ignore-pattern 'public/**' --ignore-pattern 'node_modules/**' --ignore-pattern 'yarn.lock'",
+"lint": "eslint --ext js,ts,tsx src --fix && prettier --write . --ignore-path .gitignore --ignore-pattern 'public/*' --ignore-pattern 'node_modules/**' --ignore-pattern 'yarn.lock'",
 ```
 
 ### Step 17: Run lint

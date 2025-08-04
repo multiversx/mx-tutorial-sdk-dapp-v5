@@ -9,8 +9,4 @@ echo "Running lint with auto-fix..."
 yarn lint --fix
 
 echo "✅ Lint completed successfully!"
-echo ""
-echo "Linting results:"
-echo "  - Fixed automatic linting errors"
-echo "  - Code formatting applied"
-echo ""
+echo "Done: step_17_run_lint" >> progress.txt

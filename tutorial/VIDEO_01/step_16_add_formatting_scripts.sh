@@ -14,8 +14,7 @@ if [ -f "package.json" ]; then
       packageJson.scripts = {};
     }
     
-    packageJson.scripts.lint = 'eslint --ext js,ts,tsx src --fix';
-    packageJson.scripts.format = 'prettier --write . --ignore-path .gitignore --ignore-pattern \"public/**\" --ignore-pattern \"node_modules/**\" --ignore-pattern \"yarn.lock\"';
+    packageJson.scripts.lint = 'eslint --ext js,ts,tsx src --fix && prettier --write . --ignore-path .gitignore --ignore-pattern "public/*" --ignore-pattern "node_modules/**" --ignore-pattern "yarn.lock"';
     
     fs.writeFileSync('package.json', JSON.stringify(packageJson, null, 2));
   "
