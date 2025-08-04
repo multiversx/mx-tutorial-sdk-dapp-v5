@@ -23,7 +23,8 @@ export async function step14ConfigureViteConfig(page: Page): Promise<void> {
 
   await page.evaluate(() => {
     navigator.clipboard.writeText(
-      `import basicSsl from '@vitejs/plugin-basic-ssl';
+      `import tailwindcss from '@tailwindcss/vite';
+import basicSsl from '@vitejs/plugin-basic-ssl';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
@@ -50,7 +51,8 @@ export default defineConfig({
     svgrPlugin(),
     nodePolyfills({
       globals: { Buffer: true, global: true, process: true }
-    })
+    }),
+    tailwindcss(),
   ],
   css: {
     postcss: './postcss.config.js'

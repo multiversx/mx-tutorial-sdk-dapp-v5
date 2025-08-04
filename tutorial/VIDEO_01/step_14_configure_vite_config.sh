@@ -6,6 +6,7 @@ cd ../../
 
 # Create vite.config.ts
 cat > vite.config.ts << 'EOF'
+import tailwindcss from '@tailwindcss/vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
@@ -33,7 +34,8 @@ export default defineConfig({
     svgrPlugin(),
     nodePolyfills({
       globals: { Buffer: true, global: true, process: true }
-    })
+    }),
+    tailwindcss()
   ],
   css: {
     postcss: './postcss.config.js'

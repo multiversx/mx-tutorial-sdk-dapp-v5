@@ -18,7 +18,6 @@ import { step16AddFormattingScripts } from "./step_16_add_formatting_scripts";
 import { step17RunLint } from "./step_17_run_lint";
 import { step18StartDevServer } from "./step_18_start_dev_server";
 import { authenticateWithPassword } from "../../utils/password-helper";
-import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { chromium } from "@playwright/test";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
 import { saveVideo } from "playwright-video";
@@ -88,18 +87,18 @@ const steps = [
     description: "Configure tsconfig.json",
     function: step15ConfigureTsconfig,
   },
-  // {
-  //   description: "Add formatting scripts",
-  //   function: step16AddFormattingScripts,
-  // },
-  // {
-  //   description: "Run lint",
-  //   function: step17RunLint,
-  // },
-  // {
-  //   description: "Check if the project is running",
-  //   function: step18StartDevServer,
-  // },
+  {
+    description: "Add formatting scripts",
+    function: step16AddFormattingScripts,
+  },
+  {
+    description: "Run lint",
+    function: step17RunLint,
+  },
+  {
+    description: "Check if the project is running",
+    function: step18StartDevServer,
+  },
 ];
 
 test.describe("VIDEO_01 - Complete Project Setup", () => {

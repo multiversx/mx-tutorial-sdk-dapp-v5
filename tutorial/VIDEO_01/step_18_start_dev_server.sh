@@ -8,7 +8,7 @@ echo "=== Step 18: Check if the project is running ==="
 cd ../../
 
 # Run the project
-# type_and_execute "yarn dev"
+type_and_execute "yarn dev"
 
 echo "✅ Development server started successfully!"
 
