@@ -1,6 +1,12 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { createNewFile, waitFor } from "../helpers";
+import {
+  createNewFile,
+  navigateToFile,
+  terminal,
+  textEdit,
+  waitFor,
+} from "../helpers";
 import { humanType, typeAndEnter } from "../../utils/type-helper";
 
 export async function step01CreateConfigs(page: Page): Promise<void> {
@@ -16,72 +22,63 @@ export async function step01CreateConfigs(page: Page): Promise<void> {
   //   await createNewFile(page, configFolder, Boolean(configFolder));
   //   await page.waitForTimeout(1000);
 
-  // Create config.devnet.ts
-  await createTypewriterMessage(page, "Creating devnet configuration...");
+  //   // Create config.devnet.ts
+  //   await createTypewriterMessage(page, "Creating devnet configuration...");
 
-  await createNewFile(page, "config/config.devnet.ts");
+  //   await createNewFile(page, "config/config.devnet.ts");
 
-  await typeAndEnter(
-    page,
-    `import { EnvironmentsEnum } from '@multiversx/sdk-dapp/out/types/enums.types';`
-  );
+  //   await typeAndEnter(
+  //     page,
+  //     `import { EnvironmentsEnum } from '@multiversx/sdk-dapp/out/types/enums.types';`
+  //   );
 
-  await createTypewriterMessage(
-    page,
-    "Paste contract address from clipboard..."
-  );
+  //   await createTypewriterMessage(
+  //     page,
+  //     "Paste contract address from clipboard..."
+  //   );
 
-  await page.keyboard.press("Enter");
+  //   await page.keyboard.press("Enter");
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `export const contractAddress =
-    'erd1qqqqqqqqqqqqqpgqm6ad6xrsjvxlcdcffqe8w58trpec09ug9l5qde96pq';
-  export const environment = EnvironmentsEnum.devnet;`
-    );
-  });
-  await page.keyboard.press("Meta+v");
-  await page.keyboard.press("Meta+s");
-  await waitFor(1000);
+  //   await page.evaluate(() => {
+  //     navigator.clipboard.writeText(
+  //       `export const contractAddress =
+  //     'erd1qqqqqqqqqqqqqpgqm6ad6xrsjvxlcdcffqe8w58trpec09ug9l5qde96pq';
+  //   export const environment = EnvironmentsEnum.devnet;`
+  //     );
+  //   });
+  //   await page.keyboard.press("Meta+v");
+  //   await page.keyboard.press("Meta+s");
+  //   await waitFor(1000);
 
   //   // Create config index.ts
-  //   await createNewFile(page, "src/config/index.ts");
   //   await createTypewriterMessage(page, "Creating config index file...");
+
+  //   await createNewFile(page, "index.ts");
   //   await humanType(page, "export * from './config.devnet';");
   //   await page.keyboard.press("Meta+s");
   //   await waitFor(1000);
 
-  //   // Create lib/sdk-dapp directory
-  //   const libFolder = "src/lib/sdk-dapp";
-  //   await createNewFile(page, libFolder, Boolean(libFolder));
-  //   await page.waitForTimeout(1000);
+  // edit package.json
+  //   await createTypewriterMessage(page, "Adding new scripts to package.json...");
+  await navigateToFile(page, "package.json");
+  await terminal.hide(page);
+  await waitFor(1000);
 
-  //   // Create sdk-dapp.types.ts
-  //   await createNewFile(page, "src/lib/sdk-dapp/sdk-dapp.types.ts");
-  //   await createTypewriterMessage(page, "Creating SDK types file...");
-  //   await page.evaluate(() => {
-  //     navigator.clipboard.writeText(
-  //       `export { EnvironmentsEnum } from '@multiversx/sdk-dapp/out/types/enums.types';`
-  //     );
-  //   });
-  //   await page.keyboard.press("Meta+v");
-  //   await page.keyboard.press("Meta+s");
-  //   await waitFor(1000);
+  await textEdit(page).newLineAt(8);
+  await typeAndEnter(
+    page,
+    `"start-devnet": "yarn run copy-devnet-config & vite dev",`
+  );
+  await humanType(
+    page,
+    `"copy-devnet-config": "cp ./src/config/config.devnet.ts ./src/config/index.ts",`
+  );
+  // format
+  await page.waitForTimeout(500);
+  await page.keyboard.press("Alt+Shift+f");
 
-  //   // Update lib/sdk-dapp/index.ts
-  //   await createNewFile(page, "src/lib/sdk-dapp/index.ts");
-  //   await createTypewriterMessage(page, "Updating SDK index file...");
-  //   await page.evaluate(() => {
-  //     navigator.clipboard.writeText(
-  //       `export * from './sdk-dapp.helpers';
-  // export * from './sdk-dapp.types';`
-  //     );
-  //   });
-  //   await page.keyboard.press("Meta+v");
-  //   await page.keyboard.press("Meta+s");
-  //   await waitFor(1000);
-
-  //   await createTypewriterMessage(page, "Done! 🎉");
+  await page.keyboard.press("Meta+s");
+  await waitFor(1000);
 
   console.log("Configs creation completed");
 }
