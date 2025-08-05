@@ -1,22 +1,61 @@
 import { Page } from "@playwright/test";
-import { terminal } from "../helpers";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { waitForStepCompletion } from "../../utils/progress-helper";
-import { basename } from "path";
+import { createNewFile, navigateToFile, waitFor } from "../helpers";
 
 export async function step05CreateAccountWidget(page: Page): Promise<void> {
-  await page.waitForTimeout(2000);
-
-  await createTypewriterMessage(page, "Creating the Account widget...");
+  await createTypewriterMessage(
+    page,
+    "Creating the Dashboard widgets folder..."
+  );
 
   await page.waitForTimeout(1000);
 
-  await terminal.show(page, "VIDEO_04");
+  await navigateToFile(page, "package.json");
 
-  await page.keyboard.type("./step_05_create_account_widget.sh");
-  await page.keyboard.press("Enter");
+  const widgetsFolder = "src/pages/Dashboard/widgets";
+  await createNewFile(page, widgetsFolder, Boolean(widgetsFolder));
+  await page.waitForTimeout(1000);
 
-  await waitForStepCompletion(page, basename(__filename, ".ts"));
+  // Create Account.tsx widget
+  await createTypewriterMessage(page, "Creating Account widget...");
+  await createNewFile(page, "src/pages/Dashboard/widgets/Account.tsx");
+
+  await createTypewriterMessage(page, "Paste Account widget content...");
+
+  await page.evaluate(() => {
+    navigator.clipboard.writeText(
+      `import { Label, OutputContainer } from 'components';
+
+export const Account = () => {
+  return (
+    <OutputContainer>
+      <div className='flex flex-col text-black' data-testid='topInfo'>
+        <p className='truncate'>
+          <Label>Address:</Label>
+          <span data-testid='accountAddress'> ACCOUNT.ADDRESS</span>
+        </p>
+
+        <p>
+          <Label>Shard: </Label> ACCOUNT.SHARD
+        </p>
+
+        <p>
+          <Label>Balance: </Label>
+          ACCOUNT.BALANCE
+        </p>
+      </div>
+    </OutputContainer>
+  );
+};`
+    );
+  });
+  await page.keyboard.press("Meta+v");
+  await page.keyboard.press("Meta+s");
+  await waitFor(1000);
+
+  await createTypewriterMessage(page, "Done! 🎉");
+
+  // ends with src/pages/Dashboard/widgets/Account.tsx, terminal closed
 
   console.log("Account widget creation completed");
 }

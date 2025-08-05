@@ -65,10 +65,6 @@ export async function step02CreateDashboardFolder(page: Page): Promise<void> {
   await page.keyboard.press("Meta+s");
   await waitFor(1000);
 
-  //   const widgetsFolder = "widgets";
-  //   await createNewFile(page, widgetsFolder, Boolean(widgetsFolder));
-  //   await page.waitForTimeout(1000);
-
   // Create components index.ts file
   await createTypewriterMessage(page, "Creating components index file...");
   await createNewFile(page, "index.ts");

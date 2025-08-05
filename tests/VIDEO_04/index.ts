@@ -24,14 +24,14 @@ export const video04steps = [
   //     description: "Install FontAwesome and classnames",
   //     function: step03InstallFontawesome,
   //   },
-  {
-    description: "Create helper components (Button, Label, OutputContainer)",
-    function: step04CreateHelperComponents,
-  },
   //   {
-  //     description: "Create the Account widget",
-  //     function: step05CreateAccountWidget,
+  //     description: "Create helper components (Button, Label, OutputContainer)",
+  //     function: step04CreateHelperComponents,
   //   },
+  {
+    description: "Create the Account widget",
+    function: step05CreateAccountWidget,
+  },
   //   {
   //     description: "Create the PingPongAbi widget",
   //     function: step06CreatePingpongWidget,
