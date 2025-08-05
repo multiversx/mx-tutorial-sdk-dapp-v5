@@ -10,56 +10,56 @@ import {
 import { humanType, typeAndEnter } from "../../utils/type-helper";
 
 export async function step01CreateConfigs(page: Page): Promise<void> {
-  //   await createTypewriterMessage(page, "🏗️ Building Dashboard with Widgets");
-  //   await page.waitForTimeout(2000);
+  await createTypewriterMessage(page, "🏗️ Building Dashboard with Widgets");
+  await page.waitForTimeout(2000);
 
-  //   await createTypewriterMessage(page, "Creating configs for our dApp...");
+  await createTypewriterMessage(page, "Creating configs for our dApp...");
 
-  //   await page.waitForTimeout(1000);
+  await page.waitForTimeout(1000);
 
-  // Create config directory
-  //   const configFolder = "config";
-  //   await createNewFile(page, configFolder, Boolean(configFolder));
-  //   await page.waitForTimeout(1000);
+  //   Create config directory
+  const configFolder = "config";
+  await createNewFile(page, configFolder, Boolean(configFolder));
+  await page.waitForTimeout(1000);
 
-  //   // Create config.devnet.ts
-  //   await createTypewriterMessage(page, "Creating devnet configuration...");
+  // Create config.devnet.ts
+  await createTypewriterMessage(page, "Creating devnet configuration...");
 
-  //   await createNewFile(page, "config/config.devnet.ts");
+  await createNewFile(page, "config/config.devnet.ts");
 
-  //   await typeAndEnter(
-  //     page,
-  //     `import { EnvironmentsEnum } from '@multiversx/sdk-dapp/out/types/enums.types';`
-  //   );
+  await typeAndEnter(
+    page,
+    `import { EnvironmentsEnum } from '@multiversx/sdk-dapp/out/types/enums.types';`
+  );
 
-  //   await createTypewriterMessage(
-  //     page,
-  //     "Paste contract address from clipboard..."
-  //   );
+  await createTypewriterMessage(
+    page,
+    "Paste contract address from clipboard..."
+  );
 
-  //   await page.keyboard.press("Enter");
+  await page.keyboard.press("Enter");
 
-  //   await page.evaluate(() => {
-  //     navigator.clipboard.writeText(
-  //       `export const contractAddress =
-  //     'erd1qqqqqqqqqqqqqpgqm6ad6xrsjvxlcdcffqe8w58trpec09ug9l5qde96pq';
-  //   export const environment = EnvironmentsEnum.devnet;`
-  //     );
-  //   });
-  //   await page.keyboard.press("Meta+v");
-  //   await page.keyboard.press("Meta+s");
-  //   await waitFor(1000);
+  await page.evaluate(() => {
+    navigator.clipboard.writeText(
+      `export const contractAddress =
+      'erd1qqqqqqqqqqqqqpgqm6ad6xrsjvxlcdcffqe8w58trpec09ug9l5qde96pq';
+    export const environment = EnvironmentsEnum.devnet;`
+    );
+  });
+  await page.keyboard.press("Meta+v");
+  await page.keyboard.press("Meta+s");
+  await waitFor(1000);
 
-  //   // Create config index.ts
-  //   await createTypewriterMessage(page, "Creating config index file...");
+  // Create config index.ts
+  await createTypewriterMessage(page, "Creating config index file...");
 
-  //   await createNewFile(page, "index.ts");
-  //   await humanType(page, "export * from './config.devnet';");
-  //   await page.keyboard.press("Meta+s");
-  //   await waitFor(1000);
+  await createNewFile(page, "index.ts");
+  await humanType(page, "export * from './config.devnet';");
+  await page.keyboard.press("Meta+s");
+  await waitFor(1000);
 
   // edit package.json
-  //   await createTypewriterMessage(page, "Adding new scripts to package.json...");
+  await createTypewriterMessage(page, "Adding new scripts to package.json...");
   await navigateToFile(page, "package.json");
   await terminal.hide(page);
   await waitFor(1000);
@@ -79,6 +79,8 @@ export async function step01CreateConfigs(page: Page): Promise<void> {
 
   await page.keyboard.press("Meta+s");
   await waitFor(1000);
+
+  // ends with package.json line 9, terminal closed
 
   console.log("Configs creation completed");
 }
