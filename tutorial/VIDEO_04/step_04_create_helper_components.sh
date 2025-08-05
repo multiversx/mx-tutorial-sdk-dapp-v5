@@ -16,18 +16,13 @@ EOF
 
 echo "Creating OutputContainer.tsx component..."
 cat > src/components/OutputContainer.tsx << 'EOF'
-import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
 
 export const OutputContainer = ({
   children,
-  className = 'p-4'
 }: PropsWithChildren) => (
   <div
-    className={classNames(
-      'text-sm border border-gray-200 rounded overflow-auto',
-      className
-    )}
+    className="text-sm border border-gray-200 rounded overflow-auto"
   >
     {children}
   </div>

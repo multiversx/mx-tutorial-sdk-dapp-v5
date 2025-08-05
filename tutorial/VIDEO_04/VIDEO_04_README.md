@@ -129,18 +129,13 @@ export const Label = ({ children }: PropsWithChildren) => {
 Add the following content to OutputContainer.tsx:
 
 ```tsx
-import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
 
 export const OutputContainer = ({
   children,
-  className = 'p-4'
 }: PropsWithChildren) => (
   <div
-    className={classNames(
-      'text-sm border border-gray-200 rounded overflow-auto',
-      className
-    )}
+    className="text-sm border border-gray-200 rounded overflow-auto"
   >
     {children}
   </div>
@@ -365,7 +360,7 @@ export const routes: RouteType[] = [
     children: [
       // Unlock page
     ]
-  },
+  }, 
   {
     path: RouteNamesEnum.dashboard,
     title: 'Dashboard',

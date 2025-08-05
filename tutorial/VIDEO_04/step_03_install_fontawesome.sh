@@ -1,4 +1,5 @@
 #!/bin/bash
+source "$(dirname "$0")/../helpers/type_command.sh"
 
 echo "=== Installing FontAwesome and classnames ==="
 
@@ -6,12 +7,7 @@ echo "=== Installing FontAwesome and classnames ==="
 cd ../../
 
 echo "Installing FontAwesome packages..."
-yarn add @fortawesome/fontawesome-svg-core
-yarn add @fortawesome/free-solid-svg-icons
-yarn add @fortawesome/react-fontawesome
-
-echo "Installing classnames..."
-yarn add classnames
+type_and_execute "yarn add classnames @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome"
 
 echo "✅ FontAwesome and classnames installed successfully!"
 echo "Done: step_03_install_fontawesome" >> progress.txt
