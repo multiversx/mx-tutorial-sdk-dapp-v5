@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 
-export async function openTutorialVideoTerminal(
+async function openTutorialVideoTerminal(
   page: Page,
   video: string
 ): Promise<void> {
@@ -15,3 +15,10 @@ export async function openTutorialVideoTerminal(
   );
   await page.keyboard.press("Enter");
 }
+
+export const terminal = {
+  hide: async (page: Page) => {
+    await page.keyboard.press("Control+Meta+h");
+  },
+  show: openTutorialVideoTerminal,
+};

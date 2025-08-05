@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { openTutorialVideoTerminal } from "../helpers/openTutorialVideoTerminal";
+import { terminal } from "../helpers";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { waitForStepCompletion } from "../../utils/progress-helper";
 import { basename } from "path";
@@ -20,7 +20,7 @@ export async function step01InstallReactRouterDom(page: Page): Promise<void> {
 
   await page.waitForTimeout(1000);
 
-  await openTutorialVideoTerminal(page, "VIDEO_02");
+  await terminal.show(page, "VIDEO_02");
 
   await page.keyboard.type("./step_01_install_react_router_dom.sh");
   await page.keyboard.press("Enter");

@@ -1,13 +1,11 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { typeAndEnter, humanType } from "../../utils/type-helper";
-import { createNewFile } from "../helpers/createNewFile";
-import { waitFor } from "../helpers/waitFor";
-import { navigateToFile } from "../helpers/navigateToFile";
+import { createNewFile, navigateToFile, terminal, waitFor } from "../helpers";
 
 export async function step05AddTailwindConfig(page: Page): Promise<void> {
   await page.keyboard.press("Enter");
-  await page.keyboard.press("Control+Meta+h");
+  await terminal.hide(page);
 
   await createNewFile(page, "src/tailwind.css");
 

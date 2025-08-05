@@ -1,7 +1,6 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { createNewFile } from "../helpers/createNewFile";
-import { navigateToFile } from "../helpers/navigateToFile";
+import { createNewFile, navigateToFile } from "../helpers";
 
 export async function step03CreateRoutesFolder(page: Page): Promise<void> {
   await page.waitForTimeout(2000);

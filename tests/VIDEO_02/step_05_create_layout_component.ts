@@ -1,9 +1,8 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { createNewFile } from "../helpers/createNewFile";
-import { waitFor } from "../helpers/waitFor";
+import { createNewFile, waitFor } from "../helpers";
 import { humanType } from "../../utils/type-helper";
-import { navigateToFile } from "../helpers/navigateToFile";
+import { navigateToFile } from "../helpers";
 
 export async function step05CreateLayoutComponent(page: Page): Promise<void> {
   await page.waitForTimeout(2000);

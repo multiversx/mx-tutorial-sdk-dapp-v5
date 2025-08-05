@@ -1,7 +1,6 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { waitFor } from "../helpers/waitFor";
-import { navigateToFile } from "../helpers/navigateToFile";
+import { navigateToFile, terminal, waitFor } from "../helpers";
 
 export async function step12ConfigureEslintConfig(page: Page): Promise<void> {
   // Display starting message with typewriter effect
@@ -13,7 +12,7 @@ export async function step12ConfigureEslintConfig(page: Page): Promise<void> {
   await navigateToFile(page, "eslint.config.js");
 
   // minimize the terminal (add to keybindings if necessary)
-  await page.keyboard.press("Control+Meta+h");
+  await terminal.hide(page);
 
   await createTypewriterMessage(
     page,

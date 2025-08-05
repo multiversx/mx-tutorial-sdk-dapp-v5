@@ -1,7 +1,6 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { navigateToFile } from "../helpers/navigateToFile";
-import { waitFor } from "../helpers/waitFor";
+import { navigateToFile, terminal, waitFor } from "../helpers";
 
 export async function step06UpdateApp(page: Page): Promise<void> {
   await page.waitForTimeout(2000);
@@ -16,7 +15,7 @@ export async function step06UpdateApp(page: Page): Promise<void> {
   await navigateToFile(page, "App.tsx");
 
   // minimize the terminal
-  await page.keyboard.press("Control+Meta+h");
+  await terminal.hide(page);
 
   await waitFor(1000);
   await page.keyboard.press("Meta+a");

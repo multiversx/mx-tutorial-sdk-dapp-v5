@@ -1,11 +1,12 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { createNewFile } from "../helpers/createNewFile";
-import { waitFor } from "../helpers/waitFor";
+import { createNewFile, terminal, waitFor } from "../helpers";
 
 export async function step06AddPostcssConfig(page: Page): Promise<void> {
   // Display starting message with typewriter effect
   await createTypewriterMessage(page, "Creating PostCSS configuration file...");
+
+  await terminal.hide(page);
 
   await createNewFile(page, "../postcss.config.js");
 

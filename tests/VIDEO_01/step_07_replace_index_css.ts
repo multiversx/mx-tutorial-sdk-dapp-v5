@@ -1,11 +1,12 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { navigateToFile } from "../helpers/navigateToFile";
-import { waitFor } from "../helpers/waitFor";
+import { navigateToFile, terminal, waitFor } from "../helpers";
 
 export async function step07ReplaceIndexCss(page: Page): Promise<void> {
   // Display starting message with typewriter effect
   await createTypewriterMessage(page, "Replacing index.css contents...");
+
+  await terminal.hide(page);
 
   await navigateToFile(page, "src/index.css");
   await waitFor(500);

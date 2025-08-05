@@ -1,19 +1,17 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { waitFor } from "../helpers/waitFor";
-import { navigateToFile } from "../helpers/navigateToFile";
-import { openTutorialVideoTerminal } from "../helpers/openTutorialVideoTerminal";
+import { navigateToFile, terminal, waitFor } from "../helpers";
 import { typeAndEnter } from "../../utils/type-helper";
 
 export async function step15ConfigureTsconfig(page: Page): Promise<void> {
   await createTypewriterMessage(page, "Removing unused tsconfig files...");
 
-  await openTutorialVideoTerminal(page, "VIDEO_01");
+  await terminal.show(page, "VIDEO_01");
 
   await typeAndEnter(page, "../../");
   await typeAndEnter(page, "rm -f tsconfig.app.json tsconfig.node.json");
 
-  await page.keyboard.press("Control+Meta+h");
+  await terminal.hide(page);
 
   await createTypewriterMessage(
     page,

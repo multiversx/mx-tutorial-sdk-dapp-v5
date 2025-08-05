@@ -1,13 +1,12 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { waitFor } from "../helpers/waitFor";
-import { navigateToFile } from "../helpers/navigateToFile";
+import { navigateToFile, terminal, waitFor } from "../helpers";
 
 export async function step14ConfigureViteConfig(page: Page): Promise<void> {
   // Display starting message with typewriter effect
   await createTypewriterMessage(page, "Editing Vite configuration file...");
 
-  await page.keyboard.press("Control+Meta+h");
+  await terminal.hide(page);
 
   await navigateToFile(page, "vite.config.ts");
 

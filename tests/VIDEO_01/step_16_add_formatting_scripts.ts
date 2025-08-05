@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { navigateToFile } from "../helpers/navigateToFile";
+import { navigateToFile, terminal } from "../helpers";
 import { typeAndEnter } from "../../utils/type-helper";
 
 export async function step16AddFormattingScripts(page: Page): Promise<void> {
@@ -11,7 +11,7 @@ export async function step16AddFormattingScripts(page: Page): Promise<void> {
   );
 
   await navigateToFile(page, "package.json");
-  await page.keyboard.press("Control+Meta+h");
+  await terminal.hide(page);
 
   await page.waitForTimeout(2000);
 

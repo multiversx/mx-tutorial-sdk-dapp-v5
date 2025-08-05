@@ -1,7 +1,6 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { createNewFile } from "../helpers/createNewFile";
-import { waitFor } from "../helpers/waitFor";
+import { createNewFile, waitFor } from "../helpers";
 import { humanType } from "../../utils/type-helper";
 
 export async function step02CreateHomePage(page: Page): Promise<void> {

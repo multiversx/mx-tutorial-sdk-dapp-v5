@@ -1,7 +1,6 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { openTutorialVideoTerminal } from "../helpers/openTutorialVideoTerminal";
-import { clickLocator } from "../helpers/clickLocator";
+import { terminal, clickLocator } from "../helpers";
 import { waitForStepCompletion } from "../../utils/progress-helper";
 import { basename } from "path";
 
@@ -9,7 +8,7 @@ export async function step02InstallDependencies(page: Page): Promise<void> {
   // Display starting message with typewriter effect
   await createTypewriterMessage(page, "Inspecting package.json file");
   // minimize terminal
-  await page.keyboard.press("Control+Meta+h");
+  await terminal.hide(page);
   await page.waitForTimeout(2000);
 
   // smoothly move to package.json (visual mouse is auto-injected and removed)
@@ -22,7 +21,7 @@ export async function step02InstallDependencies(page: Page): Promise<void> {
   await page.waitForTimeout(2000);
 
   // open install dependencies script
-  await openTutorialVideoTerminal(page, "VIDEO_01");
+  await terminal.show(page, "VIDEO_01");
   await page.keyboard.type("./step_02_install_dependencies.sh");
   await page.keyboard.press("Enter");
   await waitForStepCompletion(page, basename(__filename, ".ts"));
