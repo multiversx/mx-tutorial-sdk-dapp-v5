@@ -3,7 +3,7 @@
 # Source the typing function
 source "$(dirname "$0")/../helpers/type_command.sh"
 
-echo "=== Step 18: Check if the project is running ==="
+echo "=== Check if the project is running ==="
 
 cd ../../
 
@@ -13,4 +13,3 @@ type_and_execute "yarn dev"
 echo "✅ Development server started successfully!"
 
 echo "Done: step_18_start_dev_server" >> progress.txt
-echo "🎉 Video 1 setup completed! The project should now be running on http://localhost:3000" 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 16: Add formatting scripts ==="
+echo "=== Add formatting scripts ==="
 
 cd ../../
 
@@ -25,4 +25,3 @@ else
 fi
 
 echo "Done: step_16_add_formatting_scripts" >> progress.txt
-echo "Next: Run './step_17_run_lint.sh'" 

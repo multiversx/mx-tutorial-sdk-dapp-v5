@@ -3,7 +3,7 @@
 # Source the typing function
 source "$(dirname "$0")/../helpers/type_command.sh"
 
-echo "=== Step 4: Install Tailwind CSS ==="
+echo "=== Install Tailwind CSS ==="
 
 cd ../../
 
@@ -15,4 +15,3 @@ type_and_execute "yarn add -D @tailwindcss/vite @tailwindcss/postcss @tailwindcs
 echo "✅ Tailwind CSS installed successfully!"
 
 echo "Done: step_04_install_tailwind" >> progress.txt
-echo "Next: Run './step_05_add_tailwind_config.sh'" 

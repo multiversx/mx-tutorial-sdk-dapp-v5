@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 5: Create a Layout component ==="
+echo "=== Create a Layout component ==="
 
 # Navigate to root directory
 cd ../../
@@ -37,10 +37,5 @@ export * from './Layout';
 EOF
 
 echo "✅ Layout component created successfully!"
-echo ""
-echo "Created files:"
-echo "  - src/components/Layout/Layout.tsx: Main layout component"
-echo "  - src/components/Layout/index.ts: Layout barrel export"
-echo "  - src/components/index.ts: Components barrel export"
-echo ""
-echo "Next: Run './step_06_update_app.sh'"  
+
+echo "Done: step_05_create_layout_component" >> progress.txt

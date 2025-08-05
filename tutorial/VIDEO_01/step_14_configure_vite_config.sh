@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 14: Configure vite.config.ts ==="
+echo "=== Configure vite.config.ts ==="
 
 cd ../../
 
@@ -54,4 +54,3 @@ EOF
 echo "✅ vite.config.ts configured successfully!"
 
 echo "Done: step_14_configure_vite_config" >> progress.txt
-echo "Next: Run './step_15_configure_tsconfig.sh'" 

@@ -3,7 +3,7 @@
 # Source the typing function
 source "$(dirname "$0")/../helpers/type_command.sh"
 
-echo "=== Step 3: Initialize git repository & create first commit ==="
+echo "=== Initialize git repository & create first commit ==="
 
 cd ../../
 
@@ -15,4 +15,3 @@ type_and_execute "git commit -m \"01. Initial commit\""
 echo "✅ Git repository initialized and first commit created!"
 
 echo "Done: step_03_initialize_git" >> progress.txt
-echo "Next: step_04_install_tailwind.sh" 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 7: Run lint again to fix the errors ==="
+echo "=== Run lint again to fix the errors ==="
 
 # Navigate to root directory
 cd ../../

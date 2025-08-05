@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 2: Creating the pages folder and the Home page ==="
+echo "=== Creating the pages folder and the Home page ==="
 
 # Navigate to root directory
 cd ../../
@@ -62,4 +62,5 @@ echo "Created files:"
 echo "  - src/pages/Home.tsx: Main home page component"
 echo "  - src/pages/index.ts: Pages barrel export"
 echo ""
-echo "Next: Run './step_03_create_routes_folder.sh'"  
+
+echo "Done: step_02_create_home_page" >> progress.txt

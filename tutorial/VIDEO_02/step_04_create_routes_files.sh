@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 4: Create the index.ts file under /src/routes ==="
+echo "=== Create the index.ts file under /src/routes ==="
 
 # Navigate to root directory
 cd ../../
@@ -47,4 +47,5 @@ echo "Created files:"
 echo "  - src/routes/routes.ts: Routes configuration"
 echo "  - src/routes/index.ts: Routes barrel export"
 echo ""
-echo "Next: Run './step_05_create_layout_component.sh'"  
+
+echo "Done: step_04_create_routes_files" >> progress.txt

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 2: Creating lib folder structure for SDK re-exports ==="
+echo "=== Creating lib folder structure for SDK re-exports ===" 
 
 # Navigate to root directory
 cd ../../
@@ -24,10 +24,5 @@ export * from './sdk-dapp';
 EOF
 
 echo "✅ Lib folder structure created successfully!"
-echo ""
-echo "Created structure:"
-echo "  - src/lib/"
-echo "  - src/lib/sdk-dapp/"
-echo "  - src/lib/sdk-dapp/sdk-dapp.helpers.ts"
-echo "  - src/lib/sdk-dapp/index.ts"
-echo "  - src/lib/index.ts" 
+
+echo "Done: step_02_create_lib_structure" >> progress.txt

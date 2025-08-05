@@ -14,8 +14,8 @@
 ## 2. Setup filming:
 
 1. Start a Chrome browser with remote debugging enabled
-2. Install code-server and navigate to the project folder
-3. Install the browser instance as a PWA so URL is hidden when filming
+2. Install code-server open it in the terminaland navigate to the local project folder
+3. Install the browser instance of code-server as a PWA so URL is hidden when filming
 4. Make sure code-server PWA is running when filming
 
 ## 3. Filming:

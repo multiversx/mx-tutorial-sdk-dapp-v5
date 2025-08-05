@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 6: Update the App.tsx file ==="
+echo "=== Update the App.tsx file ==="
 
 # Navigate to root directory
 cd ../../
@@ -39,10 +39,5 @@ export default function App() {
 EOF
 
 echo "✅ App.tsx updated successfully!"
-echo ""
-echo "Updated files:"
-echo "  - src/App.tsx: Main app component with routing"
-echo ""
-echo "🎉 Basic app structure with routing is now complete!"
-echo ""
-echo "Next: Run './step_07_run_lint.sh'"
+
+echo "Done: step_06_update_app" >> progress.txt

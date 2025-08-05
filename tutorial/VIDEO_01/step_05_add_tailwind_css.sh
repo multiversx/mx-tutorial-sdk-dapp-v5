@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 5: Add tailwind.config.js ==="
+echo "=== Add tailwind.config.js ==="
 
 cd ../../
 
@@ -32,4 +32,3 @@ EOF
 echo "✅ tailwind.config.js created successfully!"
 
 echo "Done: step_05_add_tailwind_config" >> progress.txt
-echo "Next: Run './step_06_add_postcss_config.sh'" 
