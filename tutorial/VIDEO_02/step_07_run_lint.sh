@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Source the typing function
+source "$(dirname "$0")/../helpers/type_command.sh"
+
 echo "=== Run lint again to fix the errors ==="
 
 # Navigate to root directory

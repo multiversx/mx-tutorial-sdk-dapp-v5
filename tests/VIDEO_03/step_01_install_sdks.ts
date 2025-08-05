@@ -24,5 +24,9 @@ export async function step01InstallSdks(page: Page): Promise<void> {
 
   await waitForStepCompletion(page, basename(__filename, ".ts"));
 
+  await createTypewriterMessage(page, "✅ MultiversX SDK Setup completed");
+
+  // State: App.tsx opened with focused terminal
+
   console.log("MultiversX SDK installation completed");
 }

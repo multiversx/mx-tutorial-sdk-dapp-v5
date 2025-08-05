@@ -11,11 +11,10 @@ echo ""
 # Define step descriptions for better output
 declare -A step_descriptions=(
     [1]="Install MultiversX SDK packages"
-    [2]="Create lib folder structure"
 )
 
 # Loop through steps
-for step in {1..2}; do
+for step in {1..1}; do
     step_file="step_$(printf "%02d" $step)_*.sh"
     
     # Find the exact step file
@@ -41,6 +40,6 @@ for step in {1..2}; do
     echo ""
 done
 
-echo "🎉 All 2 steps completed successfully!"
+echo "🎉 All 1 steps completed successfully!"
 echo ""
 echo "You can now start building your MultiversX dApp!" 

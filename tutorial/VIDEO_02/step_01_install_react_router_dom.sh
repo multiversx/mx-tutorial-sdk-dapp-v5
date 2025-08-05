@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Source the typing function
+source "$(dirname "$0")/../helpers/type_command.sh"
+
 echo "=== Installing react-router-dom ==="
 
 # Navigate to root directory
