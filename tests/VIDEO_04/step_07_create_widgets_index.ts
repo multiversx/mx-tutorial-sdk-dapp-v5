@@ -1,22 +1,27 @@
 import { Page } from "@playwright/test";
-import { terminal } from "../helpers";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { waitForStepCompletion } from "../../utils/progress-helper";
-import { basename } from "path";
+import { createNewFile, waitFor } from "../helpers";
 
 export async function step07CreateWidgetsIndex(page: Page): Promise<void> {
-  await page.waitForTimeout(2000);
+  await createTypewriterMessage(page, "Creating widgets index.ts file...");
+  await createNewFile(page, "index.ts");
+  await waitFor(1000);
 
-  await createTypewriterMessage(page, "Creating widgets index file...");
+  await createTypewriterMessage(page, "Paste widgets index content...");
 
-  await page.waitForTimeout(1000);
+  await page.evaluate(() => {
+    navigator.clipboard.writeText(
+      `export * from './Account';
+export * from './PingPongAbi';`
+    );
+  });
+  await page.keyboard.press("Meta+v");
+  await page.keyboard.press("Meta+s");
+  await waitFor(1000);
 
-  await terminal.show(page, "VIDEO_04");
+  await createTypewriterMessage(page, "Done! 🎉");
 
-  await page.keyboard.type("./step_07_create_widgets_index.sh");
-  await page.keyboard.press("Enter");
-
-  await waitForStepCompletion(page, basename(__filename, ".ts"));
+  // ends with src/pages/Dashboard/widgets/index.ts, terminal closed
 
   console.log("Widgets index file creation completed");
 }

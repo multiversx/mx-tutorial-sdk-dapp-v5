@@ -1,22 +1,33 @@
 import { Page } from "@playwright/test";
-import { terminal } from "../helpers";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { waitForStepCompletion } from "../../utils/progress-helper";
-import { basename } from "path";
+import { createNewFile, navigateToFile, textEdit, waitFor } from "../helpers";
+import { humanType } from "../../utils/type-helper";
 
 export async function step09ExportDashboard(page: Page): Promise<void> {
-  await page.waitForTimeout(2000);
+  await createTypewriterMessage(page, "Creating Dashboard index.ts file...");
+  await createNewFile(page, "index.ts");
+  await waitFor(1000);
 
-  await createTypewriterMessage(page, "Exporting the Dashboard page...");
+  await createTypewriterMessage(page, "Export Dashboard page...");
 
-  await page.waitForTimeout(1000);
+  await humanType(page, "export * from './Dashboard';");
+  await page.keyboard.press("Meta+s");
+  await waitFor(1000);
 
-  await terminal.show(page, "VIDEO_04");
+  // Update pages index.ts file
+  await createTypewriterMessage(page, "Updating pages index.ts file...");
+  await navigateToFile(page, "src/pages/index.ts");
+  await waitFor(1000);
 
-  await page.keyboard.type("./step_09_export_dashboard.sh");
-  await page.keyboard.press("Enter");
+  await textEdit(page).newLineAt(1);
 
-  await waitForStepCompletion(page, basename(__filename, ".ts"));
+  await humanType(page, "export * from './Dashboard';");
+  await page.keyboard.press("Meta+s");
+  await waitFor(1000);
+
+  await createTypewriterMessage(page, "Done! 🎉");
+
+  // ends with Dashboard exports created, terminal closed
 
   console.log("Dashboard page export completed");
 }
