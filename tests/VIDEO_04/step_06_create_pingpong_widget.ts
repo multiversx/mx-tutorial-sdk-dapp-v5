@@ -3,12 +3,11 @@ import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { createNewFile, waitFor } from "../helpers";
 
 export async function step06CreatePingpongWidget(page: Page): Promise<void> {
-  await createTypewriterMessage(page, "Creating the PingPongAbi widget...");
-
-  // Create PingPongAbi.tsx widget
   await createTypewriterMessage(page, "Creating PingPongAbi widget...");
   await createNewFile(page, "PingPongAbi.tsx");
   await waitFor(1000);
+
+  await createTypewriterMessage(page, "Paste PingPongAbi content...");
 
   await page.evaluate(() => {
     navigator.clipboard.writeText(

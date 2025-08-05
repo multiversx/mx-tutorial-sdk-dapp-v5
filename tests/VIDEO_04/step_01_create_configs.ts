@@ -47,6 +47,12 @@ export async function step01CreateConfigs(page: Page): Promise<void> {
     );
   });
   await page.keyboard.press("Meta+v");
+  await page.waitForTimeout(500);
+
+  // format file
+  await page.keyboard.press("Alt+Shift+f");
+  await page.waitForTimeout(500);
+
   await page.keyboard.press("Meta+s");
   await waitFor(1000);
 

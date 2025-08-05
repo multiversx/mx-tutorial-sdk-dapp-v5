@@ -9,7 +9,7 @@ echo "=== Running lint ==="
 cd ../../
 
 echo "Running ESLint with auto-fix..."
-type_and_execute "yarn lint --fix"
+type_and_execute "yarn lint"
 
 echo "✅ Linting completed successfully!"
 

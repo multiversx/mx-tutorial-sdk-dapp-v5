@@ -1,22 +1,65 @@
 import { Page } from "@playwright/test";
-import { terminal } from "../helpers";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { waitForStepCompletion } from "../../utils/progress-helper";
-import { basename } from "path";
+import { navigateToFile, textEdit, waitFor } from "../helpers";
+import { humanType, typeAndEnter } from "../../utils/type-helper";
 
 export async function step10UpdateRoutes(page: Page): Promise<void> {
-  await page.waitForTimeout(2000);
-
   await createTypewriterMessage(page, "Updating the routes configuration...");
 
-  await page.waitForTimeout(1000);
+  await navigateToFile(page, "routes.ts");
+  await waitFor(1000);
 
-  await terminal.show(page, "VIDEO_04");
+  await createTypewriterMessage(page, "Import Dashboard component...");
 
-  await page.keyboard.type("./step_10_update_routes.sh");
-  await page.keyboard.press("Enter");
+  await textEdit(page).goToLine(1);
+  await waitFor(500);
 
-  await waitForStepCompletion(page, basename(__filename, ".ts"));
+  await page.keyboard.press("Alt+ArrowRight");
+  await waitFor(500);
+
+  await page.keyboard.press("Alt+ArrowRight");
+  await waitFor(500);
+
+  await page.keyboard.press("Alt+ArrowRight");
+  await waitFor(500);
+
+  await typeAndEnter(page, `, Dashboard`);
+
+  await createTypewriterMessage(page, "Add dashboard route...");
+
+  await textEdit(page).goToEndOfLine(4);
+
+  await typeAndEnter(page, `,`);
+
+  await humanType(page, `dashboard = '/dashboard',`);
+
+  await textEdit(page).goToLine(27);
+
+  await page.keyboard.press("Meta+ArrowRight");
+
+  await typeAndEnter(page, `,`);
+
+  await page.evaluate(() => {
+    navigator.clipboard.writeText(
+      `{
+    path: RouteNamesEnum.dashboard,
+    title: 'Dashboard',
+    component: Dashboard,
+    authenticatedRoute: true
+    }`
+    );
+  });
+  await page.keyboard.press("Meta+v");
+  await page.keyboard.press("Meta+s");
+  await waitFor(1000);
+
+  // format file
+  await page.keyboard.press("Alt+Shift+f");
+  await page.waitForTimeout(500);
+
+  await createTypewriterMessage(page, "Done! 🎉");
+
+  // ends with src/routes/routes.ts updated, terminal closed
 
   console.log("Routes configuration update completed");
 }
