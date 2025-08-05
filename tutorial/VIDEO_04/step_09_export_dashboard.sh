@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 9: Exporting the Dashboard page ==="
+echo "=== Exporting the Dashboard page ==="
 
 # Navigate to root directory
 cd ../../
@@ -16,9 +16,5 @@ export * from './Dashboard';
 EOF
 
 echo "✅ Dashboard exports created successfully!"
-echo ""
-echo "Created files:"
-echo "  - src/pages/Dashboard/index.ts: Dashboard barrel export"
-echo "  - Updated src/pages/index.ts"
-echo ""
-echo "Next: Run './step_10_update_routes.sh'" 
+
+echo "Done: step_09_export_dashboard" >> progress.txt

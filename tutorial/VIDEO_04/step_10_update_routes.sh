@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 10: Updating routes ==="
+echo "=== Updating routes ==="
 
 # Navigate to root directory
 cd ../../
@@ -45,8 +45,5 @@ export const routes: RouteType[] = [
 EOF
 
 echo "✅ Routes updated successfully!"
-echo ""
-echo "Updated files:"
-echo "  - src/routes/routes.ts: Added Dashboard route"
-echo ""
-echo "Next: Run './step_11_run_lint.sh'" 
+
+echo "Done: step_10_update_routes" >> progress.txt

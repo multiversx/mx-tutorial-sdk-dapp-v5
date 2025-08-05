@@ -6,6 +6,7 @@ import { saveVideo } from "playwright-video";
 import { video02steps } from "./VIDEO_02";
 import { video01steps } from "./VIDEO_01";
 import { video03steps } from "./VIDEO_03";
+import { video04steps } from "./VIDEO_04";
 
 // Set FFmpeg path for video recording
 process.env.FFMPEG_PATH = ffmpeg.path;
@@ -82,7 +83,8 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
     const steps = [
       // ...video01steps,
       // ...video02steps,
-      ...video03steps,
+      // ...video03steps,
+      ...video04steps,
     ];
 
     // Loop through all steps dynamically

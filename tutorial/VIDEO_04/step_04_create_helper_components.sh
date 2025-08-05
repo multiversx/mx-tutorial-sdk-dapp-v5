@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 4: Creating helper components ==="
+echo "=== Creating helper components ==="
 
 # Navigate to root directory
 cd ../../
@@ -78,11 +78,4 @@ export * from './Button';
 EOF
 
 echo "✅ Helper components created successfully!"
-echo ""
-echo "Created files:"
-echo "  - src/components/Label.tsx: Label component"
-echo "  - src/components/OutputContainer.tsx: Output container component"
-echo "  - src/components/Button.tsx: Button component"
-echo "  - Updated src/components/index.ts"
-echo ""
-echo "Next: Run './step_05_create_account_widget.sh'" 
+echo "Done: step_04_create_helper_components" >> progress.txt

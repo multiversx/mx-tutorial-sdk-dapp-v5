@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 5: Creating the Account widget ==="
+echo "=== Creating the Account widget ==="
 
 # Navigate to root directory
 cd ../../
@@ -33,8 +33,4 @@ export const Account = () => {
 EOF
 
 echo "✅ Account widget created successfully!"
-echo ""
-echo "Created files:"
-echo "  - src/pages/Dashboard/widgets/Account.tsx: Account information widget"
-echo ""
-echo "Next: Run './step_06_create_pingpong_widget.sh'" 
+echo "Done: step_05_create_account_widget" >> progress.txt

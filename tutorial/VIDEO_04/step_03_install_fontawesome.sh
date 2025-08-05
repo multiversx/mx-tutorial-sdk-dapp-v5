@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 3: Installing FontAwesome and classnames ==="
+echo "=== Installing FontAwesome and classnames ==="
 
 # Navigate to root directory
 cd ../../
@@ -14,11 +14,4 @@ echo "Installing classnames..."
 yarn add classnames
 
 echo "✅ FontAwesome and classnames installed successfully!"
-echo ""
-echo "Installed packages:"
-echo "  - @fortawesome/fontawesome-svg-core: FontAwesome core"
-echo "  - @fortawesome/free-solid-svg-icons: FontAwesome solid icons"
-echo "  - @fortawesome/react-fontawesome: FontAwesome React components"
-echo "  - classnames: Utility for conditionally joining classNames"
-echo ""
-echo "Next: Run './step_04_create_helper_components.sh'" 
+echo "Done: step_03_install_fontawesome" >> progress.txt

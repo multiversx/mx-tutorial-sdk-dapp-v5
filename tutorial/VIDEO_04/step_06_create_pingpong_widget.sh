@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 6: Creating the PingPongAbi widget ==="
+echo "=== Creating the PingPongAbi widget ==="
 
 # Navigate to root directory
 cd ../../
@@ -35,8 +35,4 @@ export const PingPongAbi = () => {
 EOF
 
 echo "✅ PingPongAbi widget created successfully!"
-echo ""
-echo "Created files:"
-echo "  - src/pages/Dashboard/widgets/PingPongAbi.tsx: Ping-Pong interaction widget"
-echo ""
-echo "Next: Run './step_07_create_widgets_index.sh'" 
+echo "Done: step_06_create_pingpong_widget" >> progress.txt

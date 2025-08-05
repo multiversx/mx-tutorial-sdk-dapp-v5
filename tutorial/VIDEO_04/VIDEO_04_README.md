@@ -18,7 +18,7 @@ touch src/config/index.ts
 Add the following content to config.devnet.ts
 
 ```ts
-import { EnvironmentsEnum } from 'lib';
+import { EnvironmentsEnum } from '@multiversx/sdk-dapp/out/types/enums.types';
 
 export const contractAddress =
   'erd1qqqqqqqqqqqqqpgqm6ad6xrsjvxlcdcffqe8w58trpec09ug9l5qde96pq';
@@ -30,19 +30,6 @@ We will add the following scripts to package.json:
 ```json
     "start-devnet": "yarn run copy-devnet-config & vite dev",
     "copy-devnet-config": "cp ./src/config/config.devnet.ts ./src/config/index.ts",
-```
-
-Create a new src/lib/sdk-dapp/sdk-dapp.types.ts file with the following content:
-
-```ts
-export { EnvironmentsEnum } from '@multiversx/sdk-dapp/out/types/enums.types';
-```
-
-Update the `src/lib/sdk-dapp/index.ts` file with the following content:
-
-```ts
-export * from './sdk-dapp.helpers';
-export * from './sdk-dapp.types';
 ```
 
 ### Step 2: Create the dashboard folder

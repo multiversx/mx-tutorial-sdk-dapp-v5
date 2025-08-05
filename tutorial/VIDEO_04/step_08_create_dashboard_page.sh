@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 8: Creating the Dashboard page ==="
+echo "=== Creating the Dashboard page ==="
 
 # Navigate to root directory
 cd ../../
@@ -39,8 +39,5 @@ export const Dashboard = () => {
 EOF
 
 echo "✅ Dashboard page created successfully!"
-echo ""
-echo "Created files:"
-echo "  - src/pages/Dashboard/Dashboard.tsx: Main dashboard page with widgets"
-echo ""
-echo "Next: Run './step_09_export_dashboard.sh'" 
+
+echo "Done: step_08_create_dashboard_page" >> progress.txt

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 2: Creating the dashboard folder ==="
+echo "=== Creating the dashboard folder ==="
 
 # Navigate to root directory
 cd ../../
@@ -54,12 +54,4 @@ export * from './Widget';
 EOF
 
 echo "✅ Dashboard folder structure created successfully!"
-echo ""
-echo "Created:"
-echo "  - src/pages/Dashboard/ directory"
-echo "  - src/pages/Dashboard/components/ directory"
-echo "  - src/pages/Dashboard/widgets/ directory"
-echo "  - src/pages/Dashboard/components/Widget.tsx: Widget wrapper component"
-echo "  - src/pages/Dashboard/components/index.ts: Components barrel export"
-echo ""
-echo "Next: Run './step_03_install_fontawesome.sh'" 
+echo "Done: step_02_create_dashboard_folder" >> progress.txt

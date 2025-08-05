@@ -1,14 +1,16 @@
 #!/bin/bash
 
-echo "=== Step 11: Running lint ==="
+# Source the typing function
+source "$(dirname "$0")/../helpers/type_command.sh"
+
+echo "=== Running lint ==="
 
 # Navigate to root directory
 cd ../../
 
 echo "Running ESLint with auto-fix..."
-yarn lint --fix
+type_and_execute "yarn lint --fix"
 
 echo "✅ Linting completed successfully!"
-echo ""
-echo "The code has been automatically formatted and linted."
-echo ""
+
+echo "Done: step_11_run_lint" >> progress.txt

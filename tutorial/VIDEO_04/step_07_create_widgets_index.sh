@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "=== Step 7: Creating widgets index file ==="
+echo "=== Creating widgets index file ==="
 
 # Navigate to root directory
 cd ../../
@@ -12,8 +12,5 @@ export * from './PingPongAbi';
 EOF
 
 echo "✅ Widgets index file created successfully!"
-echo ""
-echo "Created files:"
-echo "  - src/pages/Dashboard/widgets/index.ts: Widgets barrel export"
-echo ""
-echo "Next: Run './step_08_create_dashboard_page.sh'" 
+
+echo "Done: step_07_create_widgets_index" >> progress.txt
