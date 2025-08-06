@@ -60,6 +60,8 @@ export const Transactions = () => {
   await page.evaluate(() => {
     navigator.clipboard.writeText(`export * from './Transactions';`);
   });
+  await waitFor(500);
+
   await page.keyboard.press("Meta+v");
 
   await textEdit(page).formatFile();

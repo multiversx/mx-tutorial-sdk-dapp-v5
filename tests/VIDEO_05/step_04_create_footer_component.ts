@@ -28,6 +28,8 @@ export async function step04CreateFooterComponent(page: Page): Promise<void> {
 };`
     );
   });
+  await waitFor(500);
+
   await page.keyboard.press("Meta+v");
   await page.keyboard.press("Meta+s");
   await waitFor(1000);

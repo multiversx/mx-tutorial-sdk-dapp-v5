@@ -81,6 +81,8 @@ export async function step02CreateUnlockPage(page: Page): Promise<void> {
       }`
     );
   });
+  await waitFor(500);
+
   await page.keyboard.press("Meta+v");
 
   // format the file

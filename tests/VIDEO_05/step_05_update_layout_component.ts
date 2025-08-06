@@ -17,6 +17,8 @@ export async function step05UpdateLayoutComponent(page: Page): Promise<void> {
       `import { Footer, Header } from './components';`
     );
   });
+  await waitFor(500);
+
   await page.keyboard.press("Meta+v");
   await waitFor(1000);
 

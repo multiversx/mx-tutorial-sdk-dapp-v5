@@ -67,6 +67,8 @@ export const Header = () => {
 };`
     );
   });
+  await waitFor(500);
+
   await page.keyboard.press("Meta+v");
   await textEdit(page).goToTopOfFile();
   await page.keyboard.press("Meta+s");
