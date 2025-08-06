@@ -14,14 +14,10 @@ export async function step10UpdateRoutes(page: Page): Promise<void> {
   await textEdit(page).goToLine(1);
   await waitFor(500);
 
-  await page.keyboard.press("Alt+ArrowRight");
-  await waitFor(500);
-
-  await page.keyboard.press("Alt+ArrowRight");
-  await waitFor(500);
-
-  await page.keyboard.press("Alt+ArrowRight");
-  await waitFor(500);
+  for (let index = 0; index < 4; index++) {
+    await page.keyboard.press("Alt+ArrowRight");
+    await waitFor(300);
+  }
 
   await typeAndEnter(page, `, Dashboard`);
 

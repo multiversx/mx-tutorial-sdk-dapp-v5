@@ -17,7 +17,16 @@ export const textEdit = (page: Page) => ({
   },
   goToEndOfLine: async function (line: number) {
     await this.goToLine(line);
+    await page.waitForTimeout(300);
     await page.keyboard.press("Meta+ArrowRight");
+    await page.waitForTimeout(500);
+  },
+  formatFile: async function () {
+    await page.keyboard.press("Alt+Shift+f");
+    await page.waitForTimeout(500);
+  },
+  goToTopOfFile: async function () {
+    await page.keyboard.press("Meta+ArrowUp");
     await page.waitForTimeout(500);
   },
 });

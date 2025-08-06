@@ -10,10 +10,9 @@ cat > src/pages/Dashboard/widgets/Transactions.tsx << 'EOF'
 import { OutputContainer } from 'components';
 
 export const Transactions = () => {
-  const isLoading = false; // TODO: Replace with the actual loading state
   const transactions = []; // TODO: Replace with the actual transactions
 
-  if (!isLoading && transactions.length === 0) {
+  if (transactions.length === 0) {
     return (
       <OutputContainer>
         <p className='text-gray-400'>No transactions found</p>
@@ -23,7 +22,7 @@ export const Transactions = () => {
 
   return (
     <div className='flex flex-col'>
-      <OutputContainer isLoading={isLoading} className='p-0'>
+      <OutputContainer className='p-0'>
         <div className='w-full h-full overflow-x-auto bg-white shadow rounded-lg'>
           {/* TODO: Add transactions table here */}
         </div>
