@@ -49,5 +49,7 @@ export async function step07UpdateDashboardPage(page: Page): Promise<void> {
     "✅ Dashboard page updated successfully!"
   );
 
+  // ends with src/pages/Dashboard.tsx updated, terminal closed
+
   console.log("Dashboard page update completed");
 }

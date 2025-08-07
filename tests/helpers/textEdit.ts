@@ -29,4 +29,9 @@ export const textEdit = (page: Page) => ({
     await page.keyboard.press("Meta+ArrowUp");
     await page.waitForTimeout(500);
   },
+  selectLine: async function (line: number) {
+    await this.goToLine(line);
+    await page.keyboard.press("Meta+Shift+ArrowRight");
+    await page.waitForTimeout(300);
+  },
 });

@@ -2,12 +2,13 @@ import { test } from "./fixtures/cdpContext";
 import { authenticateWithPassword } from "../utils/password-helper";
 import { chromium } from "@playwright/test";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
-import { saveVideo } from "playwright-video";
+// import { saveVideo } from "playwright-video";
 import { video02steps } from "./VIDEO_02";
 import { video01steps } from "./VIDEO_01";
 import { video03steps } from "./VIDEO_03";
 import { video04steps } from "./VIDEO_04";
 import { video05steps } from "./VIDEO_05";
+import { video06steps } from "./VIDEO_06";
 
 // Set FFmpeg path for video recording
 process.env.FFMPEG_PATH = ffmpeg.path;
@@ -64,10 +65,10 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
     const expectedUrl =
       "http://127.0.0.1:8080/?folder=/Users/tudor/Work/test/ping-pong-tutorial";
 
-    const capture = await saveVideo(
-      page,
-      "test-results/videos/video-recording.mp4"
-    );
+    // const capture = await saveVideo(
+    //   page,
+    //   "test-results/videos/video-recording.mp4"
+    // );
 
     if (currentUrl !== expectedUrl) {
       console.log("Navigating to code server instance...");
@@ -86,7 +87,8 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
       // ...video02steps,
       // ...video03steps,
       // ...video04steps,
-      ...video05steps,
+      // ...video05steps,
+      ...video06steps,
     ];
 
     // Loop through all steps dynamically
@@ -108,6 +110,6 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
     }
 
     console.log("Screen capture stopped");
-    await capture.stop();
+    // await capture.stop();
   });
 });
