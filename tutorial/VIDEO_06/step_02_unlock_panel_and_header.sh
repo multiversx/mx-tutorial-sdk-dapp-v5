@@ -50,4 +50,4 @@ echo "Updating Header.tsx file..."
 sed -i '' 's|navigate(RouteNamesEnum.dashboard); // TODO: replace with navigate(RouteNamesEnum.unlock);|navigate(RouteNamesEnum.unlock);|g' src/components/Header.tsx
 
 echo "✅ Header component updated successfully!"
-echo "Done: step_02_unlock_panel" >> progress.txt
+echo "Done: step_02_unlock_panel_and_header" >> progress.txt

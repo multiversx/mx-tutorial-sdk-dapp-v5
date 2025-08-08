@@ -140,7 +140,7 @@ export async function step02UnlockPanelAndHeader(page: Page): Promise<void> {
     "✅ Header component updated successfully!"
   );
 
-  // ends with both Unlock and Header components updated, terminal closed
+  // ends Header components updated, terminal closed
 
   console.log("Unlock panel and Header navigation update completed");
 }
