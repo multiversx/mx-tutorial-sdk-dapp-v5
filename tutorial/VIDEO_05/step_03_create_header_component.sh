@@ -25,7 +25,7 @@ export const Header = () => {
   };
 
   return (
-    <header className='flex flex-row align-center justify-between pl-6 pr-6 pt-6'>
+    <header className='flex flex-row align-center justify-between pl-6 pr-6 pt-6 ml-auto'>
       <nav className='h-full w-full text-sm sm:relative sm:left-auto sm:top-auto sm:flex sm:w-auto sm:flex-row sm:justify-end sm:bg-transparent'>
         <div className='flex justify-end container mx-auto items-center gap-2'>
           <div className='flex gap-1 items-center'>
