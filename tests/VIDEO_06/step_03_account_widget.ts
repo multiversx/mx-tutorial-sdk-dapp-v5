@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { createNewFile, navigateToFile, textEdit, waitFor } from "../helpers";
-import { humanType, typeAndEnter } from "../../utils/type-helper";
+import { typeAndEnter } from "../../utils/type-helper";
 
 export async function step03AccountWidget(page: Page): Promise<void> {
   await createTypewriterMessage(page, "Preparing to update Account widget...");
@@ -59,6 +59,8 @@ export async function step03AccountWidget(page: Page): Promise<void> {
     );
   };`
   );
+
+  await textEdit(page).goToTopOfFile();
 
   await page.keyboard.press("Meta+s");
   await waitFor(1000);
@@ -132,7 +134,7 @@ export async function step03AccountWidget(page: Page): Promise<void> {
 
   await textEdit(page).formatFile();
 
-  await humanType(page, `<FormatAmount value={balance} />`);
+  await textEdit(page).pasteText(`<FormatAmount value={balance} />`);
 
   await waitFor(1000);
 
