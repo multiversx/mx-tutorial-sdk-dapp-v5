@@ -19,7 +19,7 @@ export async function step02UnlockPanelAndHeader(page: Page): Promise<void> {
   await page.evaluate(() => {
     navigator.clipboard.writeText(
       `import { UnlockPanelManager } from '@multiversx/sdk-dapp/out/managers/UnlockPanelManager';
-import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/out/react/account/useGetIsLoggedIn';`
+  import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/out/react/account/useGetIsLoggedIn';`
     );
   });
   await waitFor(300);
@@ -45,17 +45,17 @@ import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/out/react/account/useGetI
   await page.evaluate(() => {
     navigator.clipboard.writeText(
       `  const unlockPanelManager = UnlockPanelManager.init({
-    loginHandler: () => {
-      navigate(RouteNamesEnum.dashboard);
-    },
-    onClose: () => {
-      navigate(RouteNamesEnum.home);
-    }
-  });
+      loginHandler: () => {
+        navigate(RouteNamesEnum.dashboard);
+      },
+      onClose: () => {
+        navigate(RouteNamesEnum.home);
+      }
+    });
 
-  const handleOpenUnlockPanel = () => {
-    unlockPanelManager.openUnlockPanel();
-  };`
+    const handleOpenUnlockPanel = () => {
+      unlockPanelManager.openUnlockPanel();
+    };`
     );
   });
   await waitFor(300);
@@ -84,37 +84,54 @@ import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/out/react/account/useGetI
   // Update Header component navigation
   await createTypewriterMessage(
     page,
-    "Updating Header component navigation..."
+    "Updating Header component with login and logout..."
   );
 
   await navigateToFile(page, "Header.tsx");
   await waitFor(1000);
+
+  await createTypewriterMessage(page, "Updating login state...");
+
+  await textEdit(page).newLineAt(1);
+
+  await textEdit(page).pasteText(
+    `import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/out/react/account/useGetIsLoggedIn';`
+  );
+
+  await textEdit(page).selectLine(8);
+
+  await textEdit(page).pasteText(`const isLoggedIn = useGetIsLoggedIn();`);
+
+  await page.keyboard.press("Meta+s");
+
+  await createTypewriterMessage(page, "Getting the account provider");
+
+  await textEdit(page).newLineAt(1);
+
+  await textEdit(page).pasteText(
+    `import { getAccountProvider } from '@multiversx/sdk-dapp/out/providers/helpers/accountProvider';`
+  );
+
+  await textEdit(page).newLineAt(11);
+
+  await textEdit(page).pasteText(`const provider = getAccountProvider();`);
+
+  await textEdit(page).selectLine(14);
+
+  await textEdit(page).pasteText(`await provider.logout();`);
+
+  await page.keyboard.press("Meta+s");
 
   await createTypewriterMessage(
     page,
     "Replacing navigation to unlock route..."
   );
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(`navigate(RouteNamesEnum.unlock);`);
-  });
-  await waitFor(300);
-
   // Find and replace the TODO line
-  await textEdit(page).selectLine(36);
+  await textEdit(page).selectLine(39);
   await waitFor(1000);
 
-  await page.keyboard.press("Meta+v");
-
-  await waitFor(300);
-
-  await textEdit(page).formatFile();
-
-  await waitFor(300);
-
-  await textEdit(page).formatFile();
-
-  await waitFor(300);
+  await textEdit(page).pasteText(`navigate(RouteNamesEnum.unlock);`);
 
   await page.keyboard.press("Meta+s");
 
