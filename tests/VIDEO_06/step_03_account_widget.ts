@@ -52,7 +52,7 @@ export async function step03AccountWidget(page: Page): Promise<void> {
         dataTestId={props['data-testid']}
         isValid={isValid}
         label={label}
-        showLabel={props.showLabel}
+        showLabel
         valueDecimal={valueDecimal}
         valueInteger={valueInteger}
       />
@@ -145,7 +145,7 @@ export async function step03AccountWidget(page: Page): Promise<void> {
     "✅ Account widget updated successfully!"
   );
 
-  // ends with FormatAmount.tsx, index.ts, and Account.tsx updated, terminal closed
+  // ends with Account.tsx updated, terminal closed
 
   console.log(
     "FormatAmount component, components index, and Account widget update completed"

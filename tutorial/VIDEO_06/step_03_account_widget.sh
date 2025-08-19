@@ -39,7 +39,7 @@ export const FormatAmount = (props: IFormatAmountProps) => {
       dataTestId={props['data-testid']}
       isValid={isValid}
       label={label}
-      showLabel={props.showLabel}
+      showLabel
       valueDecimal={valueDecimal}
       valueInteger={valueInteger}
     />

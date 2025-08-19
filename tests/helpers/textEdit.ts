@@ -42,5 +42,6 @@ export const textEdit = (page: Page) => ({
     await waitFor(300);
     await page.keyboard.press("Meta+v");
     await waitFor(300);
+    await this.formatFile();
   },
 });
