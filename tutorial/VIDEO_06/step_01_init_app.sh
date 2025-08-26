@@ -20,7 +20,8 @@ import './tailwind.css';
 const config: InitAppType = {
   storage: { getStorageCallback: () => localStorage },
   dAppConfig: {
-    environment: EnvironmentsEnum.devnet
+    environment: EnvironmentsEnum.devnet,
+    theme: 'mvx:light-theme'
   }
 };
 
