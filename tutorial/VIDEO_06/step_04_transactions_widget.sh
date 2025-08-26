@@ -106,10 +106,8 @@ export const Transactions = () => {
   };
 
   useEffect(() => {
-    if (success) {
-      fetchTransactions();
-    }
-  }, [success]);
+    fetchTransactions();
+  }, []);
 
   if (transactions.length === 0) {
     return (

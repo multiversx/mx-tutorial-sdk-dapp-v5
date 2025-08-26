@@ -195,9 +195,7 @@ export async function step04TransactionsWidget(page: Page): Promise<void> {
     };
 
     useEffect(() => {
-      if (success) {
-        fetchTransactions();
-      }
+      fetchTransactions();
     }, [success]);
     `);
 
