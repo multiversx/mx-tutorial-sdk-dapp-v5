@@ -262,4 +262,6 @@ export async function step04TransactionsWidget(page: Page): Promise<void> {
   await waitFor(500);
 
   await createTypewriterMessage(page, "✅ Done");
+
+  // ends with Transactions.tsx updated, terminal closed
 }
