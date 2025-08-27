@@ -24,4 +24,4 @@ else
   exit 1
 fi
 
-echo "Done: step_16_add_formatting_scripts" >> progress.txt
+echo "Done: step_14_add_formatting_scripts" >> progress.txt

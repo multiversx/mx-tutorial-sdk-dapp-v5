@@ -15,4 +15,4 @@ EOF
 
 echo "✅ src/index.css updated successfully!"
 
-echo "Done: step_07_replace_index_css" >> progress.txt
+echo "Done: step_06_replace_index_css" >> progress.txt

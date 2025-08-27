@@ -9,7 +9,7 @@ echo "=== Installing MultiversX SDK and its dependencies ==="
 cd ../../
 
 echo "Installing @multiversx/sdk-dapp and related packages..."
-type_and_execute "yarn add @multiversx/sdk-dapp @multiversx/sdk-dapp-utils @multiversx/sdk-dapp-ui @multiversx/sdk-core bignumber.js axios moment"
+type_and_execute "yarn add @multiversx/sdk-dapp @multiversx/sdk-dapp-utils @multiversx/sdk-dapp-ui @multiversx/sdk-core bignumber.js axios moment protobufjs"
 
 echo "✅ MultiversX SDK packages installed successfully!"
 

@@ -20,4 +20,4 @@ EOF
 
 echo "✅ .prettierrc configured successfully!"
 
-echo "Done: step_11_configure_prettierrc" >> progress.txt
+echo "Done: step_09_configure_prettierrc" >> progress.txt

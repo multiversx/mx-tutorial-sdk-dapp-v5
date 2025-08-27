@@ -81,110 +81,43 @@ ls -la
 # echo "🎬 Starting video setup sequence..."
 # echo ""
 
-# VIDEO 1: Project Setup
-echo "===================="
-echo "🎬 VIDEO 1: Project Setup"
-echo "===================="
-cd tutorial/VIDEO_01
-if [[ -f "run_project_setup.sh" ]]; then
-    echo "Running VIDEO_01 setup..."
-    ./run_project_setup.sh
-    if [ $? -ne 0 ]; then
-        echo "❌ VIDEO_01 setup failed. Stopping."
-        exit 1
+# Define video setup information
+declare -A video_setups=(
+    [1]="Project Setup|run_project_setup.sh"
+    [2]="Prepare App|run_prepare_app.sh"
+    [3]="SDK Setup|run_sdk_setup.sh"
+    [4]="Create Dashboard|run_create_dashboard.sh"
+    [5]="Components Setup|run_components_setup.sh"
+    [6]="Widgets Setup|run_widgets_setup.sh"
+)
+
+# Loop through all videos
+for video_num in {1..6}; do
+    IFS='|' read -r video_name script_name <<< "${video_setups[$video_num]}"
+    
+    echo "===================="
+    echo "🎬 VIDEO $video_num: $video_name"
+    echo "===================="
+    
+    cd "tutorial/VIDEO_0$video_num"
+    
+    if [[ -f "$script_name" ]]; then
+        echo "Running VIDEO_0$video_num setup..."
+        ./"$script_name"
+        if [ $? -ne 0 ]; then
+            echo "❌ VIDEO_0$video_num setup failed. Stopping."
+            exit 1
+        fi
+        echo "✅ VIDEO_0$video_num completed successfully!"
+    else
+        echo "⚠️  VIDEO_0$video_num run script not found, skipping..."
     fi
-    echo "✅ VIDEO_01 completed successfully!"
-else
-    echo "⚠️  VIDEO_01 run script not found, skipping..."
-fi
-echo ""
-
-# Navigate back to root for next video
-cd ../../
-
-# VIDEO 2: Prepare App
-echo "===================="
-echo "🎬 VIDEO 2: Prepare App"
-echo "===================="
-cd tutorial/VIDEO_02
-if [[ -f "run_prepare_app.sh" ]]; then
-    echo "Running VIDEO_02 setup..."
-    ./run_prepare_app.sh
-    if [ $? -ne 0 ]; then
-        echo "❌ VIDEO_02 setup failed. Stopping."
-        exit 1
-    fi
-    echo "✅ VIDEO_02 completed successfully!"
-else
-    echo "⚠️  VIDEO_02 run script not found, skipping..."
-fi
-echo ""
-
-# Navigate back to root for next video
-cd ../../
-
-# VIDEO 3: SDK Setup
-echo "===================="
-echo "🎬 VIDEO 3: SDK Setup"
-echo "===================="
-cd tutorial/VIDEO_03
-if [[ -f "run_sdk_setup.sh" ]]; then
-    echo "Running VIDEO_03 setup..."
-    ./run_sdk_setup.sh
-    if [ $? -ne 0 ]; then
-        echo "❌ VIDEO_03 setup failed. Stopping."
-        exit 1
-    fi
-    echo "✅ VIDEO_03 completed successfully!"
-else
-    echo "⚠️  VIDEO_03 run script not found, skipping..."
-fi
-echo ""
-
-# Navigate back to root for next video
-cd ../../
-
-# VIDEO 4: Create Dashboard
-echo "===================="
-echo "🎬 VIDEO 4: Create Dashboard"
-echo "===================="
-cd tutorial/VIDEO_04
-if [[ -f "run_create_dashboard.sh" ]]; then
-    echo "Running VIDEO_04 setup..."
-    ./run_create_dashboard.sh
-    if [ $? -ne 0 ]; then
-        echo "❌ VIDEO_04 setup failed. Stopping."
-        exit 1
-    fi
-    echo "✅ VIDEO_04 completed successfully!"
-else
-    echo "⚠️  VIDEO_04 run script not found, skipping..."
-fi
-echo ""
-
-# Navigate back to root for next video
-cd ../../
-
-# VIDEO 5: Components Setup
-echo "===================="
-echo "🎬 VIDEO 5: Components Setup"
-echo "===================="
-cd tutorial/VIDEO_05
-if [[ -f "run_components_setup.sh" ]]; then
-    echo "Running VIDEO_05 setup..."
-    ./run_components_setup.sh
-    if [ $? -ne 0 ]; then
-        echo "❌ VIDEO_05 setup failed. Stopping."
-        exit 1
-    fi
-    echo "✅ VIDEO_05 completed successfully!"
-else
-    echo "⚠️  VIDEO_05 run script not found, skipping..."
-fi
-echo ""
-
-# Navigate back to root
-cd ../../
+    
+    echo ""
+    
+    # Navigate back to root for next video
+    cd ../../
+done
 
 echo "🎉 COMPLETE SETUP FINISHED! 🎉"
 echo ""

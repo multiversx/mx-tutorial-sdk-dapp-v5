@@ -12,4 +12,4 @@ type_and_execute "yarn add -D @types/node @vitejs/plugin-basic-ssl vite-plugin-n
 
 echo "✅ Vite dependencies installed successfully!"
 
-echo "Done: step_13_configure_vite" >> progress.txt
+echo "Done: step_11_configure_vite" >> progress.txt

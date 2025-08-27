@@ -152,4 +152,4 @@ EOF
 
 echo "✅ eslint.config.js configured successfully!"
 
-echo "Done: step_12_configure_eslint_config" >> progress.txt
+echo "Done: step_10_configure_eslint_config" >> progress.txt

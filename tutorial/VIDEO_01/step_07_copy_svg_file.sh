@@ -12,4 +12,4 @@ type_and_execute "cp tutorial/VIDEO_01/multiversx-white.svg public/multiversx-wh
 
 echo "✅ multiversx-white.svg copied to public folder successfully!"
 
-echo "Done: step_08_copy_svg_file" >> progress.txt
+echo "Done: step_07_copy_svg_file" >> progress.txt

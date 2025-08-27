@@ -12,4 +12,4 @@ yarn add -D @eslint/js eslint prettier eslint-config-prettier eslint-import-reso
 
 echo "✅ ESLint and Prettier dependencies installed successfully!"
 
-echo "Done: step_10_configure_eslint_prettier" >> progress.txt
+echo "Done: step_08_configure_eslint_prettier" >> progress.txt

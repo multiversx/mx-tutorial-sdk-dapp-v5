@@ -17,10 +17,9 @@ EOF
 cat > src/main.tsx << 'EOF'
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-
+import App from './App.tsx';
 import './index.css';
 import './tailwind.css'; // Import Tailwind CSS
-import App from './App.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -31,4 +30,4 @@ EOF
 
 echo "✅ tailwind.config.js created successfully!"
 
-echo "Done: step_05_add_tailwind_config" >> progress.txt
+echo "Done: step_04_add_tailwind_config" >> progress.txt

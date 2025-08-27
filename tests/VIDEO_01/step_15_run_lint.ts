@@ -2,17 +2,19 @@ import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { waitForStepCompletion } from "../../utils/progress-helper";
 import { basename } from "path";
+import { terminal } from "../helpers";
 
-export async function step09CommitProject(page: Page): Promise<void> {
+export async function step15RunLint(page: Page): Promise<void> {
   // Display starting message with typewriter effect
   await createTypewriterMessage(
     page,
-    "Committing the project setup changes..."
+    "Running linting and creating a new commit..."
   );
 
-  await page.keyboard.type("./step_09_commit_project.sh");
+  await terminal.show(page, "VIDEO_01");
+  await page.keyboard.type("./step_15_run_lint.sh");
   await page.keyboard.press("Enter");
   await waitForStepCompletion(page, basename(__filename, ".ts"));
 
-  console.log("Project changes committed successfully");
+  console.log("Linting and formatting completed successfully");
 }

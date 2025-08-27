@@ -14,4 +14,4 @@ type_and_execute "yarn add -D @tailwindcss/vite @tailwindcss/postcss @tailwindcs
 
 echo "✅ Tailwind CSS installed successfully!"
 
-echo "Done: step_04_install_tailwind" >> progress.txt
+echo "Done: step_03_install_tailwind" >> progress.txt

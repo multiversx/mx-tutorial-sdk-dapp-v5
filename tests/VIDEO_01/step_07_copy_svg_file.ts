@@ -2,18 +2,19 @@ import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { waitForStepCompletion } from "../../utils/progress-helper";
 import { basename } from "path";
+import { terminal } from "../helpers";
 
-export async function step10ConfigureEslintPrettier(page: Page): Promise<void> {
+export async function step08CopySvgFile(page: Page): Promise<void> {
   // Display starting message with typewriter effect
   await createTypewriterMessage(
     page,
-    "Installing ESLint and Prettier for code formatting..."
+    "Copying MultiversX logo SVG file to the project..."
   );
 
-  await page.keyboard.type("./step_10_configure_eslint_prettier.sh");
+  await terminal.show(page, "VIDEO_01");
+  await page.keyboard.type("./step_07_copy_svg_file.sh");
   await page.keyboard.press("Enter");
-
   await waitForStepCompletion(page, basename(__filename, ".ts"));
 
-  console.log("ESLint and Prettier installed successfully");
+  console.log("SVG file copied successfully");
 }

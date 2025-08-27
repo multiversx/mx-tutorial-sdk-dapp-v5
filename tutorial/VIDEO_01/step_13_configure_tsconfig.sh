@@ -41,4 +41,4 @@ EOF
 
 echo "✅ tsconfig.json configured successfully!"
 
-echo "Done: step_15_configure_tsconfig" >> progress.txt
+echo "Done: step_13_configure_tsconfig" >> progress.txt

@@ -53,4 +53,4 @@ EOF
 
 echo "✅ vite.config.ts configured successfully!"
 
-echo "Done: step_14_configure_vite_config" >> progress.txt
+echo "Done: step_12_configure_vite_config" >> progress.txt

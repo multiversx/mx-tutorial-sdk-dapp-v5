@@ -12,7 +12,7 @@ export async function step13ConfigureVite(page: Page): Promise<void> {
   );
 
   await terminal.show(page, "VIDEO_01");
-  await page.keyboard.type("./step_13_configure_vite.sh");
+  await page.keyboard.type("./step_11_configure_vite.sh");
   await page.keyboard.press("Enter");
   await waitForStepCompletion(page, basename(__filename, ".ts"));
 
