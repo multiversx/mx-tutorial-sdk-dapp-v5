@@ -85,12 +85,13 @@ export const Unlock = () => {
 Finally, we need to update the Header component to navigate to the unlock route instead of the dashboard route.
 
 In the Header.tsx file, replace:
+
 ```tsx
 navigate(RouteNamesEnum.dashboard); // TODO: replace with navigate(RouteNamesEnum.unlock);
 ```
 
 with:
+
 ```tsx
 navigate(RouteNamesEnum.unlock);
 ```
-

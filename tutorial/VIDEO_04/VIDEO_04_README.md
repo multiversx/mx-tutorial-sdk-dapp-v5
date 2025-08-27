@@ -134,7 +134,7 @@ import classNames from 'classnames';
 
 export const OutputContainer = ({
   children,
-  className = 'p-4',
+  className = 'p-4'
 }: PropsWithChildren & { className?: string }) => (
   <div
     className={classNames(
@@ -365,7 +365,7 @@ export const routes: RouteType[] = [
     children: [
       // Unlock page
     ]
-  }, 
+  },
   {
     path: RouteNamesEnum.dashboard,
     title: 'Dashboard',
@@ -378,5 +378,5 @@ export const routes: RouteType[] = [
 Step 11: Lint the code
 
 ```bash
-yarn lint --fix
+yarn lint
 ```

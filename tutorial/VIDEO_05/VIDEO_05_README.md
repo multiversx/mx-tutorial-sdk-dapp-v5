@@ -338,5 +338,5 @@ export const Dashboard = () => {
 ### Step 8: Lint the code
 
 ```bash
-yarn lint --fix
+yarn lint
 ```

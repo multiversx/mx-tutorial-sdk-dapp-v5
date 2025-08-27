@@ -44,7 +44,7 @@ EOF
 
 echo "✅ Unlock component updated successfully!"
 
-echo "=== Updating Header component navigation ==="
+echo "=== Updating Header component ==="
 
 echo "Updating Header.tsx file..."
 cat > src/components/Layout/components/Header.tsx << 'EOF'

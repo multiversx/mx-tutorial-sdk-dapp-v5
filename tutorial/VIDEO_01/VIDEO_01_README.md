@@ -38,7 +38,7 @@ git add .
 git commit -m "01. Initial commit"
 ```
 
-### Step 4: Install Tailwind CSS: 
+### Step 4: Install Tailwind CSS:
 
 ```bash
 cd ../../
@@ -82,8 +82,6 @@ export default {
 @tailwind components;
 @tailwind utilities;
 ```
-
-
 
 ### Step 8: Copy the multiversx-white.svg file to the public folder.
 
@@ -368,7 +366,7 @@ Keep only one tsconfig.json file in the root of the project (remove the tsconfig
 
 ```bash
 cd ../../
-# Run lint  
+# Run lint
 yarn lint
 git add .
 git commit -m "03. Linting and formatting"

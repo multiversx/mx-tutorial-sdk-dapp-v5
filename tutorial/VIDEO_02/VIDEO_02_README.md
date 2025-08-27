@@ -219,5 +219,5 @@ export default function App() {
 Step 7: Runt lint again to fix the errors
 
 ```bash
-yarn lint --fix
+yarn lint
 ```

@@ -39,17 +39,11 @@ export async function step01CreateConfigs(page: Page): Promise<void> {
 
   await page.keyboard.press("Enter");
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `export const contractAddress =
+  await textEdit(page).pasteText(
+    `export const contractAddress =
       'erd1qqqqqqqqqqqqqpgqm6ad6xrsjvxlcdcffqe8w58trpec09ug9l5qde96pq';
     export const environment = EnvironmentsEnum.devnet;`
-    );
-  });
-  await page.keyboard.press("Meta+v");
-  await page.waitForTimeout(500);
-
-  await textEdit(page).formatFile();
+  );
 
   await page.keyboard.press("Meta+s");
   await waitFor(1000);

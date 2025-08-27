@@ -400,7 +400,7 @@ export const useSendPingTransaction = () => {
 
   return async () => {
     const provider = getAccountProvider();
-    const pingTransaction = scFactory.createTransactionForExecute(
+    const pingTransaction = await scFactory.createTransactionForExecute(
       new Address(address),
       {
         gasLimit: BigInt(6000000),
@@ -442,7 +442,7 @@ export const useSendPongTransaction = () => {
 
   return async () => {
     const provider = getAccountProvider();
-    const pongTransaction = scFactory.createTransactionForExecute(
+    const pongTransaction = await scFactory.createTransactionForExecute(
       new Address(address),
       {
         gasLimit: BigInt(6000000),

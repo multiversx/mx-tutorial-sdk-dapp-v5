@@ -12,5 +12,3 @@ Installing sdk-dapp
 ```bash
 yarn add @multiversx/sdk-dapp @multiversx/sdk-dapp-utils @multiversx/sdk-dapp-ui @multiversx/sdk-core bignumber.js axios moment
 ```
-
-

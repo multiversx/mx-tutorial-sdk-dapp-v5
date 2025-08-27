@@ -6,7 +6,7 @@ echo "=== Step 8: Run lint to fix any errors ==="
 cd ../../
 
 echo "Running lint with auto-fix..."
-yarn lint --fix
+yarn lint
 
 echo "✅ Lint completed successfully!"
 echo "Done: step_08_run_lint" >> progress.txt

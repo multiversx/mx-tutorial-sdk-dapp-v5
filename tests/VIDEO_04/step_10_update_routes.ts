@@ -14,7 +14,7 @@ export async function step10UpdateRoutes(page: Page): Promise<void> {
   await textEdit(page).goToLine(1);
   await waitFor(500);
 
-  for (let index = 0; index < 4; index++) {
+  for (let index = 0; index < 3; index++) {
     await page.keyboard.press("Alt+ArrowRight");
     await waitFor(300);
   }
@@ -29,29 +29,23 @@ export async function step10UpdateRoutes(page: Page): Promise<void> {
 
   await humanType(page, `dashboard = '/dashboard',`);
 
-  await textEdit(page).goToLine(27);
-
-  await page.keyboard.press("Meta+ArrowRight");
+  await textEdit(page).goToEndOfLine(27);
 
   await typeAndEnter(page, `,`);
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `{
+  await textEdit(page).pasteText(
+    `{
     path: RouteNamesEnum.dashboard,
     title: 'Dashboard',
     component: Dashboard,
     authenticatedRoute: true
     }`
-    );
-  });
-  await page.keyboard.press("Meta+v");
+  );
+
   await page.keyboard.press("Meta+s");
   await waitFor(1000);
 
-  // format file
-  await page.keyboard.press("Alt+Shift+f");
-  await page.waitForTimeout(500);
+  await textEdit(page).goToTopOfFile();
 
   await createTypewriterMessage(page, "Done! 🎉");
 

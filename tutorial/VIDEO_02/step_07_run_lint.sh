@@ -9,7 +9,7 @@ echo "=== Run lint again to fix the errors ==="
 cd ../../
 
 echo "Running lint with auto-fix..."
-type_and_execute lint --fix
+type_and_execute "yarn lint"
 
 echo "✅ Lint completed successfully!"
 echo "Done: step_07_run_lint" >> progress.txt

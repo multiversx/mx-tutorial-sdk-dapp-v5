@@ -9,9 +9,8 @@ export async function step02CreateUnlockPage(page: Page): Promise<void> {
 
   await createTypewriterMessage(page, "Paste the Unlock page content...");
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `import { useEffect } from 'react';
+  await textEdit(page).pasteText(
+    `import { useEffect } from 'react';
   import { useNavigate } from 'react-router-dom';
   import { RouteNamesEnum } from 'routes';
 
@@ -29,9 +28,8 @@ export async function step02CreateUnlockPage(page: Page): Promise<void> {
 
     return null;
   };`
-    );
-  });
-  await page.keyboard.press("Meta+v");
+  );
+
   await page.keyboard.press("Meta+s");
   await waitFor(2000);
 
@@ -71,19 +69,16 @@ export async function step02CreateUnlockPage(page: Page): Promise<void> {
 
   await page.keyboard.press("Meta+Shift+ArrowRight");
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `// since unlock is made trough a sidebar, we want to keep displaying the home page in the background
+  await textEdit(page).pasteText(
+    `// since unlock is made trough a sidebar, we want to keep displaying the home page in the background
       {
         path: RouteNamesEnum.unlock,
         title: 'Unlock',
         component: Unlock
       }`
-    );
-  });
-  await waitFor(500);
+  );
 
-  await page.keyboard.press("Meta+v");
+  await waitFor(500);
 
   // format the file
   await textEdit(page).formatFile();

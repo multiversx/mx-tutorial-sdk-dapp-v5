@@ -17,9 +17,8 @@ export async function step03CreateHeaderComponent(page: Page): Promise<void> {
 
   await createTypewriterMessage(page, "Paste the Header component content...");
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `import { useNavigate } from 'react-router-dom';
+  await textEdit(page).pasteText(
+    `import { useNavigate } from 'react-router-dom';
 import { Button } from 'components';
 import { environment } from 'config';
 import { RouteNamesEnum } from 'routes';
@@ -65,11 +64,8 @@ export const Header = () => {
     </header>
   );
 };`
-    );
-  });
-  await waitFor(500);
+  );
 
-  await page.keyboard.press("Meta+v");
   await textEdit(page).goToTopOfFile();
   await page.keyboard.press("Meta+s");
   await waitFor(1000);

@@ -14,9 +14,8 @@ export async function step01CreateGenericLinkComponent(
   await createNewFile(page, "../components/MxLink.tsx");
   await page.waitForTimeout(1000);
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `import { PropsWithChildren } from 'react';
+  await textEdit(page).pasteText(
+    `import { PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 
 interface MxLinkPropsType extends PropsWithChildren {
@@ -35,11 +34,9 @@ export const MxLink = ({
     </Link>
   );
 };`
-    );
-  });
-  await page.keyboard.press("Meta+v");
+  );
+
   await page.keyboard.press("Meta+s");
-  await waitFor(1000);
 
   // Update components index.ts
   await createTypewriterMessage(

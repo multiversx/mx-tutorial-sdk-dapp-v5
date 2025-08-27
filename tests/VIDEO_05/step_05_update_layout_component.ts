@@ -12,29 +12,20 @@ export async function step05UpdateLayoutComponent(page: Page): Promise<void> {
 
   await textEdit(page).newLineAt(2);
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `import { Footer, Header } from './components';`
-    );
-  });
-  await waitFor(500);
+  await textEdit(page).pasteText(
+    `import { Footer, Header } from './components';`
+  );
 
   await page.keyboard.press("Meta+v");
   await waitFor(1000);
 
   await textEdit(page).newLineAt(7);
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(`<Header />`);
-  });
-  await page.keyboard.press("Meta+v");
+  await textEdit(page).pasteText(`<Header />`);
 
   await textEdit(page).newLineAt(11);
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(`<Footer />`);
-  });
-  await page.keyboard.press("Meta+v");
+  await textEdit(page).pasteText(`<Footer />`);
 
   await textEdit(page).formatFile();
 

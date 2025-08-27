@@ -28,17 +28,9 @@
 6. At the beginning of the main video file, use `playwright-video` to record the video and stop it at the end of the video
 7. Before each step that edits files, create a git commit to be able to compare the changes. Start commit messages with numbers 01, 02, 03, etc.
 8. At the end of each main video, use `videogit` to create a video of the changes for specific files:
-`videogit $(git log --grep="^01" --pretty=format:"%h" -n1) $(git log --grep="^02" --pretty=format:"%h" -n 1) -w 180 -r 24 -f tailwind.config.js --show-line-numbers --title "tailwind.config.js" --output-filename 01 -o /Users/tudor/Work/test/playwright-mcp/videos/VIDEO_01`
-Explenation:
-    - $(git log --grep="^01" --pretty=format:"%h" -n1) is the first commit message that starts with 01
-    - $(git log --grep="^02" --pretty=format:"%h" -n 1) is the last commit message that starts with 02
-    - -w 180 is the words per minute
-    - -r 24 is the frame rate
-    - -f tailwind.config.js is the file to be included in the video
-    - --show-line-numbers is to show the line numbers
-    - --title "tailwind.config.js" is the breadcrumb display inside the video for the specific file
+   `videogit $(git log --grep="^01" --pretty=format:"%h" -n1) $(git log --grep="^02" --pretty=format:"%h" -n 1) -w 180 -r 24 -f tailwind.config.js --show-line-numbers --title "tailwind.config.js" --output-filename 01 -o /Users/tudor/Work/test/playwright-mcp/videos/VIDEO_01`
+   Explenation: - $(git log --grep="^01" --pretty=format:"%h" -n1) is the first commit message that starts with 01 - $(git log --grep="^02" --pretty=format:"%h" -n 1) is the last commit message that starts with 02 - -w 180 is the words per minute - -r 24 is the frame rate - -f tailwind.config.js is the file to be included in the video - --show-line-numbers is to show the line numbers - --title "tailwind.config.js" is the breadcrumb display inside the video for the specific file
 
 NOTE: you can run the edit files videos at the end since commits remain unchanged
 
 9. Run the main test with `chromium.connectOverCDP("http://127.0.0.1:9222")`
-

@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { createNewFile, waitFor } from "../helpers";
+import { createNewFile, textEdit, waitFor } from "../helpers";
 
 export async function step04CreateFooterComponent(page: Page): Promise<void> {
   // Create Footer component
@@ -38,12 +38,11 @@ export async function step04CreateFooterComponent(page: Page): Promise<void> {
   await createTypewriterMessage(page, "Creating Layout components index.ts...");
   await createNewFile(page, "index.ts");
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `export * from './Header';
+  await textEdit(page).pasteText(
+    `export * from './Header';
 export * from './Footer';`
-    );
-  });
+  );
+
   await page.keyboard.press("Meta+v");
   await page.keyboard.press("Meta+s");
   await waitFor(1000);
