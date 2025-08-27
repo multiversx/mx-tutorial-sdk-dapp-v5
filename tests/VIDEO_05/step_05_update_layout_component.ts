@@ -16,9 +16,6 @@ export async function step05UpdateLayoutComponent(page: Page): Promise<void> {
     `import { Footer, Header } from './components';`
   );
 
-  await page.keyboard.press("Meta+v");
-  await waitFor(1000);
-
   await textEdit(page).newLineAt(7);
 
   await textEdit(page).pasteText(`<Header />`);
@@ -26,8 +23,6 @@ export async function step05UpdateLayoutComponent(page: Page): Promise<void> {
   await textEdit(page).newLineAt(11);
 
   await textEdit(page).pasteText(`<Footer />`);
-
-  await textEdit(page).formatFile();
 
   await page.keyboard.press("Meta+s");
   await waitFor(1000);

@@ -16,9 +16,8 @@ export async function step06CreateTransactionsWidget(
     "Paste the Transactions widget content..."
   );
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `import { OutputContainer } from 'components';
+  await textEdit(page).pasteText(
+    `import { OutputContainer } from 'components';
 
 export const Transactions = () => {
   const transactions = []; // TODO: Replace with the actual transactions
@@ -41,11 +40,9 @@ export const Transactions = () => {
     </div>
   );
 };`
-    );
-  });
-  await page.keyboard.press("Meta+v");
-  await page.keyboard.press("Meta+s");
-  await waitFor(1000);
+  );
+
+  await textEdit(page).goToTopOfFile();
 
   // Update Dashboard widgets index.ts
   await createTypewriterMessage(
@@ -57,17 +54,9 @@ export const Transactions = () => {
   await textEdit(page).goToEndOfLine(2);
   await page.keyboard.press("Enter");
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(`export * from './Transactions';`);
-  });
-  await waitFor(500);
-
-  await page.keyboard.press("Meta+v");
-
-  await textEdit(page).formatFile();
+  await textEdit(page).pasteText(`export * from './Transactions';`);
 
   await page.keyboard.press("Meta+s");
-  await waitFor(1000);
 
   await createTypewriterMessage(
     page,
