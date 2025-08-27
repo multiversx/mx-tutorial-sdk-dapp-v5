@@ -107,7 +107,7 @@ export const Transactions = () => {
 
   useEffect(() => {
     fetchTransactions();
-  }, []);
+  }, [success]);
 
   if (transactions.length === 0) {
     return (
