@@ -9,26 +9,26 @@ import { step08RunLint } from "./step_08_run_lint";
 
 // Define steps with descriptions and functions in a single array
 export const video05steps = [
-  // {
-  //   description: "Create generic link component",
-  //   function: step01CreateGenericLinkComponent,
-  // },
-  // {
-  //   description: "Create Unlock page",
-  //   function: step02CreateUnlockPage,
-  // },
-  // {
-  //   description: "Create Header component",
-  //   function: step03CreateHeaderComponent,
-  // },
-  // {
-  //   description: "Create Footer component",
-  //   function: step04CreateFooterComponent,
-  // },
-  // {
-  //   description: "Update Layout component",
-  //   function: step05UpdateLayoutComponent,
-  // },
+  {
+    description: "Create generic link component",
+    function: step01CreateGenericLinkComponent,
+  },
+  {
+    description: "Create Unlock page",
+    function: step02CreateUnlockPage,
+  },
+  {
+    description: "Create Header component",
+    function: step03CreateHeaderComponent,
+  },
+  {
+    description: "Create Footer component",
+    function: step04CreateFooterComponent,
+  },
+  {
+    description: "Update Layout component",
+    function: step05UpdateLayoutComponent,
+  },
   {
     description: "Create Transactions widget",
     function: step06CreateTransactionsWidget,

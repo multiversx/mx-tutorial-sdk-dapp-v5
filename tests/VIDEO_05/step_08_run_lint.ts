@@ -20,5 +20,7 @@ export async function step08RunLint(page: Page): Promise<void> {
 
   await createTypewriterMessage(page, "✅ Lint completed successfully!");
 
+  await terminal.hide(page);
+
   console.log("Lint execution completed");
 }

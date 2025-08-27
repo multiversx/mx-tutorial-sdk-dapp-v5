@@ -87,8 +87,8 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
       // ...video02steps,
       // ...video03steps,
       // ...video04steps,
-      ...video05steps,
-      // ...video06steps,
+      // ...video05steps,
+      ...video06steps,
     ];
 
     // Loop through all steps dynamically

@@ -245,7 +245,7 @@ export async function step04TransactionsWidget(page: Page): Promise<void> {
     "Finally, using the TransactionsTable component..."
   );
 
-  await textEdit(page).selectLine(59);
+  await textEdit(page).selectLine(57);
 
   await textEdit(page).pasteText(
     `<TransactionsTable transactions={transactions} />`
