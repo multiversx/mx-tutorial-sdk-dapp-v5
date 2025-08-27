@@ -83,11 +83,11 @@ test.describe("VIDEO_01 - Complete Project Setup", () => {
     }
 
     const steps = [
-      // ...video01steps,
-      // ...video02steps,
-      // ...video03steps,
-      // ...video04steps,
-      // ...video05steps,
+      ...video01steps,
+      ...video02steps,
+      ...video03steps,
+      ...video04steps,
+      ...video05steps,
       ...video06steps,
     ];
 

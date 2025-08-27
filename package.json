@@ -5,11 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "test": "playwright test",
-    "test:headed": "playwright test --headed",
-    "test:debug": "playwright test --debug",
-    "test:ui": "playwright test --ui",
     "start-chrome": "./scripts/start-chrome-debug.sh",
-    "test:video01": "playwright test --headed tests/video.spec.ts",
+    "start-videos": "playwright test --headed tests/video.spec.ts",
     "test:cdp": "npm run start-chrome && playwright test"
   },
   "devDependencies": {

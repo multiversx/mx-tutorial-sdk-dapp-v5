@@ -16,5 +16,7 @@ export async function step15RunLint(page: Page): Promise<void> {
   await page.keyboard.press("Enter");
   await waitForStepCompletion(page, basename(__filename, ".ts"));
 
+  await terminal.hide(page);
+
   console.log("Linting and formatting completed successfully");
 }
