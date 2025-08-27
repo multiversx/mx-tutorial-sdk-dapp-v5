@@ -10,7 +10,7 @@ export async function step04TransactionsWidget(page: Page): Promise<void> {
   );
   await page.waitForTimeout(1000);
 
-  await navigateToFile(page, "components/index.ts");
+  await navigateToFile(page, "MxLink.tsx");
 
   await createTypewriterMessage(
     page,
