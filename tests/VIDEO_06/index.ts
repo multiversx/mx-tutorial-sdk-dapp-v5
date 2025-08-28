@@ -3,6 +3,7 @@ import { step02UnlockPanelAndHeader } from "./step_02_unlock_panel_and_header";
 import { step03AccountWidget } from "./step_03_account_widget";
 import { step04TransactionsWidget } from "./step_04_transactions_widget";
 import { step05PingPongWidget } from "./step_05_ping_pong_widget";
+import { step06AuthWrapper } from "./step_06_auth_wrapper";
 
 // Define steps with descriptions and functions in a single array
 export const video06steps = [
@@ -22,8 +23,12 @@ export const video06steps = [
   //   description: "Create TransactionsTable and update Transactions widget",
   //   function: step04TransactionsWidget,
   // },
+  // {
+  //   description: "Create PingPong widget with contract ABI",
+  //   function: step05PingPongWidget,
+  // },
   {
-    description: "Create PingPong widget with contract ABI",
-    function: step05PingPongWidget,
+    description: "Create AuthenticatedRoutesWrapper component",
+    function: step06AuthWrapper,
   },
 ];
