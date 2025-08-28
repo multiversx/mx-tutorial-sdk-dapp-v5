@@ -18,10 +18,10 @@ export const video06steps = [
   //   description: "Create FormatAmount component for account widget",
   //   function: step03AccountWidget,
   // },
-  {
-    description: "Create TransactionsTable and update Transactions widget",
-    function: step04TransactionsWidget,
-  },
+  // {
+  //   description: "Create TransactionsTable and update Transactions widget",
+  //   function: step04TransactionsWidget,
+  // },
   {
     description: "Create PingPong widget with contract ABI",
     function: step05PingPongWidget,

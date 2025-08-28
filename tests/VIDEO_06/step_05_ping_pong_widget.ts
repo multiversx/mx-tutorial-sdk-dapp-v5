@@ -1,6 +1,7 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { createNewFile, navigateToFile, textEdit, waitFor } from "../helpers";
+import { humanType, typeAndEnter } from "../../utils/type-helper";
 
 export async function step05PingPongWidget(page: Page): Promise<void> {
   await createTypewriterMessage(page, "Creating the PingPong widget...");
@@ -217,7 +218,7 @@ export async function step05PingPongWidget(page: Page): Promise<void> {
       } from '@multiversx/sdk-core';
       import { useGetNetworkConfig } from '@multiversx/sdk-dapp/out/react/network/useGetNetworkConfig';
       import pingPongAbi from 'contracts/ping-pong.abi.json';
-  
+
       export const useGetScController = () => {
         const { network } = useGetNetworkConfig();
         const proxy = new ProxyNetworkProvider(network.apiAddress);
@@ -477,7 +478,7 @@ export async function step05PingPongWidget(page: Page): Promise<void> {
     import { useGetAccount } from '@multiversx/sdk-dapp/out/react/account/useGetAccount';
     import { contractAddress } from 'config';
     import { useGetSmartContractFactory } from './useGetSmartContractFactory';
-    
+
     export const useSendPongTransaction = () => {
       const scFactory = useGetSmartContractFactory();
       const { address } = useGetAccount();
@@ -527,82 +528,192 @@ export async function step05PingPongWidget(page: Page): Promise<void> {
     page,
     "✅ Hooks index.ts file created successfully!"
   );
+
   // Create PingPongAbi.tsx component
   await navigateToFile(page, "PingPongAbi.tsx");
   await waitFor(1000);
-  await createTypewriterMessage(page, "Pasting PingPongAbi.tsx component...");
+  await createTypewriterMessage(page, "Updating the PingPongAbi widget...");
 
-  await page.keyboard.press("Meta+a");
-  await waitFor(1000);
+  await textEdit(page).newLineAt(4);
 
-  await textEdit(page)
-    .pasteText(`import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
-  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-  import { useGetPendingTransactions } from '@multiversx/sdk-dapp/out/react/transactions/useGetPendingTransactions';
-  import moment from 'moment';
-  import { Button, Label, OutputContainer } from 'components';
-  import { contractAddress } from 'config';
-  import {
+  await createTypewriterMessage(page, "Importing the new hooks...");
+
+  await textEdit(page).pasteText(`import {
     useSendPingTransaction,
     useSendPongTransaction,
     useGetSecondsRemaining
-  } from './hooks';
+   } from './hooks';`);
 
-  export const PingPongAbi = () => {
-    const transactions = useGetPendingTransactions();
-    const hasPendingTransactions = transactions.length > 0;
-    const sendPingTransactionFromAbi = useSendPingTransaction();
-    const sendPongTransactionFromAbi = useSendPongTransaction();
-    const { secondsRemaining, countdownSeconds } = useGetSecondsRemaining();
+  await textEdit(page).newLineAt(11);
 
-    const timeRemaining = moment()
-      .startOf('day')
-      .seconds(countdownSeconds)
-      .format('mm:ss');
+  await textEdit(page).pasteText(
+    `const sendPingTransactionFromAbi = useSendPingTransaction();`
+  );
 
-    const pongAllowed = secondsRemaining != null && countdownSeconds === 0;
-    const hasPing = secondsRemaining == null;
+  await textEdit(page).newLineAt(12);
+  await textEdit(page).pasteText(
+    `const sendPongTransactionFromAbi = useSendPongTransaction();`
+  );
 
-    return (
-      <div className='flex flex-col gap-6'>
-        <div className='flex flex-col gap-2'>
-          <div className='flex justify-start gap-2'>
-            <Button
-              disabled={!hasPing || hasPendingTransactions}
-              onClick={sendPingTransactionFromAbi}
-              className='inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0 disabled:bg-gray-200 disabled:!text-black disabled:cursor-not-allowed'
-            >
-              <FontAwesomeIcon icon={faArrowUp} className='mr-1' />
-              Ping
-            </Button>
-            <Button
-              disabled={!pongAllowed || hasPing || hasPendingTransactions}
-              onClick={sendPongTransactionFromAbi}
-              className='inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0 disabled:bg-gray-200 disabled:!text-black disabled:cursor-not-allowed'
-            >
-              <FontAwesomeIcon icon={faArrowDown} className='mr-1' />
-              Pong
-            </Button>
-          </div>
-        </div>
-        <OutputContainer>
+  await textEdit(page).newLineAt(13);
+  await textEdit(page).pasteText(
+    `const { secondsRemaining, countdownSeconds } = useGetSecondsRemaining();`
+  );
+
+  await createTypewriterMessage(page, "🖇️ Hook up the buttons");
+
+  await textEdit(page).goToLine(18);
+  await waitFor(300);
+
+  await page.keyboard.press("Alt+ArrowRight");
+  await waitFor(300);
+
+  await page.keyboard.press("Enter");
+  await waitFor(300);
+
+  await textEdit(page).newLineAt(19);
+
+  await textEdit(page).pasteText(`onClick={sendPingTransactionFromAbi}`);
+
+  await textEdit(page).goToLine(26);
+  await waitFor(300);
+
+  await page.keyboard.press("Alt+ArrowRight");
+  await waitFor(300);
+
+  await page.keyboard.press("Enter");
+  await waitFor(300);
+
+  await textEdit(page).newLineAt(27);
+
+  await textEdit(page).pasteText(`onClick={sendPongTransactionFromAbi}`);
+
+  await textEdit(page).newLineAt(14);
+
+  await waitFor(300);
+
+  await createTypewriterMessage(page, "🔒 Creating disabled states");
+
+  await textEdit(page).newLineAt(3);
+
+  await textEdit(page).pasteText(
+    `import { useGetPendingTransactions } from '@multiversx/sdk-dapp/out/react/transactions/useGetPendingTransactions';`
+  );
+
+  await waitFor(300);
+
+  await textEdit(page).newLineAt(12);
+
+  await textEdit(page).pasteText(
+    `const transactions = useGetPendingTransactions();`
+  );
+
+  await page.keyboard.press("Enter");
+
+  await textEdit(page).pasteText(
+    `const hasPendingTransactions = transactions.length > 0;`
+  );
+
+  await waitFor(300);
+
+  await textEdit(page).newLineAt(18);
+
+  await textEdit(page).pasteText(
+    `const pongAllowed = secondsRemaining != null && countdownSeconds === 0;
+  const hasPing = secondsRemaining == null;`
+  );
+
+  await page.keyboard.press("Enter");
+
+  await waitFor(300);
+
+  await textEdit(page).newLineAt(26);
+
+  await textEdit(page).pasteText(
+    `disabled={!hasPing || hasPendingTransactions}`
+  );
+
+  await waitFor(300);
+
+  await textEdit(page).newLineAt(35);
+
+  await textEdit(page).pasteText(
+    `disabled={!pongAllowed || hasPing || hasPendingTransactions}`
+  );
+
+  await waitFor(300);
+
+  await createTypewriterMessage(page, "Formating the output section..");
+
+  await textEdit(page).selectLine(45);
+
+  await waitFor(300);
+
+  await textEdit(page).pasteText(
+    `<OutputContainer>
           <>
             <p>
               <Label>Contract: </Label>
               <span className='truncate'>{contractAddress}</span>
             </p>
-            {countdownSeconds > 0 && (
-              <p>
-                <Label>Time remaining: </Label>
-                <span className='text-red-600'>{timeRemaining}</span> until able
-                to pong
-              </p>
-            )}
           </>
-        </OutputContainer>
-      </div>
-    );
-  };`);
+        </OutputContainer>`
+  );
+
+  await createTypewriterMessage(page, "Importing the Label and contract...");
+
+  await textEdit(page).newLineAt(5);
+
+  await textEdit(page).pasteText(`import { contractAddress } from 'config';`);
+
+  await waitFor(300);
+
+  await textEdit(page).goToLine(4);
+
+  for (let index = 0; index < 5; index++) {
+    await page.keyboard.press("Alt+ArrowRight");
+    await waitFor(300);
+  }
+
+  humanType(page, "Label, ");
+
+  await waitFor(300);
+
+  await textEdit(page).formatFile();
+
+  await page.keyboard.press("Meta+s");
+
+  await createTypewriterMessage(page, "🕰️ Displaying the time remaining");
+
+  await textEdit(page).newLineAt(4);
+
+  await textEdit(page).pasteText(`import moment from 'moment';`);
+
+  await textEdit(page).newLineAt(19);
+
+  await page.keyboard.press("Enter");
+
+  await textEdit(page).pasteText(
+    `const timeRemaining = moment()
+      .startOf('day')
+      .seconds(countdownSeconds)
+      .format('mm:ss');`
+  );
+
+  await textEdit(page).newLineAt(27);
+
+  await textEdit(page).newLineAt(59);
+
+  await textEdit(page).pasteText(
+    `  {countdownSeconds > 0 && (
+                <p>
+                  <Label>Time remaining: </Label>
+                  <span className='text-red-600'>{timeRemaining}</span> until able
+                  to pong
+                </p>
+              )}`
+  );
+
   await page.keyboard.press("Meta+s");
   await waitFor(1000);
 
