@@ -4,28 +4,31 @@ import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { waitForStepCompletion } from "../../utils/progress-helper";
 import { basename } from "path";
 
-export async function step01InstallReactRouterDom(page: Page): Promise<void> {
+export async function step01InstallSdks(page: Page): Promise<void> {
+  await page.waitForTimeout(2000);
+
+  await createTypewriterMessage(page, "🚀 MultiversX SDK Setup");
   await page.waitForTimeout(2000);
 
   await createTypewriterMessage(
     page,
-    "🚀 Preparing Basic App Structure with Routing"
-  );
-  await page.waitForTimeout(2000);
-
-  await createTypewriterMessage(
-    page,
-    "Installing react-router-dom for navigation..."
+    "Installing MultiversX SDK and its dependencies..."
   );
 
   await page.waitForTimeout(1000);
 
-  await terminal.show(page, "VIDEO_02");
+  await terminal.show(page, "03_install_sdk_dapp");
 
-  await page.keyboard.type("./step_01_install_react_router_dom.sh");
+  await page.keyboard.type("./step_01_install_sdks.sh");
   await page.keyboard.press("Enter");
 
   await waitForStepCompletion(page, basename(__filename, ".ts"));
 
-  console.log("React Router DOM installation completed");
+  await terminal.hide(page);
+
+  await createTypewriterMessage(page, "✅ MultiversX SDK Setup completed");
+
+  // State: App.tsx opened with focused terminal
+
+  console.log("MultiversX SDK installation completed");
 }

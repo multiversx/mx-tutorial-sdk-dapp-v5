@@ -3,17 +3,17 @@ import { authenticateWithPassword } from "../utils/password-helper";
 import { chromium } from "@playwright/test";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
 // import { saveVideo } from "playwright-video";
-import { video02steps } from "./VIDEO_02";
-import { video01steps } from "./VIDEO_01";
-import { video03steps } from "./VIDEO_03";
-import { video04steps } from "./VIDEO_04";
-import { video05steps } from "./VIDEO_05";
-import { video06steps } from "./VIDEO_06";
+import { video02steps } from "./02_app_structure";
+import { video01steps } from "./01_create_react_app";
+import { video03steps } from "./03_install_sdk_dapp";
+import { video04steps } from "./04_create_dashboard";
+import { video05steps } from "./05_create_layout";
+import { video06steps } from "./06_sc_interaction";
 
 // Set FFmpeg path for video recording
 process.env.FFMPEG_PATH = ffmpeg.path;
 
-test.describe("VIDEO_01 - Complete Project Setup", () => {
+test.describe("01_create_react_app - Complete Project Setup", () => {
   test("should complete the entire project setup tutorial", async () => {
     test.setTimeout(0); // Remove test timeout limit
 

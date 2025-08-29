@@ -21,7 +21,7 @@ export async function step02InstallDependencies(page: Page): Promise<void> {
   await page.waitForTimeout(2000);
 
   // open install dependencies script
-  await terminal.show(page, "VIDEO_01");
+  await terminal.show(page, "01_create_react_app");
   await page.keyboard.type("./step_02_install_dependencies.sh");
   await page.keyboard.press("Enter");
   await waitForStepCompletion(page, basename(__filename, ".ts"));

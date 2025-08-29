@@ -24,7 +24,7 @@ export async function step01CreateProject(page: Page): Promise<void> {
   await page.waitForTimeout(1000);
 
   // Navigate to tutorial directory and run the script
-  await terminal.show(page, "VIDEO_01");
+  await terminal.show(page, "01_create_react_app");
 
   await page.keyboard.type("./step_01_create_project.sh");
   await page.keyboard.press("Enter");

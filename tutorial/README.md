@@ -71,7 +71,7 @@ This is the scenario description for the instructive video chapters on how to bu
 7. Update Dashboard page to include Transactions widget
 8. Run lint to fix errors
 
-## VIDEO 6: Connecting and Testing the dApp functionality
+## VIDEO 6: Interacting with the Smart Contract
 
 1. Initialize SDK in main.tsx with dApp configuration
 2. Update Unlock component and Header navigation with sdk-dapp hooks

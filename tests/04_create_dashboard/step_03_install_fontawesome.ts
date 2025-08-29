@@ -14,7 +14,7 @@ export async function step03InstallFontawesome(page: Page): Promise<void> {
 
   await page.waitForTimeout(1000);
 
-  await terminal.show(page, "VIDEO_04");
+  await terminal.show(page, "04_create_dashboard");
 
   await page.keyboard.type("./step_03_install_fontawesome.sh");
   await page.keyboard.press("Enter");

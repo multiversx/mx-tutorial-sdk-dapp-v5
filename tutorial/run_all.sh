@@ -76,41 +76,41 @@ echo ""
 
 echo "📋 Cleaned project structure:"
 ls -la
-# echo ""
+echo ""
 
-# echo "🎬 Starting video setup sequence..."
-# echo ""
+echo "🎬 Starting video setup sequence..."
+echo ""
 
 # Define video setup information
 declare -A video_setups=(
-    [1]="Project Setup|run_project_setup.sh"
-    [2]="Prepare App|run_prepare_app.sh"
-    [3]="SDK Setup|run_sdk_setup.sh"
-    [4]="Create Dashboard|run_create_dashboard.sh"
-    [5]="Components Setup|run_components_setup.sh"
-    [6]="Widgets Setup|run_widgets_setup.sh"
+    [1]="Project Setup|01_create_react_app|run_project_setup.sh"
+    [2]="Prepare App|02_app_structure|run_prepare_app.sh"
+    [3]="SDK Setup|03_install_sdk_dapp|run_sdk_setup.sh"
+    [4]="Create Dashboard|04_create_dashboard|run_create_dashboard.sh"
+    [5]="Components Setup|05_create_layout|run_components_setup.sh"
+    [6]="Widgets Setup|06_sc_interaction|run_widgets_setup.sh"
 )
 
 # Loop through all videos
 for video_num in {1..6}; do
-    IFS='|' read -r video_name script_name <<< "${video_setups[$video_num]}"
+    IFS='|' read -r video_name folder_name script_name <<< "${video_setups[$video_num]}"
     
     echo "===================="
     echo "🎬 VIDEO $video_num: $video_name"
     echo "===================="
     
-    cd "tutorial/VIDEO_0$video_num"
+    cd "tutorial/$folder_name"
     
     if [[ -f "$script_name" ]]; then
-        echo "Running VIDEO_0$video_num setup..."
+        echo "Running $folder_name setup..."
         ./"$script_name"
         if [ $? -ne 0 ]; then
-            echo "❌ VIDEO_0$video_num setup failed. Stopping."
+            echo "❌ $folder_name setup failed. Stopping."
             exit 1
         fi
-        echo "✅ VIDEO_0$video_num completed successfully!"
+        echo "✅ $folder_name completed successfully!"
     else
-        echo "⚠️  VIDEO_0$video_num run script not found, skipping..."
+        echo "⚠️  $folder_name run script not found, skipping..."
     fi
     
     echo ""

@@ -6,7 +6,7 @@ import { typeAndEnter } from "../../utils/type-helper";
 export async function step15ConfigureTsconfig(page: Page): Promise<void> {
   await createTypewriterMessage(page, "Removing unused tsconfig files...");
 
-  await terminal.show(page, "VIDEO_01");
+  await terminal.show(page, "01_create_react_app");
 
   await typeAndEnter(page, "../../");
   await typeAndEnter(page, "rm -f tsconfig.app.json tsconfig.node.json");
