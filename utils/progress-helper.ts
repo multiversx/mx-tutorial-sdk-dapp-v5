@@ -49,3 +49,31 @@ export async function waitForStepCompletion(
   console.log(`❌ Timeout waiting for step ${stepName} completion`);
   return false;
 }
+
+/**
+ * Checks if the process can progress by reading pause.txt file
+ * @returns Promise<boolean> - True if can progress (even number of spaces), false if paused (odd number of spaces)
+ */
+export async function canProgress(): Promise<boolean> {
+  try {
+    const pausePath = join(
+      "/Users/tudor/Work/mx-tutorial-sdk-dapp-v5/utils",
+      "pause.txt"
+    );
+
+    if (existsSync(pausePath)) {
+      const pauseContent = readFileSync(pausePath, "utf-8");
+      const spaceCount = (pauseContent.match(/ /g) || []).length;
+
+      // Even number of spaces = can progress, odd number = paused
+      return spaceCount % 2 === 0;
+    }
+
+    // If file doesn't exist, allow progress
+    return true;
+  } catch (error) {
+    console.log(`Error checking pause status: ${error}`);
+    // If there's an error, allow progress by default
+    return true;
+  }
+}

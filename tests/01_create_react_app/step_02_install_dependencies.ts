@@ -7,6 +7,8 @@ import { basename } from "path";
 export async function step02InstallDependencies(page: Page): Promise<void> {
   // Display starting message with typewriter effect
   await createTypewriterMessage(page, "Inspecting package.json file");
+  await waitFor(4000);
+
   // minimize terminal
   await terminal.hide(page);
   await waitFor(2000);

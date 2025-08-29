@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Source the typing function
+source "$(dirname "$0")/../helpers/type_command.sh"
+
 echo "=== Step 1: Creating a new Vite React project with TypeScript template ==="
 
 cd ../../
@@ -8,7 +11,7 @@ rm -rf .git
 
 # Create a mew vite react-ts project
 echo "Creating project..."
-npx create-vite@latest ping-pong-tutorial --template react-ts --yes
+type_and_execute "npx create-vite@latest ping-pong-tutorial --template react-ts --yes"
 
 echo "Moving files to root directory..."
 mv ping-pong-tutorial/* .
