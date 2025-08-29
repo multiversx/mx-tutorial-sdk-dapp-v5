@@ -4,15 +4,15 @@ import { createNewFile, textEdit, waitFor } from "../helpers";
 import { humanType } from "../../utils/type-helper";
 
 export async function step02CreateHomePage(page: Page): Promise<void> {
-  await page.waitForTimeout(2000);
+  await waitFor(2000);
 
   await createTypewriterMessage(page, "Creating pages folder...");
 
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   const newFolder = "src/pages";
   await createNewFile(page, newFolder, Boolean(newFolder));
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await createTypewriterMessage(page, "Add a new Home page component...");
   await createNewFile(page, "src/pages/Home.tsx");

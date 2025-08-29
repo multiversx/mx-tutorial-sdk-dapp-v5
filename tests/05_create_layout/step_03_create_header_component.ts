@@ -5,12 +5,12 @@ import { createNewFile, navigateToFile, textEdit, waitFor } from "../helpers";
 export async function step03CreateHeaderComponent(page: Page): Promise<void> {
   await createTypewriterMessage(page, "Creating the Layout components...");
 
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await navigateToFile(page, "package.json");
   const newFolder = "src/components/Layout/components";
   await createNewFile(page, newFolder, Boolean(newFolder));
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   // Create Header component
   await createNewFile(page, "src/components/Layout/components/Header.tsx");

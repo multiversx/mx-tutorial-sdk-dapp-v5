@@ -8,13 +8,13 @@ export async function step05CreateAccountWidget(page: Page): Promise<void> {
     "Creating the Dashboard widgets folder..."
   );
 
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await navigateToFile(page, "package.json");
 
   const widgetsFolder = "src/pages/Dashboard/widgets";
   await createNewFile(page, widgetsFolder, Boolean(widgetsFolder));
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   // Create Account.tsx widget
   await createTypewriterMessage(page, "Creating Account widget...");

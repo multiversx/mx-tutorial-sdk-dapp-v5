@@ -5,7 +5,7 @@ import { humanType, typeAndEnter } from "../../utils/type-helper";
 
 export async function step05PingPongWidget(page: Page): Promise<void> {
   await createTypewriterMessage(page, "Creating the PingPong widget...");
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
   // Create contracts folder structure
   await createTypewriterMessage(page, "Creating contracts folder structure...");
   await navigateToFile(page, "package.json");

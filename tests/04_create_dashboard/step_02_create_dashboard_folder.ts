@@ -9,16 +9,16 @@ export async function step02CreateDashboardFolder(page: Page): Promise<void> {
     "Creating the dashboard folder structure..."
   );
 
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   // Create dashboard directory structure
   const dashboardFolder = "src/pages/Dashboard";
   await createNewFile(page, dashboardFolder, Boolean(dashboardFolder));
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   const componentsFolder = "components";
   await createNewFile(page, componentsFolder, Boolean(componentsFolder));
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   // Create Widget.tsx component
   await createTypewriterMessage(page, "Creating Widget component...");

@@ -3,14 +3,14 @@ import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { navigateToFile, terminal, waitFor } from "../helpers";
 
 export async function step06UpdateApp(page: Page): Promise<void> {
-  await page.waitForTimeout(2000);
+  await waitFor(2000);
 
   await createTypewriterMessage(
     page,
     "Updating App.tsx with routing configuration..."
   );
 
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await navigateToFile(page, "App.tsx");
 

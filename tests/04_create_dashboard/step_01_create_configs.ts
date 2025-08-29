@@ -11,16 +11,16 @@ import { humanType, typeAndEnter } from "../../utils/type-helper";
 
 export async function step01CreateConfigs(page: Page): Promise<void> {
   await createTypewriterMessage(page, "🏗️ Building Dashboard with Widgets");
-  await page.waitForTimeout(2000);
+  await waitFor(2000);
 
   await createTypewriterMessage(page, "Creating configs for our dApp...");
 
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   //   Create config directory
   const configFolder = "config";
   await createNewFile(page, configFolder, Boolean(configFolder));
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   // Create config.devnet.ts
   await createTypewriterMessage(page, "Creating devnet configuration...");
@@ -72,7 +72,7 @@ export async function step01CreateConfigs(page: Page): Promise<void> {
     `"copy-devnet-config": "cp ./src/config/config.devnet.ts ./src/config/index.ts",`
   );
   // format
-  await page.waitForTimeout(500);
+  await waitFor(500);
   await page.keyboard.press("Alt+Shift+f");
 
   await page.keyboard.press("Meta+s");

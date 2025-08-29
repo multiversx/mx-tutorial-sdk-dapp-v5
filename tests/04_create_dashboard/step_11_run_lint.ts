@@ -1,15 +1,15 @@
 import { Page } from "@playwright/test";
-import { terminal } from "../helpers";
+import { terminal, waitFor } from "../helpers";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { waitForStepCompletion } from "../../utils/progress-helper";
 import { basename } from "path";
 
 export async function step11RunLint(page: Page): Promise<void> {
-  await page.waitForTimeout(2000);
+  await waitFor(2000);
 
   await createTypewriterMessage(page, "Running lint to fix errors...");
 
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await terminal.show(page, "04_create_dashboard");
 

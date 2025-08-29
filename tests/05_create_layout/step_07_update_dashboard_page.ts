@@ -9,7 +9,7 @@ export async function step07UpdateDashboardPage(page: Page): Promise<void> {
     "Updating the Dashboard page to use the Transactions widget..."
   );
 
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await navigateToFile(page, "Dashboard.tsx");
 

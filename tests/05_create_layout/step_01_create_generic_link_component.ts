@@ -7,12 +7,12 @@ export async function step01CreateGenericLinkComponent(
   page: Page
 ): Promise<void> {
   await createTypewriterMessage(page, "🔗 Creating UI Components");
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await createTypewriterMessage(page, "Creating a generic link component...");
 
   await createNewFile(page, "../components/MxLink.tsx");
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await textEdit(page).pasteText(
     `import { PropsWithChildren } from 'react';

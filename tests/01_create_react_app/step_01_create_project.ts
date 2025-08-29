@@ -1,18 +1,18 @@
 import { Page } from "@playwright/test";
-import { terminal } from "../helpers";
+import { terminal, waitFor } from "../helpers";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { waitForStepCompletion } from "../../utils/progress-helper";
 import { basename } from "path";
 
 export async function step01CreateProject(page: Page): Promise<void> {
-  await page.waitForTimeout(2000);
+  await waitFor(2000);
 
   // Display starting message
   await createTypewriterMessage(
     page,
     "🚀 React + Tailwind + MultiversX dApp Setup Tutorial"
   );
-  await page.waitForTimeout(2000);
+  await waitFor(2000);
 
   // Display starting message with typewriter effect
   await createTypewriterMessage(
@@ -21,7 +21,7 @@ export async function step01CreateProject(page: Page): Promise<void> {
   );
 
   // Wait a moment for terminal to be fully ready
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   // Navigate to tutorial directory and run the script
   await terminal.show(page, "01_create_react_app");

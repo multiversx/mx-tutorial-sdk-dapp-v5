@@ -1,4 +1,5 @@
 import { Page } from "@playwright/test";
+import { waitFor } from "./waitFor";
 
 async function openTutorialVideoTerminal(
   page: Page,
@@ -7,7 +8,7 @@ async function openTutorialVideoTerminal(
   await page.keyboard.press("Control+Shift+`");
 
   // Wait a moment for terminal to be fully ready
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   // Navigate to tutorial directory and run the script
   await page.keyboard.type(

@@ -1,5 +1,6 @@
 import { test } from "./fixtures/cdpContext";
 import { authenticateWithPassword } from "../utils/password-helper";
+import { waitFor } from "./helpers";
 import { chromium } from "@playwright/test";
 import ffmpeg from "@ffmpeg-installer/ffmpeg";
 // import { saveVideo } from "playwright-video";
@@ -58,7 +59,7 @@ test.describe("01_create_react_app - Complete Project Setup", () => {
     }
 
     // Wait a bit for the page to be ready
-    await page.waitForTimeout(400);
+    await waitFor(400);
 
     // Check if the page is already on the code server instance
     const currentUrl = page.url();

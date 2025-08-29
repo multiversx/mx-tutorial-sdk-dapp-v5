@@ -1,21 +1,21 @@
 import { Page } from "@playwright/test";
-import { terminal } from "../helpers";
+import { terminal, waitFor } from "../helpers";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
 import { waitForStepCompletion } from "../../utils/progress-helper";
 import { basename } from "path";
 
 export async function step01InstallSdks(page: Page): Promise<void> {
-  await page.waitForTimeout(2000);
+  await waitFor(2000);
 
   await createTypewriterMessage(page, "🚀 MultiversX SDK Setup");
-  await page.waitForTimeout(2000);
+  await waitFor(2000);
 
   await createTypewriterMessage(
     page,
     "Installing MultiversX SDK and its dependencies..."
   );
 
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await terminal.show(page, "03_install_sdk_dapp");
 

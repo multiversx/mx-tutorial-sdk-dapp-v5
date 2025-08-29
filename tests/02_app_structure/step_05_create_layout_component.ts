@@ -5,24 +5,24 @@ import { humanType } from "../../utils/type-helper";
 import { navigateToFile } from "../helpers";
 
 export async function step05CreateLayoutComponent(page: Page): Promise<void> {
-  await page.waitForTimeout(2000);
+  await waitFor(2000);
 
   await createTypewriterMessage(page, "Creating components folder...");
 
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   // Create components folder
   await navigateToFile(page, "package.json");
   const componentsFolder = "src/components";
   await createNewFile(page, componentsFolder, Boolean(componentsFolder));
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await createTypewriterMessage(page, "Adding a new Layout folder...");
 
   // Create Layout folder
   const layoutFolder = "Layout";
   await createNewFile(page, layoutFolder, Boolean(layoutFolder));
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await createTypewriterMessage(page, "Add a new Layout component...");
   await createNewFile(page, "src/components/Layout/Layout.tsx");

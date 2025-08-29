@@ -5,7 +5,7 @@ import { typeAndEnter } from "../../utils/type-helper";
 
 export async function step03AccountWidget(page: Page): Promise<void> {
   await createTypewriterMessage(page, "Preparing to update Account widget...");
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await createTypewriterMessage(page, "Creating FormatAmount.tsx component...");
 

@@ -5,7 +5,7 @@ import { humanType } from "../../utils/type-helper";
 
 export async function step06AuthWrapper(page: Page): Promise<void> {
   await createTypewriterMessage(page, "Now to handle the authentication...");
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   // Navigate to components folder
   await navigateToFile(page, "Footer.tsx");

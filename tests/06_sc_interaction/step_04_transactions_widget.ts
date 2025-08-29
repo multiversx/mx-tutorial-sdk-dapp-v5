@@ -8,7 +8,7 @@ export async function step04TransactionsWidget(page: Page): Promise<void> {
     page,
     "Preparing to update TransactionsTable widget..."
   );
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await navigateToFile(page, "MxLink.tsx");
 

@@ -4,7 +4,7 @@ import { createNewFile, waitFor } from "../helpers";
 import { humanType } from "../../utils/type-helper";
 
 export async function step04CreateRoutesFiles(page: Page): Promise<void> {
-  await page.waitForTimeout(2000);
+  await waitFor(2000);
 
   await createTypewriterMessage(page, "Creating routes configuration files...");
 

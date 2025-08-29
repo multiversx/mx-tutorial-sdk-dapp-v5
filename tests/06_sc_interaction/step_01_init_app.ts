@@ -4,7 +4,7 @@ import { navigateToFile, waitFor } from "../helpers";
 
 export async function step01InitApp(page: Page): Promise<void> {
   await createTypewriterMessage(page, "🚀 Starting to interact with sdk-dapp");
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await createTypewriterMessage(
     page,

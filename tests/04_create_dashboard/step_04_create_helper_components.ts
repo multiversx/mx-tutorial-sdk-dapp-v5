@@ -15,7 +15,7 @@ export async function step04CreateHelperComponents(page: Page): Promise<void> {
     "Creating helper components (Button, Label, OutputContainer)..."
   );
 
-  await page.waitForTimeout(1000);
+  await waitFor(1000);
 
   await navigateToFile(page, "package.json");
 
