@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { terminal, clickLocator, waitFor } from "../helpers";
+import { terminal, waitFor, navigateToFile } from "../helpers";
 import { waitForStepCompletion } from "../../utils/progress-helper";
 import { basename } from "path";
 
@@ -14,7 +14,7 @@ export async function step02InstallDependencies(page: Page): Promise<void> {
   await waitFor(2000);
 
   // smoothly move to package.json (visual mouse is auto-injected and removed)
-  await clickLocator(page, "package.json");
+  await navigateToFile(page, "package.json");
   await waitFor(4000);
   await createTypewriterMessage(page, "The package.json file looks good 👍");
   await waitFor(1000);

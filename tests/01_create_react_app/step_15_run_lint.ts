@@ -6,10 +6,7 @@ import { terminal } from "../helpers";
 
 export async function step15RunLint(page: Page): Promise<void> {
   // Display starting message with typewriter effect
-  await createTypewriterMessage(
-    page,
-    "Running linting and creating a new commit..."
-  );
+  await createTypewriterMessage(page, "Running lint...");
 
   await terminal.show(page, "01_create_react_app");
   await page.keyboard.type("./step_15_run_lint.sh");

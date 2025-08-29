@@ -8,7 +8,7 @@ echo "=== Copy the multiversx-white.svg file to the public folder ==="
 cd ../../
 
 # Copy the multiversx-white.svg file to the public folder
-type_and_execute "cp tutorial/VIDEO_01/multiversx-white.svg public/multiversx-white.svg"
+type_and_execute "cp tutorial/01_create_react_app/multiversx-white.svg public/multiversx-white.svg"
 
 echo "✅ multiversx-white.svg copied to public folder successfully!"
 

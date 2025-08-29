@@ -17,14 +17,14 @@ import { step16StartDevServer } from "./step_16_start_dev_server";
 
 // Define steps with descriptions and functions in a single array
 export const video01steps = [
-  {
-    description: "Create new Vite React project",
-    function: step01CreateProject,
-  },
-  {
-    description: "Install dependencies",
-    function: step02InstallDependencies,
-  },
+  // {
+  //   description: "Create new Vite React project",
+  //   function: step01CreateProject,
+  // },
+  // {
+  //   description: "Install dependencies",
+  //   function: step02InstallDependencies,
+  // },
   // {
   //   description: "Install Tailwind CSS",
   //   function: step04InstallTailwind,
@@ -69,16 +69,16 @@ export const video01steps = [
   //   description: "Configure tsconfig.json",
   //   function: step15ConfigureTsconfig,
   // },
-  // {
-  //   description: "Add formatting scripts",
-  //   function: step16AddFormattingScripts,
-  // },
-  // {
-  //   description: "Run lint",
-  //   function: step15RunLint,
-  // },
-  // {
-  //   description: "Check if the project is running",
-  //   function: step16StartDevServer,
-  // },
+  {
+    description: "Add formatting scripts",
+    function: step16AddFormattingScripts,
+  },
+  {
+    description: "Run lint",
+    function: step15RunLint,
+  },
+  {
+    description: "Check if the project is running",
+    function: step16StartDevServer,
+  },
 ];

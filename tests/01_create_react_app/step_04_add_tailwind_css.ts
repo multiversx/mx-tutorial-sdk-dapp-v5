@@ -30,6 +30,8 @@ export async function step05AddTailwindConfig(page: Page): Promise<void> {
 
   await page.keyboard.press("Control+g");
   await typeAndEnter(page, "4");
+  await waitFor(300);
+
   await page.keyboard.press("Enter");
   await page.keyboard.press("ArrowUp");
   await humanType(page, "import './tailwind.css'");
