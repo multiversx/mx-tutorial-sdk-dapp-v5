@@ -5,7 +5,7 @@ echo "======================================="
 echo ""
 echo "This script will:"
 echo "1. Clean the project (keeping only .git, .auto-type, tutorial, .gitignore)"
-echo "2. Run all video setup scripts in sequence"
+echo "2. Run all chapter setup scripts in sequence"
 echo ""
 
 # Navigate to root directory
@@ -78,11 +78,11 @@ echo "📋 Cleaned project structure:"
 ls -la
 echo ""
 
-echo "🎬 Starting video setup sequence..."
+echo "📚 Starting chapter setup sequence..."
 echo ""
 
-# Define video setup information
-declare -A video_setups=(
+# Define chapter setup information
+declare -A chapter_setups=(
     [1]="Project Setup|01_create_react_app|run_project_setup.sh"
     [2]="Prepare App|02_app_structure|run_prepare_app.sh"
     [3]="SDK Setup|03_install_sdk_dapp|run_sdk_setup.sh"
@@ -91,12 +91,12 @@ declare -A video_setups=(
     [6]="Widgets Setup|06_sc_interaction|run_widgets_setup.sh"
 )
 
-# Loop through all videos
-for video_num in {1..6}; do
-    IFS='|' read -r video_name folder_name script_name <<< "${video_setups[$video_num]}"
+# Loop through all chapters
+for chapter_num in {1..6}; do
+    IFS='|' read -r chapter_name folder_name script_name <<< "${chapter_setups[$chapter_num]}"
     
     echo "===================="
-    echo "🎬 VIDEO $video_num: $video_name"
+    echo "📖 CHAPTER $chapter_num: $chapter_name"
     echo "===================="
     
     cd "tutorial/$folder_name"
@@ -115,14 +115,14 @@ for video_num in {1..6}; do
     
     echo ""
     
-    # Navigate back to root for next video
+    # Navigate back to root for next chapter
     cd ../../
 done
 
 echo "🎉 COMPLETE SETUP FINISHED! 🎉"
 echo ""
 echo "================================"
-echo "✅ All video setups completed successfully!"
+echo "✅ All chapter setups completed successfully!"
 echo ""
 echo "📁 Final project structure:"
 ls -la
