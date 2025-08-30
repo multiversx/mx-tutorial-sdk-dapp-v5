@@ -54,6 +54,7 @@ export const Account = () => {
   await waitFor(1000);
 
   await createTypewriterMessage(page, "Done! 🎉");
+  await waitFor(1000);
 
   // ends with src/pages/Dashboard/widgets/Account.tsx, terminal closed
 

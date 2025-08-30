@@ -40,18 +40,18 @@ export const video04steps = [
   //   description: "Create widgets index file",
   //   function: step07CreateWidgetsIndex,
   // },
-  // {
-  //   description: "Create the Dashboard page",
-  //   function: step08CreateDashboardPage,
-  // },
-  // {
-  //   description: "Export the Dashboard page",
-  //   function: step09ExportDashboard,
-  // },
-  // {
-  //   description: "Update the routes configuration",
-  //   function: step10UpdateRoutes,
-  // },
+  {
+    description: "Create the Dashboard page",
+    function: step08CreateDashboardPage,
+  },
+  {
+    description: "Export the Dashboard page",
+    function: step09ExportDashboard,
+  },
+  {
+    description: "Update the routes configuration",
+    function: step10UpdateRoutes,
+  },
   {
     description: "Run lint to fix errors",
     function: step11RunLint,

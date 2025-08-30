@@ -84,10 +84,10 @@ test.describe("01_create_react_app - Complete Project Setup", () => {
     }
 
     const steps = [
-      ...video01steps,
+      // ...video01steps,
       // ...video02steps,
       // ...video03steps,
-      // ...video04steps,
+      ...video04steps,
       // ...video05steps,
       // ...video06steps,
     ];

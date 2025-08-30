@@ -27,5 +27,9 @@ export async function step01InstallReactRouterDom(page: Page): Promise<void> {
 
   await waitForStepCompletion(page, basename(__filename, ".ts"));
 
+  await waitFor(1000);
+
+  await terminal.hide(page);
+
   console.log("React Router DOM installation completed");
 }

@@ -4,29 +4,42 @@ export const waitFor = (ms: number) => {
   return new Promise((resolve) => {
     const startTime = Date.now();
     const checkInterval = 100; // Check every 100ms
+    let totalPausedTime = 0;
+    let lastPauseStartTime: number | null = null;
 
     const checkAndWait = async () => {
-      const elapsed = Date.now() - startTime;
+      const currentTime = Date.now();
+      const canProceed = await canProgress();
 
-      // If the specified time has passed, resolve regardless of pause state
-      if (elapsed >= ms) {
+      if (!canProceed) {
+        // We are paused
+        if (lastPauseStartTime === null) {
+          // Just started pausing
+          lastPauseStartTime = currentTime;
+        }
+        // Continue checking while paused
+        setTimeout(checkAndWait, checkInterval);
+        return;
+      }
+
+      // We can proceed
+      if (lastPauseStartTime !== null) {
+        // We just resumed from a pause
+        totalPausedTime += currentTime - lastPauseStartTime;
+        lastPauseStartTime = null;
+      }
+
+      // Calculate elapsed time excluding paused time
+      const elapsedActiveTime = currentTime - startTime - totalPausedTime;
+
+      // If the specified active time has passed, resolve
+      if (elapsedActiveTime >= ms) {
         resolve("Done waiting!");
         return;
       }
 
-      // Check if we can progress
-      const canProceed = await canProgress();
-
-      if (canProceed) {
-        // If we can progress, wait for the remaining time and resolve
-        const remaining = ms - elapsed;
-        setTimeout(() => {
-          resolve("Done waiting!");
-        }, remaining);
-      } else {
-        // If paused, check again after the interval
-        setTimeout(checkAndWait, checkInterval);
-      }
+      // Continue checking
+      setTimeout(checkAndWait, checkInterval);
     };
 
     // Start the checking process

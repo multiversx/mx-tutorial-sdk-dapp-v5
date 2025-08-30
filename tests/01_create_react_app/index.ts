@@ -17,58 +17,58 @@ import { step16StartDevServer } from "./step_16_start_dev_server";
 
 // Define steps with descriptions and functions in a single array
 export const video01steps = [
-  // {
-  //   description: "Create new Vite React project",
-  //   function: step01CreateProject,
-  // },
-  // {
-  //   description: "Install dependencies",
-  //   function: step02InstallDependencies,
-  // },
-  // {
-  //   description: "Install Tailwind CSS",
-  //   function: step04InstallTailwind,
-  // },
-  // {
-  //   description: "Add tailwind.config.js",
-  //   function: step05AddTailwindConfig,
-  // },
-  // {
-  //   description: "Add postcss.config.js",
-  //   function: step06AddPostcssConfig,
-  // },
-  // {
-  //   description: "Replace contents of src/index.css",
-  //   function: step07ReplaceIndexCss,
-  // },
-  // {
-  //   description: "Copy the multiversx-white.svg file to the public folder",
-  //   function: step08CopySvgFile,
-  // },
-  // {
-  //   description: "Configure eslint and prettier",
-  //   function: step10ConfigureEslintPrettier,
-  // },
-  // {
-  //   description: "Configure .prettierrc",
-  //   function: step11ConfigurePrettierrc,
-  // },
-  // {
-  //   description: "Configure eslint.config.js",
-  //   function: step12ConfigureEslintConfig,
-  // },
-  // {
-  //   description: "Configure vite",
-  //   function: step13ConfigureVite,
-  // },
-  // {
-  //   description: "Configure vite.config.ts",
-  //   function: step14ConfigureViteConfig,
-  // },
-  // {
-  //   description: "Configure tsconfig.json",
-  //   function: step15ConfigureTsconfig,
-  // },
+  {
+    description: "Create new Vite React project",
+    function: step01CreateProject,
+  },
+  {
+    description: "Install dependencies",
+    function: step02InstallDependencies,
+  },
+  {
+    description: "Install Tailwind CSS",
+    function: step04InstallTailwind,
+  },
+  {
+    description: "Add tailwind.config.js",
+    function: step05AddTailwindConfig,
+  },
+  {
+    description: "Add postcss.config.js",
+    function: step06AddPostcssConfig,
+  },
+  {
+    description: "Replace contents of src/index.css",
+    function: step07ReplaceIndexCss,
+  },
+  {
+    description: "Copy the multiversx-white.svg file to the public folder",
+    function: step08CopySvgFile,
+  },
+  {
+    description: "Configure eslint and prettier",
+    function: step10ConfigureEslintPrettier,
+  },
+  {
+    description: "Configure .prettierrc",
+    function: step11ConfigurePrettierrc,
+  },
+  {
+    description: "Configure eslint.config.js",
+    function: step12ConfigureEslintConfig,
+  },
+  {
+    description: "Configure vite",
+    function: step13ConfigureVite,
+  },
+  {
+    description: "Configure vite.config.ts",
+    function: step14ConfigureViteConfig,
+  },
+  {
+    description: "Configure tsconfig.json",
+    function: step15ConfigureTsconfig,
+  },
   {
     description: "Add formatting scripts",
     function: step16AddFormattingScripts,

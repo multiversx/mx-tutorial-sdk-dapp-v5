@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 import { createTypewriterMessage } from "../../utils/typewriter-helper";
-import { createNewFile, waitFor } from "../helpers";
+import { createNewFile, textEdit, waitFor } from "../helpers";
 import { humanType } from "../../utils/type-helper";
 
 export async function step04CreateRoutesFiles(page: Page): Promise<void> {
@@ -46,6 +46,9 @@ export const routes: RouteType[] = [
   });
   await page.keyboard.press("Meta+v");
   await page.keyboard.press("Meta+s");
+
+  await textEdit(page).goToTopOfFile();
+
   await waitFor(1000);
   await createTypewriterMessage(page, "Done! 🎉");
   await waitFor(6000);
