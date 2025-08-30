@@ -87,9 +87,9 @@ test.describe("01_create_react_app - Complete Project Setup", () => {
       // ...video01steps,
       // ...video02steps,
       // ...video03steps,
-      ...video04steps,
+      // ...video04steps,
       // ...video05steps,
-      // ...video06steps,
+      ...video06steps,
     ];
 
     // Loop through all steps dynamically

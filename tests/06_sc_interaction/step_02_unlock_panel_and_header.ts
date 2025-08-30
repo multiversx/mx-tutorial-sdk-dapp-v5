@@ -12,65 +12,82 @@ export async function step02UnlockPanelAndHeader(page: Page): Promise<void> {
   await navigateToFile(page, "Unlock.tsx");
   await waitFor(1000);
 
-  await createTypewriterMessage(page, "Pasting sdk-dapp imports...");
+  await createTypewriterMessage(page, "Importing the UnlockPanelManager...");
 
   await textEdit(page).newLineAt(2);
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `import { UnlockPanelManager } from '@multiversx/sdk-dapp/out/managers/UnlockPanelManager';
-  import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/out/react/account/useGetIsLoggedIn';`
-    );
-  });
+  // use textedit pasteText
+  await textEdit(page).pasteText(
+    `import { UnlockPanelManager } from '@multiversx/sdk-dapp/out/managers/UnlockPanelManager';
+  `
+  );
   await waitFor(300);
 
-  await page.keyboard.press("Meta+v");
+  await createTypewriterMessage(
+    page,
+    "Also importing the useGetIsLoggedIn hook..."
+  );
+
+  await textEdit(page).pasteText(
+    `import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/out/react/account/useGetIsLoggedIn';`
+  );
+  await waitFor(300);
 
   await textEdit(page).selectLine(9);
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(`const isLoggedIn = useGetIsLoggedIn();`);
-  });
+  await createTypewriterMessage(page, "Using the useGetIsLoggedIn hook...");
 
-  await waitFor(300);
-
-  await page.keyboard.press("Meta+v");
-
+  await textEdit(page).pasteText(`const isLoggedIn = useGetIsLoggedIn();`);
   await waitFor(300);
 
   await textEdit(page).newLineAt(10);
 
   await page.keyboard.press("Enter");
 
-  await page.evaluate(() => {
-    navigator.clipboard.writeText(
-      `  const unlockPanelManager = UnlockPanelManager.init({
-      loginHandler: () => {
-        navigate(RouteNamesEnum.dashboard);
-      },
-      onClose: () => {
-        navigate(RouteNamesEnum.home);
-      }
-    });
+  await createTypewriterMessage(page, "Initializing the UnlockPanelManager...");
 
-    const handleOpenUnlockPanel = () => {
-      unlockPanelManager.openUnlockPanel();
-    };`
-    );
-  });
+  await textEdit(page).pasteText(
+    `const unlockPanelManager = UnlockPanelManager.init({
+     
+     });`
+  );
+
+  await createTypewriterMessage(page, "Adding the event handlers...");
+
+  for (let i = 0; i < 3; i++) {
+    await page.keyboard.press("ArrowLeft");
+    await waitFor(300);
+  }
+
+  await page.keyboard.press("Enter");
+
+  await textEdit(page).pasteText(
+    `loginHandler: () => {
+      navigate(RouteNamesEnum.dashboard);
+    },`
+  );
+
+  await humanType(page, ",");
+
+  await waitFor(1000);
+
+  await page.keyboard.press("Enter");
+
+  await textEdit(page).pasteText(
+    `onClose: () => {
+      navigate(RouteNamesEnum.home);
+    }`
+  );
   await waitFor(300);
 
-  await page.keyboard.press("Meta+v");
+  await createTypewriterMessage(
+    page,
+    "Opening the unlock panel upon accessing /unlock page..."
+  );
 
-  await waitFor(300);
+  await textEdit(page).selectLine(25);
 
-  await textEdit(page).formatFile();
-
-  await waitFor(300);
-
-  await textEdit(page).selectLine(29);
-
-  await humanType(page, "handleOpenUnlockPanel();");
+  await humanType(page, "unlockPanelManager.openUnlockPanel();");
 
   await waitFor(300);
 
@@ -80,6 +97,8 @@ export async function step02UnlockPanelAndHeader(page: Page): Promise<void> {
     page,
     "✅ Opening unlock panel on accessing /unlock route"
   );
+
+  await waitFor(3000);
 
   // Update Header component navigation
   await createTypewriterMessage(

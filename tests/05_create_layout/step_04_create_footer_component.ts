@@ -17,7 +17,7 @@ export async function step04CreateFooterComponent(page: Page): Promise<void> {
         <a
           target='_blank'
           className='flex items-center text-sm hover:underline'
-          href='https://github.com/multiversx/mx-tutorial-sdk-dapp-v5'
+          href='https://github.com/multiversx/mx-sdk-dapp'
         >
           GitHub Repository
         </a>

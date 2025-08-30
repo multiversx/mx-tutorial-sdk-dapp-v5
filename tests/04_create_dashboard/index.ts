@@ -12,34 +12,34 @@ import { step11RunLint } from "./step_11_run_lint";
 
 // Define steps with descriptions and functions in a single array
 export const video04steps = [
-  // {
-  //   description: "Create configs for our dApp",
-  //   function: step01CreateConfigs,
-  // },
-  // {
-  //   description: "Create the dashboard folder structure",
-  //   function: step02CreateDashboardFolder,
-  // },
-  // {
-  //   description: "Install FontAwesome and classnames",
-  //   function: step03InstallFontawesome,
-  // },
-  // {
-  //   description: "Create helper components (Button, Label, OutputContainer)",
-  //   function: step04CreateHelperComponents,
-  // },
-  // {
-  //   description: "Create the Account widget",
-  //   function: step05CreateAccountWidget,
-  // },
-  // {
-  //   description: "Create the PingPongAbi widget",
-  //   function: step06CreatePingpongWidget,
-  // },
-  // {
-  //   description: "Create widgets index file",
-  //   function: step07CreateWidgetsIndex,
-  // },
+  {
+    description: "Create configs for our dApp",
+    function: step01CreateConfigs,
+  },
+  {
+    description: "Create the dashboard folder structure",
+    function: step02CreateDashboardFolder,
+  },
+  {
+    description: "Install FontAwesome and classnames",
+    function: step03InstallFontawesome,
+  },
+  {
+    description: "Create helper components (Button, Label, OutputContainer)",
+    function: step04CreateHelperComponents,
+  },
+  {
+    description: "Create the Account widget",
+    function: step05CreateAccountWidget,
+  },
+  {
+    description: "Create the PingPongAbi widget",
+    function: step06CreatePingpongWidget,
+  },
+  {
+    description: "Create widgets index file",
+    function: step07CreateWidgetsIndex,
+  },
   {
     description: "Create the Dashboard page",
     function: step08CreateDashboardPage,
