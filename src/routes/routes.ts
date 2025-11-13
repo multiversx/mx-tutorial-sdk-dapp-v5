@@ -1,9 +1,9 @@
-import { RouteType } from 'types';
-import { Home, Dashboard } from 'pages';
+import { Home, Dashboard, Unlock } from 'pages';
 
 export enum RouteNamesEnum {
   home = '/',
-  dashboard = '/dashboard'
+  dashboard = '/dashboard',
+  unlock = '/unlock'
 }
 
 interface BasicRouteType {
@@ -13,7 +13,7 @@ interface BasicRouteType {
   authenticatedRoute?: boolean;
 }
 
-interface RouteType extends BasicRouteType {
+export interface RouteType extends BasicRouteType {
   children?: BasicRouteType[];
 }
 
@@ -23,7 +23,12 @@ export const routes: RouteType[] = [
     title: 'Home',
     component: Home,
     children: [
-      // Unlock page
+      // since unlock is made trough a sidebar, we want to keep displaying the home page in the background
+      {
+        path: RouteNamesEnum.unlock,
+        title: 'Unlock',
+        component: Unlock
+      }
     ]
   },
   {

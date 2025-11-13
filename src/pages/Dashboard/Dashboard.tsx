@@ -1,5 +1,5 @@
 import { Widget, WidgetType } from './components';
-import { Account, PingPongAbi } from './widgets';
+import { Account, PingPongAbi, Transactions } from './widgets';
 
 const WIDGETS: WidgetType[] = [
   {
@@ -15,6 +15,13 @@ const WIDGETS: WidgetType[] = [
       'Smart Contract interactions using the ABI generated transactions',
     reference:
       'https://docs.multiversx.com/sdk-and-tools/sdk-js/sdk-js-cookbook/#using-interaction-when-the-abi-is-available'
+  },
+  {
+    title: 'Transactions',
+    widget: Transactions,
+    description: 'Transactions history',
+    reference:
+      'https://docs.multiversx.com/sdk-and-tools/sdk-dapp/#transactions'
   }
 ];
 
