@@ -1,14 +1,17 @@
+import { getAccountProvider } from '@multiversx/sdk-dapp/out/providers/helpers/accountProvider';
+import { useGetIsLoggedIn } from '@multiversx/sdk-dapp/out/react/account/useGetIsLoggedIn';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'components';
 import { environment } from 'config';
 import { RouteNamesEnum } from 'routes';
 
 export const Header = () => {
-  const isLoggedIn = false; // TODO: Replace with the actual login state
+  const isLoggedIn = useGetIsLoggedIn();
   const navigate = useNavigate();
+  const provider = getAccountProvider();
 
   const handleLogout = async () => {
-    // TODO: Implement logout
+    await provider.logout();
     navigate(RouteNamesEnum.home);
   };
 
@@ -33,7 +36,7 @@ export const Header = () => {
           ) : (
             <Button
               onClick={() => {
-                navigate(RouteNamesEnum.dashboard); // TODO: replace with navigate(RouteNamesEnum.unlock);
+                navigate(RouteNamesEnum.unlock);
               }}
             >
               Connect
