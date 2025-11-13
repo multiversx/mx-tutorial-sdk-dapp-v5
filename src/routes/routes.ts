@@ -1,7 +1,9 @@
-import { Home } from 'pages';
+import { RouteType } from 'types';
+import { Home, Dashboard } from 'pages';
 
 export enum RouteNamesEnum {
-  home = '/'
+  home = '/',
+  dashboard = '/dashboard'
 }
 
 interface BasicRouteType {
@@ -23,5 +25,11 @@ export const routes: RouteType[] = [
     children: [
       // Unlock page
     ]
+  },
+  {
+    path: RouteNamesEnum.dashboard,
+    title: 'Dashboard',
+    component: Dashboard,
+    authenticatedRoute: true
   }
 ];
