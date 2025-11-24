@@ -8,8 +8,6 @@ This tutorial will guide you through the process of building a dApp from scratch
 
 You can find the video tutorials on the [MultiversX YouTube channel](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
 
-You can find the code for the tutorial in the [MultiversX sdk-dapp v5 tutorial repository](https://github.com/multiversx/sdk-dapp-v5-tutorial).
-
 You can find the documentation for the sdk-dapp v5 in the [MultiversX sdk-dapp v5 documentation](https://github.com/multiversx/mx-sdk-dapp).
 
 #### How to use this tutorial
