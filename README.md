@@ -6,7 +6,7 @@ Welcome to the MultiversX sdk-dapp v5 tutorial! 🚀
 
 This tutorial will guide you through the process of building a dApp from scratch with React, Tailwind, @multiversx/sdk-core and @multiversx/sdk-dapp.
 
-You can find the video tutorials on the [MultiversX YouTube channel](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+You can find the video tutorial on the [MultiversX YouTube channel](https://youtu.be/Ls5hhw4LffY).
 
 You can find the documentation for the sdk-dapp v5 in the [MultiversX sdk-dapp v5 documentation](https://github.com/multiversx/mx-sdk-dapp).
 
